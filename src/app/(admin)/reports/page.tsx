@@ -1,3 +1,5 @@
+'use client'
+export const dynamic = 'force-dynamic'
 import { Card, PageHeader } from '@/components/ui'
 import { T } from '@/lib/mockData'
 import { TrendingUp, ShoppingBag, Package, ShoppingCart, Trash2, Wallet, ReceiptText, UtensilsCrossed, FlaskConical, Layers, Download } from 'lucide-react'

@@ -1,4 +1,5 @@
 'use client'
+export const dynamic = 'force-dynamic'
 import { MetricCard, Card, DataTable, Btn, SearchBar, PageHeader, ChartTip } from '@/components/ui'
 import { T, EXPENSES, fmtINRFull } from '@/lib/mockData'
 import { Wallet, RefreshCw, Zap, Layers, Plus, Download, Edit } from 'lucide-react'

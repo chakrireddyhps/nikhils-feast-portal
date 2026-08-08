@@ -1,4 +1,5 @@
 'use client'
+export const dynamic = 'force-dynamic'
 import { useState } from 'react'
 import { Card, Btn, PageHeader, ChartTip } from '@/components/ui'
 import { T, REVENUE_TREND, WASTAGE, EXPENSES, fmtINRFull } from '@/lib/mockData'

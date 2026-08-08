@@ -1,4 +1,5 @@
 'use client'
+export const dynamic = 'force-dynamic'
 import { MetricCard, Card, StatusBadge, OrderTypeBadge, ChartTip, DataTable, Btn } from '@/components/ui'
 import { T, REVENUE_TREND, CATEGORY_SALES, TOP_ITEMS, ORDERS, INGREDIENTS, WASTAGE, EXPENSES, fmtINR, fmtINRFull } from '@/lib/mockData'
 import { AreaChart, Area, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'

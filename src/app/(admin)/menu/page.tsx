@@ -1,4 +1,5 @@
 'use client'
+export const dynamic = 'force-dynamic'
 import { useState } from 'react'
 import { Card, Btn, SearchBar, PageHeader } from '@/components/ui'
 import { T, MENU_ITEMS, CATEGORIES } from '@/lib/mockData'

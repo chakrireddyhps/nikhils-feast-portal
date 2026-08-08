@@ -1,3 +1,5 @@
+'use client'
+export const dynamic = 'force-dynamic'
 import { Card, PageHeader } from '@/components/ui'
 import { T } from '@/lib/mockData'
 import { Globe, Settings, ShoppingBag, Package, Users, Lock, Zap, ShieldAlert, ChevronRight } from 'lucide-react'
