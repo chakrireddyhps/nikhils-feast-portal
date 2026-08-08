@@ -22,7 +22,7 @@ const NAV = [
   { href: '/settings',    icon: Settings,          label: 'Settings',     group: 'System'    },
 ]
 
-const GROUPS = [...new Set(NAV.map(n => n.group))]
+const GROUPS = Array.from(new Set(NAV.map(n => n.group)))
 
 interface SidebarProps {
   collapsed: boolean
