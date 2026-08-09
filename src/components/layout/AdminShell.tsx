@@ -19,11 +19,11 @@ const PAGE_TITLES: Record<string, string> = {
 
 export function AdminShell({ children, pathname }: { children: React.ReactNode; pathname: string }) {
   const [collapsed, setCollapsed] = useState(false)
-  const sideW = collapsed ? 68 : 232
+  const sideW = collapsed ? 68 : 260
   const title = PAGE_TITLES[pathname] || 'Admin'
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0F0B0A', color: '#F5EFE6', fontFamily: "'Inter', system-ui, sans-serif" }}>
+    <div style={{ minHeight: '100vh', background: '#0F0B0A', color: '#F5EFE6', fontFamily: "'Poppins', system-ui, sans-serif" }}>
       <Sidebar collapsed={collapsed} setCollapsed={setCollapsed}/>
 
       {/* Topbar */}
