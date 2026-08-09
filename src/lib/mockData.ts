@@ -180,7 +180,7 @@ export const EXPENSES = [
 // ─── RECIPES ──────────────────────────────────────────────────────────────────
 export const RECIPES = [
   {
-    id:1, item:'Chicken Wings', sellingPrice:119, cost:42,
+    id:1, item:'Chicken Wings', sellingPrice:119, cost:42, yieldQty:1,
     ingredients:[
       { name:'Chicken (Whole)',   qty:250, unit:'g',  cost:45,   pct:107 },
       { name:'All-Purpose Flour', qty:80,  unit:'g',  cost:3.36, pct:100 },
@@ -189,7 +189,7 @@ export const RECIPES = [
     ],
   },
   {
-    id:2, item:'Crispy Chicken Burger', sellingPrice:159, cost:54,
+    id:2, item:'Crispy Chicken Burger', sellingPrice:159, cost:54, yieldQty:1,
     ingredients:[
       { name:'Chicken Breast',    qty:120, unit:'g',   cost:28.8, pct:240 },
       { name:'Bread Buns',        qty:1,   unit:'pcs', cost:8,    pct:800 },
@@ -199,7 +199,7 @@ export const RECIPES = [
     ],
   },
   {
-    id:3, item:'Crispy Paneer', sellingPrice:129, cost:44,
+    id:3, item:'Crispy Paneer', sellingPrice:129, cost:44, yieldQty:1,
     ingredients:[
       { name:'Paneer',            qty:120, unit:'g',  cost:38.4, pct:320 },
       { name:'All-Purpose Flour', qty:40,  unit:'g',  cost:1.68, pct:100 },
@@ -208,7 +208,7 @@ export const RECIPES = [
     ],
   },
   {
-    id:4, item:'Stick Kit Kat Waffle', sellingPrice:99, cost:32,
+    id:4, item:'Stick Kit Kat Waffle', sellingPrice:99, cost:32, yieldQty:1,
     ingredients:[
       { name:'Waffle Mix',       qty:150, unit:'g',  cost:27,  pct:180 },
       { name:'Kit Kat',          qty:1,   unit:'pcs',cost:20,  pct:2000 },
@@ -216,7 +216,7 @@ export const RECIPES = [
     ],
   },
   {
-    id:5, item:'Chicken Momos', sellingPrice:109, cost:40,
+    id:5, item:'Chicken Momos', sellingPrice:109, cost:40, yieldQty:1,
     ingredients:[
       { name:'Chicken Keema',     qty:100, unit:'g',  cost:20,  pct:200 },
       { name:'All-Purpose Flour', qty:100, unit:'g',  cost:4.2, pct:100 },

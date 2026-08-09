@@ -352,7 +352,7 @@ export default function RecipesPage() {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 22 }}>
               <div>
                 <h2 style={{ color: T.textPrimary, fontWeight: 800, fontSize: 22, margin: 0, letterSpacing: '-0.02em' }}>{selected.item}</h2>
-                <p style={{ color: T.textMuted, fontSize: 12, marginTop: 4 }}>Yield: {selected.yield} serving · {selected.ingredients.length} ingredients</p>
+                <p style={{ color: T.textMuted, fontSize: 12, marginTop: 4 }}>Yield: {(selected as {yieldQty?: number}).yieldQty ?? 1} serving · {selected.ingredients.length} ingredients</p>
               </div>
               <div style={{ display: 'flex', gap: 8 }}>
                 <button onClick={() => setEditMode(true)} style={{
