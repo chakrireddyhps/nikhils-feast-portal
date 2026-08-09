@@ -45,7 +45,7 @@ type Expense = typeof EXPENSES[0]
 // ─── ADD / EDIT EXPENSE MODAL ─────────────────────────────────────────────────
 function ExpenseModal({
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const INPUT: React.CSSProperties = {
     width: '100%', padding: '10px 13px', background: T.surfaceEl,
     border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
@@ -55,7 +55,7 @@ function ExpenseModal({
   function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
  initial, onClose }: { initial?: Expense | null; onClose: () => void }) {
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const isEdit = !!initial
   const [form, setForm] = useState({
     name:          initial?.name          ?? '',
@@ -228,7 +228,7 @@ function ExpenseModal({
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function ExpensesPage() {
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const [showModal, setShowModal] = useState(false)
   const [editExpense, setEditExpense] = useState<Expense | null>(null)
 

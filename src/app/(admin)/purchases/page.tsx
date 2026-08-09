@@ -37,7 +37,7 @@ const MOCK_INGREDIENTS_LIST = [
 // ─── VIEW PURCHASE MODAL ──────────────────────────────────────────────────────
 function ViewPurchaseModal({
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const INPUT: React.CSSProperties = {
     width: '100%', padding: '10px 13px', background: T.surfaceEl,
     border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
@@ -47,7 +47,7 @@ function ViewPurchaseModal({
   function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
  purchase, onClose }: { purchase: typeof PURCHASES[0]; onClose: () => void }) {
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const mockItems = [
     { ingredient: 'Chicken (Whole)', qty: 10, unit: 'KG', unitPrice: 180, tax: 0, total: 1800 },
     { ingredient: 'Chicken Breast',  qty: 5,  unit: 'KG', unitPrice: 240, tax: 0, total: 1200 },
@@ -142,7 +142,7 @@ function ViewPurchaseModal({
 // ─── NEW PURCHASE MODAL ───────────────────────────────────────────────────────
 function NewPurchaseModal({
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const INPUT: React.CSSProperties = {
     width: '100%', padding: '10px 13px', background: T.surfaceEl,
     border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
@@ -152,7 +152,7 @@ function NewPurchaseModal({
   function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
  onClose }: { onClose: () => void }) {
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const [rows, setRows] = useState([{ ingredient: '', qty: '', unit: 'KG', unitPrice: '', tax: '0', total: 0 }])
   const [form, setForm] = useState({ supplier: '', invoiceNo: '', date: new Date().toISOString().split('T')[0], notes: '', paymentMethod: 'CASH' })
   const [done, setDone] = useState(false)
@@ -340,7 +340,7 @@ function NewPurchaseModal({
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function PurchasesPage() {
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const [showNew, setShowNew] = useState(false)
   const [viewPurchase, setViewPurchase] = useState<typeof PURCHASES[0] | null>(null)
 

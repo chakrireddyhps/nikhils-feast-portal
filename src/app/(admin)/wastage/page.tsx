@@ -35,7 +35,7 @@ const REASON_COLORS: Record<string, string> = {
 // ─── RECORD WASTAGE MODAL ─────────────────────────────────────────────────────
 function RecordWastageModal({ onClose }: { onClose: () => void }) {
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const INPUT: React.CSSProperties = {
     width: '100%', padding: '10px 13px', background: T.surfaceEl,
     border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
@@ -225,7 +225,7 @@ function RecordWastageModal({ onClose }: { onClose: () => void }) {
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function WastagePage() {
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const [showRecord, setShowRecord] = useState(false)
   const totalWastage = WASTAGE.reduce((s, w) => s + w.total, 0)
 

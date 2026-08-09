@@ -31,7 +31,7 @@ const CATEGORIES = ['Protein', 'Dairy', 'Dry Goods', 'Vegetables', 'Oils', 'Sauc
 // ─── ADD INGREDIENT MODAL ─────────────────────────────────────────────────────
 function AddIngredientModal({
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const INPUT: React.CSSProperties = {
     width: '100%', padding: '10px 13px', background: T.surfaceEl,
     border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
@@ -41,7 +41,7 @@ function AddIngredientModal({
   function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
  onClose }: { onClose: () => void }) {
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const [form, setForm] = useState({
     name: '', sku: '', category: 'Protein', unit: 'KG',
     minStock: '', maxStock: '', reorderLevel: '', avgCost: '',
@@ -197,7 +197,7 @@ function AddIngredientModal({
 // ─── ADD PURCHASE MODAL ───────────────────────────────────────────────────────
 function AddPurchaseModal({
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const INPUT: React.CSSProperties = {
     width: '100%', padding: '10px 13px', background: T.surfaceEl,
     border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
@@ -207,7 +207,7 @@ function AddPurchaseModal({
   function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
  onClose }: { onClose: () => void }) {
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const [items, setItems] = useState([{ ingredient: '', qty: '', unit: 'KG', unitPrice: '', tax: '0', total: 0 }])
   const [form, setForm] = useState({ supplier: '', invoiceNo: '', date: new Date().toISOString().split('T')[0], notes: '' })
   const [done, setDone] = useState(false)
@@ -376,7 +376,7 @@ function AddPurchaseModal({
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function IngredientsPage() {
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const [showAddIngredient, setShowAddIngredient] = useState(false)
   const [showAddPurchase, setShowAddPurchase] = useState(false)
 

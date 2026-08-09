@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic'
 import React, { useState, useRef, useEffect } from 'react'
 import { Card, Btn, SearchBar, PageHeader } from '@/components/ui'
 import { MENU_ITEMS, CATEGORIES } from '@/lib/mockData'
-import {
+import { Plus, Star, Flame, MoreHorizontal, X, Check, ChevronDown, Leaf, Zap, Edit, BookOpen, Copy, ToggleLeft, Trash2, AlertTriangle } from 'lucide-react'
 
 const MODAL_OVERLAY: React.CSSProperties = {
   position: 'fixed', inset: 0, zIndex: 999,
@@ -36,7 +36,7 @@ function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement |
 // ─── ITEM FORM (shared by Add + Edit) ────────────────────────────────────────
 function ItemForm({
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const INPUT: React.CSSProperties = {
     width: '100%', padding: '10px 13px', background: T.surfaceEl,
     border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
@@ -46,7 +46,7 @@ function ItemForm({
   function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
  initial, onSave, onClose, title, subtitle, saveLabel }: {
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   initial: Partial<MenuItem>
   onSave: () => void
   onClose: () => void
@@ -221,7 +221,7 @@ function ItemForm({
 // ─── ADD CATEGORY MODAL ───────────────────────────────────────────────────────
 function AddCategoryModal({
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const INPUT: React.CSSProperties = {
     width: '100%', padding: '10px 13px', background: T.surfaceEl,
     border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
@@ -231,7 +231,7 @@ function AddCategoryModal({
   function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
  onClose }: { onClose: () => void }) {
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const [name, setName] = useState('')
   const [icon, setIcon] = useState('🍽️')
   const [done, setDone] = useState(false)
@@ -294,7 +294,7 @@ function AddCategoryModal({
 // ─── DELETE CONFIRM MODAL ─────────────────────────────────────────────────────
 function DeleteModal({ item, onClose }: { item: MenuItem; onClose: () => void }) {
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const [done, setDone] = useState(false)
   return (
     <div style={MODAL_OVERLAY}>
@@ -330,7 +330,7 @@ function DeleteModal({ item, onClose }: { item: MenuItem; onClose: () => void })
 // ─── CONTEXT MENU DROPDOWN ────────────────────────────────────────────────────
 function ContextMenu({ item, onEdit, onDelete, onClose }: {
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   item: MenuItem; onEdit: () => void; onDelete: () => void; onClose: () => void
 }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -379,7 +379,7 @@ function ContextMenu({ item, onEdit, onDelete, onClose }: {
 // ─── MENU ITEM CARD ───────────────────────────────────────────────────────────
 function MenuItemCard({ item }: { item: MenuItem }) {
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const [showMenu, setShowMenu] = useState(false)
   const [showEdit, setShowEdit] = useState(false)
   const [showDelete, setShowDelete] = useState(false)
@@ -489,7 +489,7 @@ function MenuItemCard({ item }: { item: MenuItem }) {
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function MenuPage() {
   const T = useT()
-  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const [activeCategory, setActiveCategory] = useState('All')
   const [showAddCategory, setShowAddCategory] = useState(false)
   const [showAddItem, setShowAddItem] = useState(false)
