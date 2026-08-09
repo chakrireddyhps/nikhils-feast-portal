@@ -1,10 +1,10 @@
 'use client'
+import { useT } from '@/lib/themeContext'
 export const dynamic = 'force-dynamic'
 import { MetricCard, Card, StatusBadge, OrderTypeBadge, ChartTip, DataTable, Btn } from '@/components/ui'
-import { useTheme } from '@/lib/themeContext'
-import { T as _DARK_ REVENUE_TREND, CATEGORY_SALESOP_ITEMS, ORDERS, INGREDIENTS, WASTAGE, EXPENSES, fmtINR, fmtINRFull } from '@/lib/mockData'
-import { AreaChart, Area, PieChart, Pie, Cell, XAxis, YAxis, CartesianGridooltip, ResponsiveContainer } from 'recharts'
-import { DollarSign, ShoppingBagrendingUp, Scalerash2, ReceiptText, AlertTriangle, Eye } from 'lucide-react'
+import { REVENUE_TREND, CATEGORY_SALES, TOP_ITEMS, ORDERS, INGREDIENTS, WASTAGE, EXPENSES, fmtINR, fmtINRFull } from '@/lib/mockData'
+import { AreaChart, Area, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
+import { DollarSign, ShoppingBag, TrendingUp, Scale, Trash2, ReceiptText, AlertTriangle, Eye } from 'lucide-react'
 import Link from 'next/link'
 
 export default function DashboardPage() {

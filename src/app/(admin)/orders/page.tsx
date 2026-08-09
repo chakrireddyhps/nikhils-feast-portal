@@ -1,11 +1,11 @@
 'use client'
+import { useT } from '@/lib/themeContext'
 export const dynamic = 'force-dynamic'
 
 import { useState } from 'react'
 import { MetricCard, Card, StatusBadge, OrderTypeBadge, DataTable, Btn, SearchBar, PageHeader } from '@/components/ui'
-import { useTheme } from '@/lib/themeContext'
-import { T as _DARK_ ORDERS, MENU_ITEMS, CATEGORIES, fmtINRFull, fmtINR } from '@/lib/mockData'
-import { ShoppingBag, DollarSignrendingUp, Filter, Download, Plus, X, Minus, Check } from 'lucide-react'
+import { ORDERS, MENU_ITEMS, CATEGORIES, fmtINRFull, fmtINR } from '@/lib/mockData'
+import { ShoppingBag, DollarSign, TrendingUp, Filter, Download, Plus, X, Minus, Check } from 'lucide-react'
 
 const STATUSES = ['ALL', 'COMPLETED', 'PREPARING', 'READY', 'CANCELLED']
 const CATEGORY_ICONS: Record<string, string> = {

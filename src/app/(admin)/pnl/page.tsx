@@ -1,11 +1,11 @@
 'use client'
+import { useT } from '@/lib/themeContext'
 export const dynamic = 'force-dynamic'
 import { useState } from 'react'
 import { Card, Btn, PageHeader, ChartTip } from '@/components/ui'
-import { useTheme } from '@/lib/themeContext'
-import { T as _DARK_ REVENUE_TREND, WASTAGE, EXPENSES, fmtINRFull } from '@/lib/mockData'
+import { REVENUE_TREND, WASTAGE, EXPENSES, fmtINRFull } from '@/lib/mockData'
 import { Download } from 'lucide-react'
-import { BarChart, Bar, XAxis, YAxis, CartesianGridooltip, ResponsiveContainer } from 'recharts'
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 
 const PERIODS = ['Today', 'This Week', 'This Month', 'Last Month', 'This Quarter', 'This Year', 'Custom']
 

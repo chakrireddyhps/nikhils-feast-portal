@@ -25,8 +25,7 @@ export default function LoginPage() {
       minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
       background: 'radial-gradient(ellipse at 30% 20%, #3D0808 0%, #1A0A08 40%, #0F0B0A 100%)',
       padding: 20, position: 'relative', overflow: 'hidden',
-      fontFamily: "'Poppins', system-ui, sans-serif",
-    }}>
+      fontFamily: "'Poppins', system-ui, sans-serif" }}>
       {/* Decorative orbs */}
       <div style={{ position: 'absolute', top: -100, right: -100, width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(155,35,53,0.15) 0%, transparent 70%)', pointerEvents: 'none' }}/>
       <div style={{ position: 'absolute', bottom: -120, left: -120, width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%)', pointerEvents: 'none' }}/>
@@ -39,8 +38,7 @@ export default function LoginPage() {
             display: 'inline-flex', width: 72, height: 72, borderRadius: 20,
             background: 'linear-gradient(135deg, #9B2335 0%, #6B1020 100%)',
             alignItems: 'center', justifyContent: 'center', fontSize: 36, marginBottom: 16,
-            boxShadow: '0 8px 32px rgba(155,35,53,0.35)',
-          }}>🍗</div>
+            boxShadow: '0 8px 32px rgba(155,35,53,0.35)' }}>🍗</div>
           <h1 style={{ color: T.textPrimary, fontWeight: 900, fontSize: 22, margin: 0, letterSpacing: '-0.03em', lineHeight: 1.2 }}>
             NIKHIL&apos;S FEAST
           </h1>
@@ -53,8 +51,7 @@ export default function LoginPage() {
         <div style={{
           background: '#1C1412', border: '1px solid rgba(255,255,255,0.07)',
           borderRadius: 20, overflow: 'hidden',
-          boxShadow: '0 24px 64px rgba(0,0,0,0.5)',
-        }}>
+          boxShadow: '0 24px 64px rgba(0,0,0,0.5)' }}>
           <div style={{ height: 3, background: 'linear-gradient(90deg, #9B2335, #C9A84C, #9B2335)' }}/>
 
           <div style={{ padding: '28px 28px 24px' }}>
@@ -114,8 +111,7 @@ export default function LoginPage() {
                 color: '#fff', fontSize: 14, fontWeight: 800, cursor: loading ? 'not-allowed' : 'pointer',
                 letterSpacing: '-0.01em', boxShadow: '0 4px 20px rgba(155,35,53,0.35)',
                 marginBottom: 16, fontFamily: 'inherit', transition: 'all 0.15s',
-                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-              }}>
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
                 {loading && <Loader2 style={{ width: 16, height: 16, animation: 'spin 1s linear infinite' }}/>}
                 {loading ? 'Signing in…' : 'Sign In'}
               </button>

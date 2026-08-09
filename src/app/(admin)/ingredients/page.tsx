@@ -1,10 +1,10 @@
 'use client'
+import { useT } from '@/lib/themeContext'
 export const dynamic = 'force-dynamic'
 
 import React, { useState } from 'react'
 import { MetricCard, Card, StatusBadge, DataTable, Btn, SearchBar, PageHeader } from '@/components/ui'
-import { useTheme } from '@/lib/themeContext'
-import { T as _DARK_ INGREDIENTS, fmtINRFull } from '@/lib/mockData'
+import { INGREDIENTS, fmtINRFull } from '@/lib/mockData'
 import { Package, AlertTriangle, XCircle, Warehouse, Plus, Filter, X, Check, ChevronDown } from 'lucide-react'
 
 const MODAL_OVERLAY: React.CSSProperties = {

@@ -1,43 +1,35 @@
 'use client'
+import { useT } from '@/lib/themeContext'
 export const dynamic = 'force-dynamic'
 
 import React, { useState } from 'react'
-import { useTheme } from '@/lib/themeContext'
-import { T as _DARK_T } from '@/lib/mockData'
 import { PageHeader } from '@/components/ui'
 import {
   Globe, ShoppingBag, Package, Users, Lock, ShieldAlert,
   ChevronRight, X, Check, ChevronLeft, Eye, EyeOff,
   Plus, Trash2, Edit, Shield, Clock, Search, Filter,
   AlertTriangle, ToggleLeft, ToggleRight, Phone, Mail,
-  MapPin, Camera,
-} from 'lucide-react'
+  MapPin, Camera } from 'lucide-react'
 
 // ─── SHARED STYLES ─────────────────────────────────────────────────────────────
 const INPUT: React.CSSProperties = {
   width: '100%', padding: '10px 13px', background: T.surfaceEl,
   border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
-  color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit',
-}
+  color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit' }
 const LABEL: React.CSSProperties = {
   display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted,
-  textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7,
-}
+  textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 }
 const SECTION: React.CSSProperties = {
   background: T.surface, border: `1px solid ${T.border}`,
-  borderRadius: 16, overflow: 'hidden', marginBottom: 20,
-}
+  borderRadius: 16, overflow: 'hidden', marginBottom: 20 }
 const SECTION_HEADER: React.CSSProperties = {
   padding: '16px 22px', borderBottom: `1px solid ${T.border}`,
-  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-}
+  display: 'flex', alignItems: 'center', justifyContent: 'space-between' }
 
 function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
-  const T = useT()
   e.target.style.borderColor = T.burgundy
 }
 function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
-  const T = useT()
   e.target.style.borderColor = T.border
 }
 
@@ -48,8 +40,7 @@ function SaveBtn({ label = 'Save Changes', done, onClick }: { label?: string; do
       background: done ? T.green : `linear-gradient(135deg, ${T.burgundy}, #7A1828)`,
       color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer',
       display: 'flex', alignItems: 'center', gap: 7, transition: 'all 0.2s',
-      boxShadow: done ? 'none' : '0 4px 14px rgba(155,35,53,0.3)',
-    }}>
+      boxShadow: done ? 'none' : '0 4px 14px rgba(155,35,53,0.3)' }}>
       <Check size={14}/> {done ? 'Saved!' : label}
     </button>
   )
@@ -59,13 +50,11 @@ function Toggle({ on, onChange }: { on: boolean; onChange: (v: boolean) => void 
   return (
     <button onClick={() => onChange(!on)} style={{
       width: 44, height: 24, borderRadius: 12, border: 'none', cursor: 'pointer',
-      position: 'relative', background: on ? T.green : T.border, transition: 'background 0.2s',
-    }}>
+      position: 'relative', background: on ? T.green : T.border, transition: 'background 0.2s' }}>
       <span style={{
         position: 'absolute', top: 3, left: on ? 22 : 3, width: 18, height: 18,
         borderRadius: '50%', background: '#fff', transition: 'left 0.2s',
-        boxShadow: '0 1px 4px rgba(0,0,0,0.3)',
-      }}/>
+        boxShadow: '0 1px 4px rgba(0,0,0,0.3)' }}/>
     </button>
   )
 }
@@ -77,8 +66,7 @@ function RestaurantProfile() {
     name: "Nikhil's Feast", tagline: 'A Feast To Be Remembered',
     email: 'nikhil@nikhilsfeast.com', phone: '+91 98765 43210',
     address: '12, Food Street, Hyderabad', city: 'Hyderabad',
-    state: 'Telangana', pincode: '500001',
-  })
+    state: 'Telangana', pincode: '500001' })
   const [done, setDone] = useState(false)
   const set = (k: string, v: string) => { setForm(p => ({ ...p, [k]: v })); setDone(false) }
 
@@ -165,8 +153,7 @@ function OrderSettings() {
     prefix: 'ORD', nextNumber: '2848', defaultTax: '5',
     autoAccept: false, requireTable: false, allowCash: true,
     allowCard: true, allowUPI: true, allowOther: false,
-    roundOff: true, printReceipt: false,
-  })
+    roundOff: true, printReceipt: false })
   const [done, setDone] = useState(false)
   const set = (k: string, v: string | boolean) => { setForm(p => ({ ...p, [k]: v })); setDone(false) }
 
@@ -274,8 +261,7 @@ function InventorySettings() {
   const [form, setForm] = useState({
     defaultUnit: 'KG', lowStockThreshold: '20',
     criticalStockThreshold: '10', autoDeductOnOrder: true,
-    trackExpiry: true, wastageAlert: true, wastageAlertPct: '5',
-  })
+    trackExpiry: true, wastageAlert: true, wastageAlertPct: '5' })
   const [done, setDone] = useState(false)
   const set = (k: string, v: string | boolean) => { setForm(p => ({ ...p, [k]: v })); setDone(false) }
 
@@ -360,8 +346,7 @@ function UserManagement() {
             display: 'flex', alignItems: 'center', gap: 6, padding: '8px 16px', borderRadius: 10,
             border: 'none', background: `linear-gradient(135deg, ${T.burgundy}, #7A1828)`,
             color: '#fff', fontSize: 12, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit',
-            boxShadow: `0 4px 14px ${T.burgundyGlow}`,
-          }}>
+            boxShadow: `0 4px 14px ${T.burgundyGlow}` }}>
             <Plus size={14}/> Invite Member
           </button>
         </div>
@@ -387,8 +372,7 @@ function UserManagement() {
                 padding: '10px 18px', borderRadius: 10, border: 'none', fontFamily: 'inherit',
                 background: inviteDone ? T.green : `linear-gradient(135deg, ${T.burgundy}, #7A1828)`,
                 color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer', transition: 'all 0.2s',
-                display: 'flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap',
-              }}>
+                display: 'flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap' }}>
                 <Check size={14}/>{inviteDone ? 'Sent!' : 'Send Invite'}
               </button>
               <button onClick={() => setShowInvite(false)} style={{ padding: '10px', borderRadius: 10, border: `1px solid ${T.border}`, background: 'transparent', color: T.textMuted, cursor: 'pointer' }}>
@@ -552,8 +536,7 @@ function Security() {
                   padding: '6px 14px', borderRadius: 20, fontSize: 11, fontWeight: 700, cursor: 'pointer',
                   border: `1px solid ${sessionTimeout === v ? T.burgundy : T.border}`,
                   background: sessionTimeout === v ? `${T.burgundy}20` : 'transparent',
-                  color: sessionTimeout === v ? T.textPrimary : T.textMuted, fontFamily: 'inherit',
-                }}>{v === 'Never' ? 'Never' : `${v} min`}</button>
+                  color: sessionTimeout === v ? T.textPrimary : T.textMuted, fontFamily: 'inherit' }}>{v === 'Never' ? 'Never' : `${v} min`}</button>
               ))}
             </div>
           </div>
@@ -605,8 +588,7 @@ const AUDIT_LOGS = [
 
 const LOG_TYPE_COLORS: Record<string, string> = {
   menu: T.gold, order: T.green, wastage: T.red, purchase: T.blue,
-  inventory: T.amber, expense: '#A855F7', recipe: '#06B6D4', user: '#EC4899',
-}
+  inventory: T.amber, expense: '#A855F7', recipe: '#06B6D4', user: '#EC4899' }
 
 function AuditLogs() {
   const T = useT()
@@ -623,8 +605,7 @@ function AuditLogs() {
             padding: '6px 14px', borderRadius: 20, fontSize: 11, fontWeight: 700, cursor: 'pointer',
             border: `1px solid ${filter === t ? (LOG_TYPE_COLORS[t] || T.burgundy) : T.border}`,
             background: filter === t ? `${LOG_TYPE_COLORS[t] || T.burgundy}18` : 'transparent',
-            color: filter === t ? (LOG_TYPE_COLORS[t] || T.textPrimary) : T.textMuted, fontFamily: 'inherit',
-          }}>{t.charAt(0).toUpperCase() + t.slice(1)}</button>
+            color: filter === t ? (LOG_TYPE_COLORS[t] || T.textPrimary) : T.textMuted, fontFamily: 'inherit' }}>{t.charAt(0).toUpperCase() + t.slice(1)}</button>
         ))}
       </div>
 
@@ -684,7 +665,6 @@ const SETTINGS_SECTIONS = [
 
 export default function SettingsPage() {
   const T = useT()
-  const T = useT()
   const [active, setActive] = useState<string | null>(null)
 
   const current = SETTINGS_SECTIONS.find(s => s.key === active)
@@ -723,8 +703,7 @@ export default function SettingsPage() {
             display: 'flex', alignItems: 'center', gap: 16, padding: '20px 22px',
             background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16,
             cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit',
-            transition: 'all 0.15s',
-          }}
+            transition: 'all 0.15s' }}
           onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = s.color + '60'; el.style.background = T.surfaceEl }}
           onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = T.border; el.style.background = T.surface }}>
             <div style={{ width: 46, height: 46, borderRadius: 13, background: `${s.color}15`, border: `1.5px solid ${s.color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>

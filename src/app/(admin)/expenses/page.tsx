@@ -1,12 +1,12 @@
 'use client'
+import { useT } from '@/lib/themeContext'
 export const dynamic = 'force-dynamic'
 
 import React, { useState } from 'react'
 import { MetricCard, Card, DataTable, Btn, SearchBar, PageHeader, ChartTip } from '@/components/ui'
-import { useTheme } from '@/lib/themeContext'
-import { T as _DARK_ EXPENSES, fmtINRFull } from '@/lib/mockData'
+import { EXPENSES, fmtINRFull } from '@/lib/mockData'
 import { Wallet, RefreshCw, Zap, Layers, Plus, Download, Edit, X, Check, ChevronDown, RefreshCcw } from 'lucide-react'
-import { PieChart, Pie, Cellooltip, ResponsiveContainer } from 'recharts'
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts'
 
 const MODAL_OVERLAY: React.CSSProperties = {
   position: 'fixed', inset: 0, zIndex: 999,

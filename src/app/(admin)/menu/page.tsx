@@ -1,46 +1,39 @@
 'use client'
+import { useT } from '@/lib/themeContext'
 export const dynamic = 'force-dynamic'
 
 import React, { useState, useRef, useEffect } from 'react'
 import { Card, Btn, SearchBar, PageHeader } from '@/components/ui'
-import { useTheme } from '@/lib/themeContext'
-import { T as _DARK_T, MENU_ITEMS, CATEGORIES } from '@/lib/mockData'
+import { MENU_ITEMS, CATEGORIES } from '@/lib/mockData'
 import {
   Plus, Star, Flame, MoreHorizontal, X, Check, ChevronDown,
-  Leaf, Zap, Edit, BookOpen, Copy, ToggleLeft, Trash2, AlertTriangle,
-} from 'lucide-react'
+  Leaf, Zap, Edit, BookOpen, Copy, ToggleLeft, Trash2, AlertTriangle } from 'lucide-react'
 
 type MenuItem = typeof MENU_ITEMS[0]
 
 const CATEGORY_ICONS: Record<string, string> = {
   Chicken: '🍗', Prawns: '🦐', 'Apollo Fish': '🐟', Veg: '🥗',
   Burgers: '🍔', Rolls: '🌯', Waffles: '🧇', 'Fried Momos': '🥟',
-  Desserts: '🍫', 'Special Offers': '⚡',
-}
+  Desserts: '🍫', 'Special Offers': '⚡' }
 
 const MODAL_OVERLAY: React.CSSProperties = {
   position: 'fixed', inset: 0, zIndex: 999,
   background: 'rgba(0,0,0,0.8)',
   display: 'flex', alignItems: 'flex-start',
   justifyContent: 'center',
-  paddingTop: 8, paddingLeft: 16, paddingRight: 16, paddingBottom: 16,
-}
+  paddingTop: 8, paddingLeft: 16, paddingRight: 16, paddingBottom: 16 }
 
 const INPUT: React.CSSProperties = {
   width: '100%', padding: '10px 13px', background: T.surfaceEl,
   border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
-  color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit',
-}
+  color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit' }
 const LABEL: React.CSSProperties = {
   display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted,
-  textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7,
-}
+  textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 }
 function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
-  const T = useT()
   e.target.style.borderColor = T.burgundy
 }
 function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
-  const T = useT()
   e.target.style.borderColor = T.border
 }
 
@@ -62,12 +55,10 @@ function ItemForm({ initial, onSave, onClose, title, subtitle, saveLabel }: {
     spicy:       initial.spicy       ?? false,
     featured:    initial.featured    ?? false,
     available:   initial.available   ?? true,
-    description: '',
-  })
+    description: '' })
   const [done, setDone] = useState(false)
 
   function set(key: string, val: string | boolean) {
-  const T = useT()
     setForm(prev => ({ ...prev, [key]: val }))
   }
 
@@ -76,7 +67,6 @@ function ItemForm({ initial, onSave, onClose, title, subtitle, saveLabel }: {
     : null
 
   function handleSave() {
-  const T = useT()
     if (!form.name || !form.price) return
     setDone(true)
     setTimeout(onSave, 900)
@@ -89,8 +79,7 @@ function ItemForm({ initial, onSave, onClose, title, subtitle, saveLabel }: {
         borderRadius: 20, width: '100%', maxWidth: 680,
         boxShadow: '0 32px 80px rgba(0,0,0,0.6)',
         overflow: 'hidden', maxHeight: 'calc(100vh - 24px)',
-        display: 'flex', flexDirection: 'column',
-      }}>
+        display: 'flex', flexDirection: 'column' }}>
         <div style={{ height: 3, background: `linear-gradient(90deg, ${T.burgundy}, ${T.gold}, ${T.burgundy})`, flexShrink: 0 }}/>
 
         {/* Header */}
@@ -142,8 +131,7 @@ function ItemForm({ initial, onSave, onClose, title, subtitle, saveLabel }: {
             <div>
               <label style={LABEL}>Gross Margin</label>
               <div style={{ ...INPUT, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: 16, cursor: 'default',
-                color: margin ? (Number(margin) > 60 ? T.green : Number(margin) > 45 ? T.amber : T.red) : T.textSubtle,
-              }}>
+                color: margin ? (Number(margin) > 60 ? T.green : Number(margin) > 45 ? T.amber : T.red) : T.textSubtle }}>
                 {margin ? `${margin}%` : '—'}
               </div>
             </div>
@@ -188,16 +176,14 @@ function ItemForm({ initial, onSave, onClose, title, subtitle, saveLabel }: {
                     padding: '12px 8px', borderRadius: 12, cursor: 'pointer', fontFamily: 'inherit',
                     border: `1.5px solid ${active ? color : T.border}`,
                     background: active ? `${color}15` : T.surfaceEl,
-                    display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 7, transition: 'all 0.15s',
-                  }}>
+                    display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 7, transition: 'all 0.15s' }}>
                     <span style={{ color: active ? color : T.textMuted }}>{icon}</span>
                     <span style={{ fontSize: 11, fontWeight: 700, color: active ? color : T.textMuted }}>{label}</span>
                     <span style={{
                       fontSize: 10, fontWeight: 800, letterSpacing: '0.06em',
                       color: active ? '#fff' : T.textSubtle,
                       background: active ? color : T.border,
-                      padding: '1px 8px', borderRadius: 20,
-                    }}>{active ? 'ON' : 'OFF'}</span>
+                      padding: '1px 8px', borderRadius: 20 }}>{active ? 'ON' : 'OFF'}</span>
                   </button>
                 )
               })}
@@ -215,8 +201,7 @@ function ItemForm({ initial, onSave, onClose, title, subtitle, saveLabel }: {
             background: done ? T.green : `linear-gradient(135deg, ${T.burgundy}, #7A1828)`,
             color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit',
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-            boxShadow: `0 4px 16px rgba(155,35,53,0.3)`, transition: 'all 0.2s',
-          }}>
+            boxShadow: `0 4px 16px rgba(155,35,53,0.3)`, transition: 'all 0.2s' }}>
             {done ? <><Check size={15}/> Saved!</> : <><Check size={15}/> {saveLabel}</>}
           </button>
         </div>
@@ -258,8 +243,7 @@ function AddCategoryModal({ onClose }: { onClose: () => void }) {
                 <button key={ic} onClick={() => setIcon(ic)} style={{
                   width: 44, height: 44, borderRadius: 10, fontSize: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', fontFamily: 'inherit',
                   background: icon === ic ? `${T.burgundy}25` : T.surfaceEl,
-                  border: `1.5px solid ${icon === ic ? T.burgundy : T.border}`, transition: 'all 0.15s',
-                }}>{ic}</button>
+                  border: `1.5px solid ${icon === ic ? T.burgundy : T.border}`, transition: 'all 0.15s' }}>{ic}</button>
               ))}
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px', background: T.surfaceEl, borderRadius: 12, border: `1px solid ${T.border}` }}>
@@ -277,8 +261,7 @@ function AddCategoryModal({ onClose }: { onClose: () => void }) {
               background: done ? T.green : `linear-gradient(135deg, ${T.burgundy}, #7A1828)`,
               color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit',
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, transition: 'all 0.2s',
-              boxShadow: '0 4px 16px rgba(155,35,53,0.3)',
-            }}>
+              boxShadow: '0 4px 16px rgba(155,35,53,0.3)' }}>
               {done ? <><Check size={15}/> Saved!</> : <><Plus size={15}/> Add Category</>}
             </button>
           </div>
@@ -312,8 +295,7 @@ function DeleteModal({ item, onClose }: { item: MenuItem; onClose: () => void })
               flex: 1, padding: '11px', borderRadius: 10, border: 'none', fontFamily: 'inherit',
               background: done ? T.green : `linear-gradient(135deg, ${T.red}, #A83232)`,
               color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, transition: 'all 0.2s',
-            }}>
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, transition: 'all 0.2s' }}>
               {done ? <><Check size={14}/> Deleted!</> : <><Trash2 size={14}/> Delete Item</>}
             </button>
           </div>
@@ -330,7 +312,6 @@ function ContextMenu({ item, onEdit, onDelete, onClose }: {
   const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
     function handleClick(e: MouseEvent) {
-  const T = useT()
       if (ref.current && !ref.current.contains(e.target as Node)) onClose()
     }
     document.addEventListener('mousedown', handleClick)
@@ -351,8 +332,7 @@ function ContextMenu({ item, onEdit, onDelete, onClose }: {
       background: T.surfaceEl, border: `1px solid ${T.borderEl}`,
       borderRadius: 12, padding: '6px', minWidth: 190,
       boxShadow: '0 16px 40px rgba(0,0,0,0.5)',
-      animation: 'fadeUp 0.15s ease-out',
-    }}>
+      animation: 'fadeUp 0.15s ease-out' }}>
       {menuItems.map((mi, i) => (
         <div key={i}>
           {i === 4 && <div style={{ height: 1, background: T.border, margin: '4px 0' }}/>}
@@ -360,8 +340,7 @@ function ContextMenu({ item, onEdit, onDelete, onClose }: {
             display: 'flex', alignItems: 'center', gap: 10, width: '100%',
             padding: '9px 12px', borderRadius: 8, border: 'none',
             background: 'transparent', cursor: 'pointer', fontFamily: 'inherit',
-            color: mi.color, fontSize: 13, fontWeight: 500, transition: 'background 0.1s',
-          }}
+            color: mi.color, fontSize: 13, fontWeight: 500, transition: 'background 0.1s' }}
           onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = mi.danger ? 'rgba(224,90,90,0.1)' : T.surfaceHov}
           onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = 'transparent'}>
             {mi.icon}
@@ -402,8 +381,7 @@ function MenuItemCard({ item }: { item: MenuItem }) {
               background: item.veg ? '#2D5A27' : '#5A1B1B',
               color: item.veg ? '#6DDA6D' : '#E07070',
               fontSize: 9, fontWeight: 800, padding: '2px 7px', borderRadius: 20,
-              border: `1px solid ${item.veg ? '#3D7A37' : '#7A2B2B'}`,
-            }}>{item.veg ? 'VEG' : 'NON-VEG'}</span>
+              border: `1px solid ${item.veg ? '#3D7A37' : '#7A2B2B'}` }}>{item.veg ? 'VEG' : 'NON-VEG'}</span>
             {item.spicy && <Flame size={13} color={T.amber}/>}
           </div>
           {item.featured && <div style={{ position: 'absolute', top: 8, right: 8 }}><Star size={14} color={T.gold} fill={T.gold}/></div>}
@@ -440,8 +418,7 @@ function MenuItemCard({ item }: { item: MenuItem }) {
               border: `1px solid ${T.border}`, background: T.surfaceEl,
               color: T.textSecondary, fontSize: 12, fontWeight: 600,
               cursor: 'pointer', fontFamily: 'inherit', transition: 'all 0.15s',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5,
-            }}
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5 }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = T.burgundy; (e.currentTarget as HTMLElement).style.color = T.textPrimary }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = T.border; (e.currentTarget as HTMLElement).style.color = T.textSecondary }}>
               <Edit size={12}/> Edit
@@ -452,8 +429,7 @@ function MenuItemCard({ item }: { item: MenuItem }) {
               border: `1px solid ${T.border}`, background: T.surfaceEl,
               color: T.textSecondary, fontSize: 12, fontWeight: 600,
               cursor: 'pointer', fontFamily: 'inherit', transition: 'all 0.15s',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5,
-            }}
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5 }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = T.gold; (e.currentTarget as HTMLElement).style.color = T.gold }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = T.border; (e.currentTarget as HTMLElement).style.color = T.textSecondary }}>
               <BookOpen size={12}/> Recipe
@@ -466,8 +442,7 @@ function MenuItemCard({ item }: { item: MenuItem }) {
                 border: `1px solid ${showMenu ? T.borderEl : T.border}`,
                 background: showMenu ? T.surfaceHov : T.surfaceEl,
                 cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                transition: 'all 0.15s',
-              }}>
+                transition: 'all 0.15s' }}>
                 <MoreHorizontal size={14} color={showMenu ? T.textPrimary : T.textMuted}/>
               </button>
               {showMenu && (
@@ -488,7 +463,6 @@ function MenuItemCard({ item }: { item: MenuItem }) {
 
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function MenuPage() {
-  const T = useT()
   const T = useT()
   const [activeCategory, setActiveCategory] = useState('All')
   const [showAddCategory, setShowAddCategory] = useState(false)
@@ -527,8 +501,7 @@ export default function MenuPage() {
             border: `1px solid ${activeCategory === cat ? T.burgundy : T.border}`,
             background: activeCategory === cat ? `${T.burgundy}25` : 'transparent',
             color: activeCategory === cat ? T.textPrimary : T.textMuted,
-            whiteSpace: 'nowrap', transition: 'all 0.15s', fontFamily: 'inherit', flexShrink: 0,
-          }}>
+            whiteSpace: 'nowrap', transition: 'all 0.15s', fontFamily: 'inherit', flexShrink: 0 }}>
             {cat !== 'All' && CATEGORY_ICONS[cat] ? `${CATEGORY_ICONS[cat]} ` : ''}{cat}
           </button>
         ))}
