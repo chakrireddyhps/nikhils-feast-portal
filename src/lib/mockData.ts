@@ -22,6 +22,9 @@ export const T = {
   blue: '#5B9BD5',
 }
 
+// Alias for backward compatibility with pages that import T from mockData
+export { T as DARK }
+
 // ─── REVENUE TREND ────────────────────────────────────────────────────────────
 export const REVENUE_TREND = [
   { day: 'Mon', revenue: 12400, orders: 58,  cogs: 4340,  profit: 8060  },
