@@ -37,6 +37,7 @@ const CATEGORIES = ['Protein', 'Dairy', 'Dry Goods', 'Vegetables', 'Oils', 'Sauc
 
 // ─── ADD INGREDIENT MODAL ─────────────────────────────────────────────────────
 function AddIngredientModal({ onClose }: { onClose: () => void }) {
+  const T = useT()
   const [form, setForm] = useState({
     name: '', sku: '', category: 'Protein', unit: 'KG',
     minStock: '', maxStock: '', reorderLevel: '', avgCost: '',
@@ -191,6 +192,7 @@ function AddIngredientModal({ onClose }: { onClose: () => void }) {
 
 // ─── ADD PURCHASE MODAL ───────────────────────────────────────────────────────
 function AddPurchaseModal({ onClose }: { onClose: () => void }) {
+  const T = useT()
   const [items, setItems] = useState([{ ingredient: '', qty: '', unit: 'KG', unitPrice: '', tax: '0', total: 0 }])
   const [form, setForm] = useState({ supplier: '', invoiceNo: '', date: new Date().toISOString().split('T')[0], notes: '' })
   const [done, setDone] = useState(false)

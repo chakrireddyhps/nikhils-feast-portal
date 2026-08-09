@@ -18,6 +18,7 @@ type OrderType = 'DINE_IN' | 'TAKEAWAY' | 'DELIVERY'
 type PaymentMethod = 'CASH' | 'CARD' | 'UPI'
 
 function NewOrderModal({ onClose }: { onClose: () => void }) {
+  const T = useT()
   const [activeCategory, setActiveCategory] = useState('Chicken')
   const [cart, setCart] = useState<CartItem[]>([])
   const [orderType, setOrderType] = useState<OrderType>('DINE_IN')

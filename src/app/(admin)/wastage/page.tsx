@@ -48,6 +48,7 @@ const REASON_COLORS: Record<string, string> = {
 
 // ─── RECORD WASTAGE MODAL ─────────────────────────────────────────────────────
 function RecordWastageModal({ onClose }: { onClose: () => void }) {
+  const T = useT()
   const [rows, setRows] = useState([{ ingredient: '', qty: '', unit: 'KG', cost: '', reason: 'Expired', total: 0 }])
   const [form, setForm] = useState({ date: new Date().toISOString().split('T')[0], notes: '', recordedBy: '' })
   const [done, setDone] = useState(false)

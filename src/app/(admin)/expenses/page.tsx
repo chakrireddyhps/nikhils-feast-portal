@@ -51,6 +51,7 @@ type Expense = typeof EXPENSES[0]
 
 // ─── ADD / EDIT EXPENSE MODAL ─────────────────────────────────────────────────
 function ExpenseModal({ initial, onClose }: { initial?: Expense | null; onClose: () => void }) {
+  const T = useT()
   const isEdit = !!initial
   const [form, setForm] = useState({
     name:          initial?.name          ?? '',

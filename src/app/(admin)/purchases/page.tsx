@@ -43,6 +43,7 @@ const MOCK_INGREDIENTS_LIST = [
 
 // ─── VIEW PURCHASE MODAL ──────────────────────────────────────────────────────
 function ViewPurchaseModal({ purchase, onClose }: { purchase: typeof PURCHASES[0]; onClose: () => void }) {
+  const T = useT()
   const mockItems = [
     { ingredient: 'Chicken (Whole)', qty: 10, unit: 'KG', unitPrice: 180, tax: 0, total: 1800 },
     { ingredient: 'Chicken Breast',  qty: 5,  unit: 'KG', unitPrice: 240, tax: 0, total: 1200 },
@@ -136,6 +137,7 @@ function ViewPurchaseModal({ purchase, onClose }: { purchase: typeof PURCHASES[0
 
 // ─── NEW PURCHASE MODAL ───────────────────────────────────────────────────────
 function NewPurchaseModal({ onClose }: { onClose: () => void }) {
+  const T = useT()
   const [rows, setRows] = useState([{ ingredient: '', qty: '', unit: 'KG', unitPrice: '', tax: '0', total: 0 }])
   const [form, setForm] = useState({ supplier: '', invoiceNo: '', date: new Date().toISOString().split('T')[0], notes: '', paymentMethod: 'CASH' })
   const [done, setDone] = useState(false)

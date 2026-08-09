@@ -41,6 +41,7 @@ function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement |
 
 // ─── ITEM FORM (shared by Add + Edit) ────────────────────────────────────────
 function ItemForm({ initial, onSave, onClose, title, subtitle, saveLabel }: {
+  const T = useT()
   initial: Partial<MenuItem>
   onSave: () => void
   onClose: () => void
@@ -214,6 +215,7 @@ function ItemForm({ initial, onSave, onClose, title, subtitle, saveLabel }: {
 
 // ─── ADD CATEGORY MODAL ───────────────────────────────────────────────────────
 function AddCategoryModal({ onClose }: { onClose: () => void }) {
+  const T = useT()
   const [name, setName] = useState('')
   const [icon, setIcon] = useState('🍽️')
   const [done, setDone] = useState(false)
@@ -275,6 +277,7 @@ function AddCategoryModal({ onClose }: { onClose: () => void }) {
 
 // ─── DELETE CONFIRM MODAL ─────────────────────────────────────────────────────
 function DeleteModal({ item, onClose }: { item: MenuItem; onClose: () => void }) {
+  const T = useT()
   const [done, setDone] = useState(false)
   return (
     <div style={MODAL_OVERLAY}>
@@ -309,6 +312,7 @@ function DeleteModal({ item, onClose }: { item: MenuItem; onClose: () => void })
 
 // ─── CONTEXT MENU DROPDOWN ────────────────────────────────────────────────────
 function ContextMenu({ item, onEdit, onDelete, onClose }: {
+  const T = useT()
   item: MenuItem; onEdit: () => void; onDelete: () => void; onClose: () => void
 }) {
   const ref = useRef<HTMLDivElement>(null)

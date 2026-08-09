@@ -47,6 +47,7 @@ type Recipe = typeof RECIPES[0]
 
 // ─── ADD / EDIT RECIPE MODAL ──────────────────────────────────────────────────
 function RecipeModal({ initial, menuItem, onClose }: {
+  const T = useT()
   initial?: Recipe | null
   menuItem?: string
   onClose: () => void
