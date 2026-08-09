@@ -1,10 +1,10 @@
 'use client'
+import { useT } from '@/lib/themeContext'
 export const dynamic = 'force-dynamic'
 
 import React, { useState } from 'react'
 import { Card, Btn, SearchBar, PageHeader } from '@/components/ui'
-import { useTheme } from '@/lib/themeContext'
-import { T as _DARK_T, RECIPES, MENU_ITEMS } from '@/lib/mockData'
+import { RECIPES, MENU_ITEMS } from '@/lib/mockData'
 import { Plus, Edit, X, Check, ChevronDown, Trash2, BookOpen } from 'lucide-react'
 
 const MODAL_OVERLAY: React.CSSProperties = {
@@ -12,26 +12,21 @@ const MODAL_OVERLAY: React.CSSProperties = {
   background: 'rgba(0,0,0,0.8)',
   display: 'flex', alignItems: 'flex-start',
   justifyContent: 'center',
-  paddingTop: 8, paddingLeft: 16, paddingRight: 16, paddingBottom: 16,
-}
+  paddingTop: 8, paddingLeft: 16, paddingRight: 16, paddingBottom: 16 }
 
 const INPUT: React.CSSProperties = {
   width: '100%', padding: '10px 13px', background: T.surfaceEl,
   border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
-  color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit',
-}
+  color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit' }
 
 const LABEL: React.CSSProperties = {
   display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted,
-  textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7,
-}
+  textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 }
 
 function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) {
-  const T = useT()
   e.target.style.borderColor = T.burgundy
 }
 function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) {
-  const T = useT()
   e.target.style.borderColor = T.border
 }
 
@@ -60,13 +55,11 @@ function RecipeModal({ initial, menuItem, onClose }: {
   const [rows, setRows] = useState<RecipeRow[]>(
     initial?.ingredients.map(i => ({
       ingredient: i.name, qty: String(i.qty), unit: i.unit,
-      cost: String((i.cost / i.qty * 100).toFixed(0)), total: i.cost,
-    })) || [{ ingredient: '', qty: '', unit: 'g', cost: '', total: 0 }]
+      cost: String((i.cost / i.qty * 100).toFixed(0)), total: i.cost })) || [{ ingredient: '', qty: '', unit: 'g', cost: '', total: 0 }]
   )
   const [done, setDone] = useState(false)
 
   function updateRow(i: number, k: string, v: string) {
-  const T = useT()
     setRows(prev => prev.map((row, idx) => {
       if (idx !== i) return row
       const updated = { ...row, [k]: v }
@@ -92,8 +85,7 @@ function RecipeModal({ initial, menuItem, onClose }: {
         borderRadius: 20, width: '100%', maxWidth: 800,
         boxShadow: '0 32px 80px rgba(0,0,0,0.6)',
         overflow: 'hidden', maxHeight: 'calc(100vh - 24px)',
-        display: 'flex', flexDirection: 'column',
-      }}>
+        display: 'flex', flexDirection: 'column' }}>
         <div style={{ height: 3, background: `linear-gradient(90deg, ${T.burgundy}, ${T.gold}, ${T.burgundy})`, flexShrink: 0 }}/>
 
         {/* Header */}
@@ -247,8 +239,7 @@ function RecipeModal({ initial, menuItem, onClose }: {
             background: done ? T.green : `linear-gradient(135deg, ${T.burgundy}, #7A1828)`,
             color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer',
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-            boxShadow: '0 4px 16px rgba(155,35,53,0.3)', transition: 'all 0.2s',
-          }}>
+            boxShadow: '0 4px 16px rgba(155,35,53,0.3)', transition: 'all 0.2s' }}>
             {done ? <><Check size={15}/> Recipe Saved!</> : <><Check size={15}/> {isEdit ? 'Save Changes' : 'Create Recipe'}</>}
           </button>
         </div>
@@ -259,7 +250,6 @@ function RecipeModal({ initial, menuItem, onClose }: {
 
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function RecipesPage() {
-  const T = useT()
   const T = useT()
   const [selected, setSelected] = useState<Recipe>(RECIPES[0])
   const [showModal, setShowModal] = useState(false)
@@ -309,8 +299,7 @@ export default function RecipesPage() {
                       padding: '14px 18px', borderBottom: `1px solid ${T.border}`, cursor: 'pointer',
                       background: isActive ? `${T.burgundy}20` : 'transparent',
                       borderLeft: `3px solid ${isActive ? T.burgundyLight : 'transparent'}`,
-                      transition: 'all 0.12s',
-                    }}
+                      transition: 'all 0.12s' }}
                     onMouseEnter={e => { if (!isActive) (e.currentTarget as HTMLElement).style.background = T.surfaceEl }}
                     onMouseLeave={e => { if (!isActive) (e.currentTarget as HTMLElement).style.background = 'transparent' }}>
                     <div style={{ fontWeight: 700, color: T.textPrimary, fontSize: 13, marginBottom: 5 }}>{r.item}</div>
@@ -365,8 +354,7 @@ export default function RecipesPage() {
                   display: 'flex', alignItems: 'center', gap: 6, padding: '8px 16px', borderRadius: 10,
                   border: `1px solid ${T.border}`, background: T.surfaceEl,
                   color: T.textSecondary, fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit',
-                  transition: 'all 0.15s',
-                }}
+                  transition: 'all 0.15s' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = T.burgundy; (e.currentTarget as HTMLElement).style.color = T.textPrimary }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = T.border; (e.currentTarget as HTMLElement).style.color = T.textSecondary }}>
                   <Edit size={13}/> Edit Recipe

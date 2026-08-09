@@ -1,9 +1,8 @@
 'use client'
+import { useT } from '@/lib/themeContext'
 export const dynamic = 'force-dynamic'
 import { Card, PageHeader } from '@/components/ui'
-import { useTheme } from '@/lib/themeContext'
-import { T as _DARK_T } from '@/lib/mockData'
-import { TrendingUp, ShoppingBag, Package, ShoppingCartrash2, Wallet, ReceiptText, UtensilsCrossed, FlaskConical, Layers, Download } from 'lucide-react'
+import { TrendingUp, ShoppingBag, Package, ShoppingCart, Trash2, Wallet, ReceiptText, UtensilsCrossed, FlaskConical, Layers, Download } from 'lucide-react'
 
 const REPORTS = [
   { title: 'Sales Report',              desc: 'Daily, weekly, monthly sales breakdown by item and category', icon: TrendingUp,      color: '#C9A84C' },
