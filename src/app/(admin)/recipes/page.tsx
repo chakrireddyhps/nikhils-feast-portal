@@ -47,11 +47,11 @@ type Recipe = typeof RECIPES[0]
 
 // ─── ADD / EDIT RECIPE MODAL ──────────────────────────────────────────────────
 function RecipeModal({ initial, menuItem, onClose }: {
-  const T = useT()
   initial?: Recipe | null
   menuItem?: string
   onClose: () => void
 }) {
+  const T = useT()
   const isEdit = !!initial
   const [selectedItem, setSelectedItem] = useState(initial?.item || menuItem || '')
   const [yield_, setYield] = useState('1')

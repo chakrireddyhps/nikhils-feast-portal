@@ -62,7 +62,6 @@ function Toggle({ on, onChange }: { on: boolean; onChange: (v: boolean) => void 
 // ─── RESTAURANT PROFILE ───────────────────────────────────────────────────────
 function RestaurantProfile() {
   const T = useT()
-  const T = useT()
   const [form, setForm] = useState({
     name: "Nikhil's Feast", tagline: 'A Feast To Be Remembered',
     email: 'nikhil@nikhilsfeast.com', phone: '+91 98765 43210',
@@ -149,7 +148,6 @@ function RestaurantProfile() {
 
 // ─── ORDER SETTINGS ───────────────────────────────────────────────────────────
 function OrderSettings() {
-  const T = useT()
   const T = useT()
   const [form, setForm] = useState({
     prefix: 'ORD', nextNumber: '2848', defaultTax: '5',
@@ -260,7 +258,6 @@ function OrderSettings() {
 // ─── INVENTORY SETTINGS ───────────────────────────────────────────────────────
 function InventorySettings() {
   const T = useT()
-  const T = useT()
   const [form, setForm] = useState({
     defaultUnit: 'KG', lowStockThreshold: '20',
     criticalStockThreshold: '10', autoDeductOnOrder: true,
@@ -333,7 +330,6 @@ const MOCK_USERS = [
 const ROLE_COLORS: Record<string, string> = { Owner: T.gold, Manager: T.blue, Admin: '#A855F7', Staff: T.green }
 
 function UserManagement() {
-  const T = useT()
   const T = useT()
   const [showInvite, setShowInvite] = useState(false)
   const [inviteEmail, setInviteEmail] = useState('')
@@ -463,7 +459,6 @@ function UserManagement() {
 
 // ─── SECURITY ─────────────────────────────────────────────────────────────────
 function Security() {
-  const T = useT()
   const T = useT()
   const [showPw, setShowPw] = useState({ curr: false, new: false, conf: false })
   const [pw, setPw] = useState({ curr: '', new: '', conf: '' })
@@ -596,7 +591,6 @@ const LOG_TYPE_COLORS: Record<string, string> = {
   inventory: T.amber, expense: '#A855F7', recipe: '#06B6D4', user: '#EC4899' }
 
 function AuditLogs() {
-  const T = useT()
   const T = useT()
   const [filter, setFilter] = useState('all')
   const types = ['all', 'menu', 'order', 'wastage', 'purchase', 'inventory', 'expense', 'recipe', 'user']
