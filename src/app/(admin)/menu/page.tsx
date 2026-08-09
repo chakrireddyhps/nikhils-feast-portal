@@ -26,16 +26,21 @@ const CATEGORY_ICONS: Record<string, string> = {
   Desserts: '🍫', 'Special Offers': '⚡' }
 
 
-function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
-  e.target.style.borderColor = T.burgundy
-}
-function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
-  e.target.style.borderColor = T.border
-}
 
 // ─── ITEM FORM (shared by Add + Edit) ────────────────────────────────────────
-function ItemForm({
+function ItemForm({ initial, onSave, onClose, title, subtitle, saveLabel }: {
+  initial: Partial<MenuItem>
+  onSave: () => void
+  onClose: () => void
+  title: string
+  subtitle: string
+  saveLabel: string
+}) {
   const T = useT()
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
+  const INPUT: React.CSSProperties = { width: '100%', padding: '10px 13px', background: T.surfaceEl, border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13, color: T.textPrimary, outline: 'none', boxSizing: 'border-box' as const, fontFamily: 'inherit' }
+  function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.burgundy }
+  function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
   const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const INPUT: React.CSSProperties = {
     width: '100%', padding: '10px 13px', background: T.surfaceEl,
@@ -219,8 +224,12 @@ function ItemForm({
 }
 
 // ─── ADD CATEGORY MODAL ───────────────────────────────────────────────────────
-function AddCategoryModal({
+function AddCategoryModal({ onClose }: { onClose: () => void }) {
   const T = useT()
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
+  const INPUT: React.CSSProperties = { width: '100%', padding: '10px 13px', background: T.surfaceEl, border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13, color: T.textPrimary, outline: 'none', boxSizing: 'border-box' as const, fontFamily: 'inherit' }
+  function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.burgundy }
+  function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
   const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const INPUT: React.CSSProperties = {
     width: '100%', padding: '10px 13px', background: T.surfaceEl,

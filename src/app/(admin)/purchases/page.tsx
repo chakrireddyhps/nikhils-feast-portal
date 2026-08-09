@@ -18,12 +18,6 @@ const MODAL_OVERLAY: React.CSSProperties = {
 
 
 
-function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
-  e.target.style.borderColor = T.green
-}
-function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
-  e.target.style.borderColor = T.border
-}
 
 const UNITS = ['KG', 'GRAM', 'LITRE', 'ML', 'PCS', 'PACK', 'BOX', 'BOTTLE', 'DOZEN']
 
@@ -35,8 +29,12 @@ const MOCK_INGREDIENTS_LIST = [
 ]
 
 // ─── VIEW PURCHASE MODAL ──────────────────────────────────────────────────────
-function ViewPurchaseModal({
+function ViewPurchaseModal({ purchase, onClose }: { purchase: typeof PURCHASES[0]; onClose: () => void }) {
   const T = useT()
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
+  const INPUT: React.CSSProperties = { width: '100%', padding: '10px 13px', background: T.surfaceEl, border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13, color: T.textPrimary, outline: 'none', boxSizing: 'border-box' as const, fontFamily: 'inherit' }
+  function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.burgundy }
+  function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
   const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const INPUT: React.CSSProperties = {
     width: '100%', padding: '10px 13px', background: T.surfaceEl,
@@ -140,8 +138,12 @@ function ViewPurchaseModal({
 }
 
 // ─── NEW PURCHASE MODAL ───────────────────────────────────────────────────────
-function NewPurchaseModal({
+function NewPurchaseModal({ onClose }: { onClose: () => void }) {
   const T = useT()
+  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
+  const INPUT: React.CSSProperties = { width: '100%', padding: '10px 13px', background: T.surfaceEl, border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13, color: T.textPrimary, outline: 'none', boxSizing: 'border-box' as const, fontFamily: 'inherit' }
+  function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.burgundy }
+  function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
   const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
   const INPUT: React.CSSProperties = {
     width: '100%', padding: '10px 13px', background: T.surfaceEl,
