@@ -18,22 +18,21 @@ export function MetricCard({ label, value, icon: Icon, color = T.gold, trend, su
       background: T.surface, border: `1px solid ${T.border}`,
       borderRadius: 16, padding: '20px 22px', position: 'relative', overflow: 'hidden',
     }}>
-      <div style={{
-        position: 'absolute', top: 0, right: 0, width: 80, height: 80, borderRadius: '50%',
-        background: `radial-gradient(circle, ${color}18 0%, transparent 70%)`,
-        transform: 'translate(20px,-20px)',
-      }}/>
+      <div style={{ position: 'absolute', top: 0, right: 0, width: 80, height: 80, borderRadius: '50%', background: `radial-gradient(circle, ${color}18 0%, transparent 70%)`, transform: 'translate(20px,-20px)' }}/>
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 14 }}>
-        <div style={{
-          width: 38, height: 38, borderRadius: 10, background: `${color}18`,
-          display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-        }}>
+        <div style={{ width: 38, height: 38, borderRadius: 10, background: `${color}18`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
           <Icon size={18} color={color}/>
         </div>
         {trend !== undefined && trend !== null && <TrendBadge val={trend}/>}
       </div>
-      <div style={{ fontSize: 26, fontWeight: 800, color: T.textPrimary, letterSpacing: '-0.5px', fontVariantNumeric: 'tabular-nums' }}>{value}</div>
-      <div style={{ fontSize: 12, color: T.textMuted, marginTop: 3, fontWeight: 500 }}>{label}</div>
+      {/* Metric value — tight tracking, heavy weight, matching reference */}
+      <div style={{
+        fontSize: 28, fontWeight: 800, color: T.textPrimary,
+        letterSpacing: '-0.04em', lineHeight: 1,
+        fontVariantNumeric: 'tabular-nums',
+        marginBottom: 6,
+      }}>{value}</div>
+      <div style={{ fontSize: 12, color: T.textMuted, fontWeight: 500, letterSpacing: '0.01em' }}>{label}</div>
       {sub && <div style={{ fontSize: 11, color: T.textSubtle, marginTop: 2 }}>{sub}</div>}
     </div>
   )
@@ -43,7 +42,7 @@ export function MetricCard({ label, value, icon: Icon, color = T.gold, trend, su
 export function TrendBadge({ val, inverse = false }: { val: number; inverse?: boolean }) {
   const positive = inverse ? val < 0 : val >= 0
   return (
-    <span style={{ display: 'flex', alignItems: 'center', gap: 2, fontSize: 11, fontWeight: 700, color: positive ? T.green : T.red }}>
+    <span style={{ display: 'flex', alignItems: 'center', gap: 2, fontSize: 11, fontWeight: 700, letterSpacing: '-0.01em', color: positive ? T.green : T.red }}>
       {positive ? <ArrowUpRight size={12}/> : <ArrowDownRight size={12}/>}
       {Math.abs(val).toFixed(1)}%
     </span>
@@ -62,14 +61,13 @@ const STATUS_CFG: Record<string, { label: string; bg: string; color: string; dot
   critical:  { label: 'Critical',  bg: 'rgba(224,90,90,0.15)',   color: '#E05A5A', dot: '#E05A5A' },
   out:       { label: 'Out of Stock', bg: 'rgba(155,35,53,0.25)', color: '#F08080', dot: '#F08080' },
 }
-
 export function StatusBadge({ status }: { status: string }) {
   const c = STATUS_CFG[status] || STATUS_CFG.COMPLETED
   return (
     <span style={{
       display: 'inline-flex', alignItems: 'center', gap: 5,
       padding: '3px 10px', borderRadius: 20, background: c.bg,
-      color: c.color, fontSize: 11, fontWeight: 700,
+      color: c.color, fontSize: 11, fontWeight: 700, letterSpacing: '0.02em',
       border: `1px solid ${c.color}30`, whiteSpace: 'nowrap',
     }}>
       <span style={{ width: 6, height: 6, borderRadius: '50%', background: c.dot, flexShrink: 0 }}/>
@@ -80,10 +78,8 @@ export function StatusBadge({ status }: { status: string }) {
 
 // ─── ORDER TYPE BADGE ─────────────────────────────────────────────────────────
 export function OrderTypeBadge({ type }: { type: string }) {
-  const cfg: Record<string, string> = {
-    DINE_IN: '#7B9ED9', TAKEAWAY: T.gold, DELIVERY: '#A855F7', OTHER: T.textMuted,
-  }
-  return <span style={{ fontSize: 11, fontWeight: 600, color: cfg[type] || T.textMuted }}>{type.replace('_', ' ')}</span>
+  const cfg: Record<string, string> = { DINE_IN: '#7B9ED9', TAKEAWAY: T.gold, DELIVERY: '#A855F7', OTHER: T.textMuted }
+  return <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.03em', color: cfg[type] || T.textMuted }}>{type.replace('_', ' ')}</span>
 }
 
 // ─── CARD ─────────────────────────────────────────────────────────────────────
@@ -96,14 +92,12 @@ export function Card({ children, style = {} }: { children: React.ReactNode; styl
 }
 
 // ─── PAGE HEADER ──────────────────────────────────────────────────────────────
-export function PageHeader({ title, subtitle, action }: {
-  title: string; subtitle?: string; action?: React.ReactNode
-}) {
+export function PageHeader({ title, subtitle, action }: { title: string; subtitle?: string; action?: React.ReactNode }) {
   return (
     <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 28, gap: 16, flexWrap: 'wrap' }}>
       <div>
-        <h1 style={{ fontSize: 22, fontWeight: 800, color: T.textPrimary, margin: 0, letterSpacing: '-0.3px' }}>{title}</h1>
-        {subtitle && <p style={{ fontSize: 13, color: T.textMuted, marginTop: 4, fontWeight: 500 }}>{subtitle}</p>}
+        <h1 style={{ fontSize: 22, fontWeight: 800, color: T.textPrimary, margin: 0, letterSpacing: '-0.03em', lineHeight: 1.2 }}>{title}</h1>
+        {subtitle && <p style={{ fontSize: 13, color: T.textMuted, marginTop: 5, fontWeight: 500, letterSpacing: '0.01em' }}>{subtitle}</p>}
       </div>
       {action}
     </div>
@@ -118,7 +112,8 @@ export function Btn({ children, variant = 'primary', onClick, icon: Icon, small 
   const base: React.CSSProperties = {
     display: 'inline-flex', alignItems: 'center', gap: 7, borderRadius: 10,
     fontWeight: 700, cursor: 'pointer', border: 'none', transition: 'all 0.15s',
-    fontSize: small ? 12 : 13, padding: small ? '7px 14px' : '10px 18px',
+    fontSize: small ? 12 : 13, letterSpacing: '-0.01em',
+    padding: small ? '7px 14px' : '10px 18px',
     fontFamily: 'inherit', ...style,
   }
   const variants: Record<string, React.CSSProperties> = {
@@ -142,18 +137,15 @@ export function SearchBar({ placeholder = 'Search…' }: { placeholder?: string 
       <Search size={14} color={T.textMuted} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }}/>
       <input placeholder={placeholder} style={{
         background: T.surfaceEl, border: `1px solid ${T.border}`, borderRadius: 10,
-        padding: '9px 12px 9px 34px', fontSize: 13, color: T.textPrimary, outline: 'none', width: 220,
-        fontFamily: 'inherit',
+        padding: '9px 12px 9px 34px', fontSize: 13, color: T.textPrimary,
+        outline: 'none', width: 220, fontFamily: 'inherit', letterSpacing: '0.01em',
       }}/>
     </div>
   )
 }
 
 // ─── TABLE ────────────────────────────────────────────────────────────────────
-interface Column<T> {
-  key: string; label: string
-  render?: (value: unknown, row: T) => React.ReactNode
-}
+interface Column<T> { key: string; label: string; render?: (value: unknown, row: T) => React.ReactNode }
 export function DataTable<T extends Record<string, unknown>>({ columns, data, onRowClick }: {
   columns: Column<T>[]; data: T[]; onRowClick?: (row: T) => void
 }) {
@@ -164,8 +156,9 @@ export function DataTable<T extends Record<string, unknown>>({ columns, data, on
           <tr style={{ borderBottom: `1px solid ${T.border}` }}>
             {columns.map(col => (
               <th key={col.key} style={{
-                padding: '11px 16px', textAlign: 'left', fontSize: 10, fontWeight: 700,
-                color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em',
+                padding: '11px 16px', textAlign: 'left',
+                fontSize: 10, fontWeight: 700, color: T.textMuted,
+                textTransform: 'uppercase', letterSpacing: '0.12em',
                 background: T.surfaceEl, whiteSpace: 'nowrap',
               }}>{col.label}</th>
             ))}
@@ -173,13 +166,12 @@ export function DataTable<T extends Record<string, unknown>>({ columns, data, on
         </thead>
         <tbody>
           {data.map((row, ri) => (
-            <tr key={ri}
-              onClick={() => onRowClick?.(row)}
+            <tr key={ri} onClick={() => onRowClick?.(row)}
               style={{ borderBottom: `1px solid ${T.border}`, cursor: onRowClick ? 'pointer' : 'default', transition: 'background 0.1s' }}
               onMouseEnter={e => { if (onRowClick) (e.currentTarget as HTMLElement).style.background = T.surfaceHov }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent' }}>
               {columns.map(col => (
-                <td key={col.key} style={{ padding: '13px 16px', fontSize: 13, color: T.textSecondary, whiteSpace: 'nowrap' }}>
+                <td key={col.key} style={{ padding: '13px 16px', fontSize: 13, color: T.textSecondary, whiteSpace: 'nowrap', letterSpacing: '0.01em' }}>
                   {col.render ? col.render(row[col.key], row) : String(row[col.key] ?? '')}
                 </td>
               ))}
@@ -196,9 +188,9 @@ export function ChartTip({ active, payload, label }: { active?: boolean; payload
   if (!active || !payload?.length) return null
   return (
     <div style={{ background: T.surfaceEl, border: `1px solid ${T.borderEl}`, borderRadius: 12, padding: '10px 14px', fontSize: 12 }}>
-      <p style={{ color: T.textMuted, marginBottom: 6, fontWeight: 600 }}>{label}</p>
+      <p style={{ color: T.textMuted, marginBottom: 6, fontWeight: 600, letterSpacing: '0.02em' }}>{label}</p>
       {payload.map(p => (
-        <p key={p.dataKey} style={{ color: p.color, fontWeight: 700, margin: '2px 0' }}>
+        <p key={p.dataKey} style={{ color: p.color, fontWeight: 700, margin: '2px 0', letterSpacing: '-0.01em' }}>
           {p.name}: {['Revenue', 'Profit', 'COGS'].includes(p.name) ? `₹${p.value.toLocaleString('en-IN')}` : p.value}
         </p>
       ))}
