@@ -6,6 +6,15 @@ import React, { useState, useRef, useEffect } from 'react'
 import { Card, Btn, SearchBar, PageHeader } from '@/components/ui'
 import { MENU_ITEMS, CATEGORIES } from '@/lib/mockData'
 import {
+
+const MODAL_OVERLAY: React.CSSProperties = {
+  position: 'fixed', inset: 0, zIndex: 999,
+  background: 'rgba(0,0,0,0.8)',
+  display: 'flex', alignItems: 'flex-start',
+  justifyContent: 'center',
+  paddingTop: 8, paddingLeft: 16, paddingRight: 16, paddingBottom: 16,
+}
+
   Plus, Star, Flame, MoreHorizontal, X, Check, ChevronDown,
   Leaf, Zap, Edit, BookOpen, Copy, ToggleLeft, Trash2, AlertTriangle } from 'lucide-react'
 
@@ -15,13 +24,6 @@ const CATEGORY_ICONS: Record<string, string> = {
   Chicken: '🍗', Prawns: '🦐', 'Apollo Fish': '🐟', Veg: '🥗',
   Burgers: '🍔', Rolls: '🌯', Waffles: '🧇', 'Fried Momos': '🥟',
   Desserts: '🍫', 'Special Offers': '⚡' }
-
-const MODAL_OVERLAY: React.CSSProperties = {
-  position: 'fixed', inset: 0, zIndex: 999,
-  background: 'rgba(0,0,0,0.8)',
-  display: 'flex', alignItems: 'flex-start',
-  justifyContent: 'center',
-  paddingTop: 8, paddingLeft: 16, paddingRight: 16, paddingBottom: 16 }
 
 const INPUT: React.CSSProperties = {
   width: '100%', padding: '10px 13px', background: T.surfaceEl,

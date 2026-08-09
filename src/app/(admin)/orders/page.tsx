@@ -239,6 +239,13 @@ function NewOrderModal({ onClose }: { onClose: () => void }) {
 
 export default function OrdersPage() {
   const T = useT()
+  const MODAL_OVERLAY: React.CSSProperties = {
+    position: 'fixed', inset: 0, zIndex: 999,
+    background: 'rgba(0,0,0,0.8)',
+    display: 'flex', alignItems: 'flex-start',
+    justifyContent: 'center',
+    paddingTop: 8, paddingLeft: 16, paddingRight: 16, paddingBottom: 16,
+  }
   const [activeStatus, setActiveStatus] = useState('ALL')
   const [showNewOrder, setShowNewOrder] = useState(false)
 

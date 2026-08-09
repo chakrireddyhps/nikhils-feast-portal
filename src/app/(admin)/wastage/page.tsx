@@ -13,7 +13,9 @@ const MODAL_OVERLAY: React.CSSProperties = {
   background: 'rgba(0,0,0,0.8)',
   display: 'flex', alignItems: 'flex-start',
   justifyContent: 'center',
-  paddingTop: 8, paddingLeft: 16, paddingRight: 16, paddingBottom: 16 }
+  paddingTop: 8, paddingLeft: 16, paddingRight: 16, paddingBottom: 16,
+}
+
 
 const INPUT: React.CSSProperties = {
   width: '100%', padding: '10px 13px', background: T.surfaceEl,
