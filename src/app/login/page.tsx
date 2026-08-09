@@ -1,92 +1,141 @@
 'use client'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { Eye, EyeOff } from 'lucide-react'
-import { T } from '@/lib/mockData'
+import { Eye, EyeOff, Loader2, AlertCircle } from 'lucide-react'
 
 export default function LoginPage() {
   const router = useRouter()
-  const [email, setEmail] = useState('nikhil@nikhilsfeast.com')
+  const [email, setEmail]       = useState('')
   const [password, setPassword] = useState('')
-  const [showPw, setShowPw] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [showPw, setShowPw]     = useState(false)
+  const [loading, setLoading]   = useState(false)
+  const [error, setError]       = useState('')
 
   function handleLogin(e: React.FormEvent) {
     e.preventDefault()
-    setLoading(true)
-    setTimeout(() => router.push('/dashboard'), 800)
+    if (!email || !password) { setError('Please enter your email and password.'); return }
+    setLoading(true); setError('')
+    setTimeout(() => router.push('/dashboard'), 900)
   }
 
   return (
-    <div style={{
-      minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
-      background: 'radial-gradient(ellipse at 30% 20%, #3D0808 0%, #1A0A08 40%, #0F0B0A 100%)',
-      padding: 20, position: 'relative', overflow: 'hidden',
-      fontFamily: "'Inter', system-ui, sans-serif",
-    }}>
-      {/* Decorative orbs */}
-      <div style={{ position: 'absolute', top: -100, right: -100, width: 500, height: 500, borderRadius: '50%', background: `radial-gradient(circle, ${T.burgundy}15 0%, transparent 70%)`, pointerEvents: 'none' }}/>
-      <div style={{ position: 'absolute', bottom: -120, left: -120, width: 400, height: 400, borderRadius: '50%', background: `radial-gradient(circle, ${T.gold}08 0%, transparent 70%)`, pointerEvents: 'none' }}/>
-      {/* Dot grid */}
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0)', backgroundSize: '28px 28px', pointerEvents: 'none' }}/>
+    <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden"
+      style={{ background: 'linear-gradient(145deg, #1A0304 0%, #3D0707 35%, #7A0000 65%, #9B2335 100%)' }}>
 
-      <div style={{ width: '100%', maxWidth: 400, position: 'relative' }}>
+      {/* Decorative orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%)' }}/>
+        <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(155,35,53,0.25) 0%, transparent 70%)' }}/>
+        <div className="absolute inset-0"
+          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)', backgroundSize: '28px 28px' }}/>
+      </div>
+
+      <div className="relative w-full max-w-[390px]">
+
         {/* Brand */}
-        <div style={{ textAlign: 'center', marginBottom: 32 }}>
-          <div style={{
-            display: 'inline-flex', width: 72, height: 72, borderRadius: 20,
-            background: `linear-gradient(135deg, ${T.burgundy} 0%, #6B1020 100%)`,
-            alignItems: 'center', justifyContent: 'center', fontSize: 36, marginBottom: 16,
-            boxShadow: `0 8px 32px ${T.burgundyGlow}`,
-          }}>🍗</div>
-          <h1 style={{ color: T.textPrimary, fontWeight: 900, fontSize: 24, margin: 0, letterSpacing: '-0.3px' }}>NIKHIL&apos;S FEAST</h1>
-          <p style={{ color: T.gold, fontSize: 13, fontWeight: 600, margin: '6px 0 0', letterSpacing: '0.05em' }}>A Feast To Be Remembered</p>
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center justify-center w-[72px] h-[72px] rounded-[22px] mb-5"
+            style={{
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
+              border: '1px solid rgba(255,255,255,0.18)',
+              backdropFilter: 'blur(12px)',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)',
+              fontSize: 34,
+            }}>
+            🍗
+          </div>
+          <h1 className="text-white text-[22px] font-extrabold tracking-tight drop-shadow-sm">
+            NIKHIL&apos;S FEAST
+          </h1>
+          <p className="text-white/60 text-sm mt-1.5 font-medium tracking-wide">
+            A Feast To Be Remembered
+          </p>
         </div>
 
-        {/* Card */}
-        <div style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 20, overflow: 'hidden', boxShadow: '0 24px 64px rgba(0,0,0,0.5)' }}>
-          <div style={{ height: 3, background: `linear-gradient(90deg, ${T.burgundy}, ${T.gold}, ${T.burgundy})` }}/>
-          <div style={{ padding: '28px 28px 24px' }}>
-            <h2 style={{ color: T.textPrimary, fontWeight: 800, fontSize: 20, margin: '0 0 6px' }}>Welcome back</h2>
-            <p style={{ color: T.textMuted, fontSize: 13, marginBottom: 24, fontWeight: 500 }}>Sign in to manage your restaurant</p>
+        {/* Card — white, exactly like reference */}
+        <div className="rounded-2xl overflow-hidden"
+          style={{
+            background: 'rgba(255,255,255,0.98)',
+            boxShadow: '0 24px 64px rgba(0,0,0,0.4), 0 4px 16px rgba(0,0,0,0.2)',
+          }}>
 
-            <form onSubmit={handleLogin}>
-              <div style={{ marginBottom: 16 }}>
-                <label style={{ display: 'block', fontSize: 11, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 }}>Email Address</label>
+          {/* Top stripe */}
+          <div className="h-1 w-full"
+            style={{ background: 'linear-gradient(90deg, #9B2335 0%, #C0272D 50%, #C9A84C 100%)' }}/>
+
+          <div className="px-7 pt-7 pb-7">
+            <div className="mb-7">
+              <h2 className="text-gray-900 text-xl font-extrabold tracking-tight">Welcome back</h2>
+              <p className="text-gray-500 text-sm mt-1.5 font-medium">Sign in to manage your restaurant</p>
+            </div>
+
+            {error && (
+              <div className="bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-xl mb-5 flex items-start gap-2.5">
+                <AlertCircle className="w-4 h-4 text-red-500 shrink-0 mt-0.5"/>
+                <span>{error}</span>
+              </div>
+            )}
+
+            <form onSubmit={handleLogin} className="space-y-5">
+              {/* Email */}
+              <div>
+                <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
+                  Email Address
+                </label>
                 <input
-                  type="email" value={email} onChange={e => setEmail(e.target.value)} required
-                  style={{ width: '100%', padding: '11px 14px', background: T.surfaceEl, border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13, color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit' }}
+                  type="email" value={email} onChange={e => setEmail(e.target.value)}
+                  placeholder="nikhil@nikhilsfeast.com"
+                  className="w-full px-4 py-3 text-sm text-gray-900 font-medium bg-white border border-gray-200 rounded-xl placeholder-gray-400 transition-all duration-150"
+                  style={{ outline: 'none' }}
+                  onFocus={e => e.target.style.borderColor = '#9B2335'}
+                  onBlur={e => e.target.style.borderColor = '#E5E7EB'}
+                  required
                 />
               </div>
 
-              <div style={{ marginBottom: 24 }}>
-                <label style={{ display: 'block', fontSize: 11, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 }}>Password</label>
-                <div style={{ position: 'relative' }}>
+              {/* Password */}
+              <div>
+                <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
+                  Password
+                </label>
+                <div className="relative">
                   <input
-                    type={showPw ? 'text' : 'password'} value={password} onChange={e => setPassword(e.target.value)}
+                    type={showPw ? 'text' : 'password'} value={password}
+                    onChange={e => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    style={{ width: '100%', padding: '11px 40px 11px 14px', background: T.surfaceEl, border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13, color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit' }}
+                    className="w-full px-4 py-3 pr-11 text-sm text-gray-900 font-medium bg-white border border-gray-200 rounded-xl placeholder-gray-400 transition-all duration-150"
+                    style={{ outline: 'none' }}
+                    onFocus={e => e.target.style.borderColor = '#9B2335'}
+                    onBlur={e => e.target.style.borderColor = '#E5E7EB'}
+                    required
                   />
-                  <button type="button" onClick={() => setShowPw(!showPw)} style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: T.textMuted, padding: 0 }}>
-                    {showPw ? <EyeOff size={16}/> : <Eye size={16}/>}
+                  <button type="button" onClick={() => setShowPw(!showPw)}
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700 transition-colors p-0.5">
+                    {showPw ? <EyeOff className="w-4 h-4"/> : <Eye className="w-4 h-4"/>}
                   </button>
                 </div>
               </div>
 
-              <button type="submit" disabled={loading} style={{
-                width: '100%', padding: '13px', borderRadius: 12, border: 'none',
-                background: loading ? '#444' : `linear-gradient(135deg, ${T.burgundy} 0%, #7A1828 100%)`,
-                color: '#fff', fontSize: 14, fontWeight: 800, cursor: loading ? 'not-allowed' : 'pointer',
-                letterSpacing: '0.05em', boxShadow: `0 4px 20px ${T.burgundyGlow}`,
-                marginBottom: 16, fontFamily: 'inherit', transition: 'all 0.15s',
-              }}>
+              {/* Submit */}
+              <button type="submit" disabled={loading}
+                className="w-full py-3.5 rounded-xl text-white text-sm font-bold flex items-center justify-center gap-2 transition-all duration-150 disabled:opacity-60 mt-1"
+                style={{
+                  background: loading ? '#9CA3AF' : 'linear-gradient(135deg, #9B2335 0%, #7A1828 100%)',
+                  boxShadow: loading ? 'none' : '0 4px 20px rgba(155,35,53,0.4), inset 0 1px 0 rgba(255,255,255,0.1)',
+                  letterSpacing: '-0.01em',
+                }}>
+                {loading && <Loader2 className="w-4 h-4 animate-spin"/>}
                 {loading ? 'Signing in…' : 'Sign In'}
               </button>
             </form>
 
-            <p style={{ textAlign: 'center', fontSize: 11, color: T.textMuted }}>
-              © 2024 Nikhil&apos;s Feast · Restaurant Management Portal
-            </p>
+            <div className="mt-7 pt-5 border-t border-gray-100 text-center">
+              <p className="text-xs text-gray-400 font-medium">
+                © 2024 Nikhil&apos;s Feast · Restaurant Management Portal
+              </p>
+            </div>
           </div>
         </div>
       </div>
