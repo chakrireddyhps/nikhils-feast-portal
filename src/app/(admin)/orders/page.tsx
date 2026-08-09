@@ -45,7 +45,7 @@ function NewOrderModal({ onClose }: { onClose: () => void }) {
 
   if (step === 'success') {
     return (
-      <div style={{ position: 'fixed', inset: 0, zIndex: 999, background: 'rgba(0,0,0,0.85)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
+      <div style={{ position: 'fixed', inset: 0, zIndex: 999, background: 'rgba(0,0,0,0.85)', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: 8, paddingLeft: 20, paddingRight: 20, paddingBottom: 20 }}>
         <div style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 20, padding: '40px 36px', textAlign: 'center', maxWidth: 380, width: '100%', boxShadow: '0 32px 80px rgba(0,0,0,0.6)' }}>
           <div style={{ width: 72, height: 72, borderRadius: '50%', background: 'rgba(76,175,125,0.15)', border: `2px solid ${T.green}`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
             <Check size={32} color={T.green}/>
