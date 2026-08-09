@@ -15,9 +15,6 @@ const MODAL_OVERLAY: React.CSSProperties = {
   paddingTop: 8, paddingLeft: 16, paddingRight: 16, paddingBottom: 16,
 }
 
-  Plus, Star, Flame, MoreHorizontal, X, Check, ChevronDown,
-  Leaf, Zap, Edit, BookOpen, Copy, ToggleLeft, Trash2, AlertTriangle } from 'lucide-react'
-
 type MenuItem = typeof MENU_ITEMS[0]
 
 const CATEGORY_ICONS: Record<string, string> = {

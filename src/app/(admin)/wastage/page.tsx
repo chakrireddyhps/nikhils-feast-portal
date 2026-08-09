@@ -41,8 +41,8 @@ function RecordWastageModal({ onClose }: { onClose: () => void }) {
     border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
     color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit',
   }
-    function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.red }
-  function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
+  const focusBorder = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => { e.target.style.borderColor = T.red }
+  const blurBorder = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => { e.target.style.borderColor = T.border }
   const [rows, setRows] = useState([{ ingredient: '', qty: '', unit: 'KG', cost: '', reason: 'Expired', total: 0 }])
   const [form, setForm] = useState({ date: new Date().toISOString().split('T')[0], notes: '', recordedBy: '' })
   const [done, setDone] = useState(false)
