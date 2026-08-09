@@ -1,7 +1,7 @@
 'use client'
 export const dynamic = 'force-dynamic'
 
-import { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Card, Btn, SearchBar, PageHeader } from '@/components/ui'
 import { T, MENU_ITEMS, CATEGORIES } from '@/lib/mockData'
 import {
@@ -17,7 +17,7 @@ const CATEGORY_ICONS: Record<string, string> = {
   Desserts: '🍫', 'Special Offers': '⚡',
 }
 
-const MODAL_OVERLAY: React.CSSProperties = {
+const MODAL_OVERLAY = {
   position: 'fixed', inset: 0, zIndex: 999,
   background: 'rgba(0,0,0,0.8)',
   display: 'flex', alignItems: 'flex-start',
@@ -189,7 +189,7 @@ function ItemForm({ initial, onSave, onClose, title, subtitle, saveLabel }: {
                     <span style={{ fontSize: 11, fontWeight: 700, color: active ? color : T.textMuted }}>{label}</span>
                     <span style={{
                       fontSize: 10, fontWeight: 800, letterSpacing: '0.06em',
-                      color: active ? '#fff',
+                      color: active ? '#fff' : T.textSubtle,
                       background: active ? color : T.border,
                       padding: '1px 8px', borderRadius: 20,
                     }}>{active ? 'ON' : 'OFF'}</span>
