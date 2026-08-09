@@ -72,7 +72,7 @@ function NewOrderModal({ onClose }: { onClose: () => void }) {
 
   return (
     // Full screen overlay
-    <div style={{ position: 'fixed', inset: 0, zIndex: 999, background: 'rgba(0,0,0,0.8)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px 16px' }}>
+    <div style={{ position: 'fixed', inset: 0, zIndex: 999, background: 'rgba(0,0,0,0.8)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '70px 16px 16px' }}>
       {/* Modal box — fixed height, two-column layout */}
       <div style={{
         display: 'flex', width: '100%', maxWidth: 1160,
@@ -109,7 +109,7 @@ function NewOrderModal({ onClose }: { onClose: () => void }) {
           </div>
 
           {/* Category tabs */}
-          <div style={{ display: 'flex', gap: 6, padding: '10px 20px', overflowX: 'auto', scrollbarWidth: 'none', flexWrap: 'nowrap', borderBottom: `1px solid ${T.border}`, flexShrink: 0 }}>
+          <div style={{ display: 'flex', gap: 6, padding: '10px 20px', flexWrap: 'wrap', borderBottom: `1px solid ${T.border}`, flexShrink: 0 }}>
             {CATEGORIES.map(cat => (
               <button key={cat.name} onClick={() => setActiveCategory(cat.name)} style={{
                 padding: '6px 14px', borderRadius: 20, fontSize: 12, fontWeight: 600,
