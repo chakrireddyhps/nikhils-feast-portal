@@ -48,6 +48,9 @@ function Toggle({ on, onChange }: { on: boolean; onChange: (v: boolean) => void 
 // ─── RESTAURANT PROFILE ───────────────────────────────────────────────────────
 function RestaurantProfile() {
   const T = useT()
+  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const SECTION: React.CSSProperties = { background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16, overflow: 'hidden', marginBottom: 20 }
+  const SECTION_HEADER: React.CSSProperties = { padding: '16px 22px', borderBottom: `1px solid ${T.border}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }
   const INPUT: React.CSSProperties = {
     width: '100%', padding: '10px 13px', background: T.surfaceEl,
     border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
@@ -143,6 +146,9 @@ function RestaurantProfile() {
 // ─── ORDER SETTINGS ───────────────────────────────────────────────────────────
 function OrderSettings() {
   const T = useT()
+  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const SECTION: React.CSSProperties = { background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16, overflow: 'hidden', marginBottom: 20 }
+  const SECTION_HEADER: React.CSSProperties = { padding: '16px 22px', borderBottom: `1px solid ${T.border}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }
   const INPUT: React.CSSProperties = {
     width: '100%', padding: '10px 13px', background: T.surfaceEl,
     border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
@@ -260,6 +266,9 @@ function OrderSettings() {
 // ─── INVENTORY SETTINGS ───────────────────────────────────────────────────────
 function InventorySettings() {
   const T = useT()
+  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const SECTION: React.CSSProperties = { background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16, overflow: 'hidden', marginBottom: 20 }
+  const SECTION_HEADER: React.CSSProperties = { padding: '16px 22px', borderBottom: `1px solid ${T.border}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }
   const INPUT: React.CSSProperties = {
     width: '100%', padding: '10px 13px', background: T.surfaceEl,
     border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
@@ -341,6 +350,9 @@ const ROLE_COLORS: Record<string, string> = { Owner: T.gold, Manager: T.blue, Ad
 
 function UserManagement() {
   const T = useT()
+  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const SECTION: React.CSSProperties = { background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16, overflow: 'hidden', marginBottom: 20 }
+  const SECTION_HEADER: React.CSSProperties = { padding: '16px 22px', borderBottom: `1px solid ${T.border}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }
   const INPUT: React.CSSProperties = {
     width: '100%', padding: '10px 13px', background: T.surfaceEl,
     border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
@@ -478,6 +490,9 @@ function UserManagement() {
 // ─── SECURITY ─────────────────────────────────────────────────────────────────
 function Security() {
   const T = useT()
+  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const SECTION: React.CSSProperties = { background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16, overflow: 'hidden', marginBottom: 20 }
+  const SECTION_HEADER: React.CSSProperties = { padding: '16px 22px', borderBottom: `1px solid ${T.border}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }
   const INPUT: React.CSSProperties = {
     width: '100%', padding: '10px 13px', background: T.surfaceEl,
     border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
@@ -618,6 +633,9 @@ const LOG_TYPE_COLORS: Record<string, string> = {
 
 function AuditLogs() {
   const T = useT()
+  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const SECTION: React.CSSProperties = { background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16, overflow: 'hidden', marginBottom: 20 }
+  const SECTION_HEADER: React.CSSProperties = { padding: '16px 22px', borderBottom: `1px solid ${T.border}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }
   const [filter, setFilter] = useState('all')
   const types = ['all', 'menu', 'order', 'wastage', 'purchase', 'inventory', 'expense', 'recipe', 'user']
   const filtered = filter === 'all' ? AUDIT_LOGS : AUDIT_LOGS.filter(l => l.type === filter)
@@ -691,6 +709,9 @@ const SETTINGS_SECTIONS = [
 
 export default function SettingsPage() {
   const T = useT()
+  const LABEL: React.CSSProperties = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase' as const, letterSpacing: '0.12em', marginBottom: 7 }
+  const SECTION: React.CSSProperties = { background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16, overflow: 'hidden', marginBottom: 20 }
+  const SECTION_HEADER: React.CSSProperties = { padding: '16px 22px', borderBottom: `1px solid ${T.border}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }
   const [active, setActive] = useState<string | null>(null)
 
   const current = SETTINGS_SECTIONS.find(s => s.key === active)
