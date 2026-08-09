@@ -3,7 +3,8 @@ export const dynamic = 'force-dynamic'
 
 import React, { useState } from 'react'
 import { MetricCard, Card, StatusBadge, DataTable, Btn, SearchBar, PageHeader } from '@/components/ui'
-import { T, PURCHASES, fmtINRFull } from '@/lib/mockData'
+import { useTheme } from '@/lib/themeContext'
+import { T as _DARK_ PURCHASES, fmtINRFull } from '@/lib/mockData'
 import { ShoppingCart, ReceiptText, Users, Check, Plus, Filter, Download, X, Eye, ChevronDown, ArrowUpRight } from 'lucide-react'
 
 const MODAL_OVERLAY: React.CSSProperties = {
@@ -11,19 +12,16 @@ const MODAL_OVERLAY: React.CSSProperties = {
   background: 'rgba(0,0,0,0.8)',
   display: 'flex', alignItems: 'flex-start',
   justifyContent: 'center',
-  paddingTop: 8, paddingLeft: 16, paddingRight: 16, paddingBottom: 16,
-}
+  paddingTop: 8, paddingLeft: 16, paddingRight: 16, paddingBottom: 16 }
 
 const INPUT: React.CSSProperties = {
   width: '100%', padding: '10px 13px', background: T.surfaceEl,
   border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
-  color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit',
-}
+  color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit' }
 
 const LABEL: React.CSSProperties = {
   display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted,
-  textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7,
-}
+  textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 }
 
 function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
   e.target.style.borderColor = T.green
@@ -57,8 +55,7 @@ function ViewPurchaseModal({ purchase, onClose }: { purchase: typeof PURCHASES[0
         borderRadius: 20, width: '100%', maxWidth: 640,
         boxShadow: '0 32px 80px rgba(0,0,0,0.6)',
         overflow: 'hidden', maxHeight: 'calc(100vh - 24px)',
-        display: 'flex', flexDirection: 'column',
-      }}>
+        display: 'flex', flexDirection: 'column' }}>
         <div style={{ height: 3, background: `linear-gradient(90deg, ${T.green}, #2E8B57, ${T.green})`, flexShrink: 0 }}/>
 
         {/* Header */}
@@ -164,8 +161,7 @@ function NewPurchaseModal({ onClose }: { onClose: () => void }) {
         borderRadius: 20, width: '100%', maxWidth: 800,
         boxShadow: '0 32px 80px rgba(0,0,0,0.6)',
         overflow: 'hidden', maxHeight: 'calc(100vh - 24px)',
-        display: 'flex', flexDirection: 'column',
-      }}>
+        display: 'flex', flexDirection: 'column' }}>
         <div style={{ height: 3, background: `linear-gradient(90deg, ${T.green}, #2E8B57, ${T.green})`, flexShrink: 0 }}/>
 
         {/* Header */}
@@ -199,7 +195,7 @@ function NewPurchaseModal({ onClose }: { onClose: () => void }) {
             <div>
               <label style={LABEL}>Purchase Date</label>
               <input type="date" value={form.date} onChange={e => setF('date', e.target.value)}
-                style={{ ...INPUT, colorScheme: 'dark' }}
+                style={{ ...INPU colorScheme: 'dark' }}
                 onFocus={focusBorder} onBlur={blurBorder}/>
             </div>
           </div>
@@ -214,8 +210,7 @@ function NewPurchaseModal({ onClose }: { onClose: () => void }) {
                   cursor: 'pointer', border: `1px solid ${form.paymentMethod === p ? T.green : T.border}`,
                   background: form.paymentMethod === p ? `${T.green}18` : T.surfaceEl,
                   color: form.paymentMethod === p ? T.green : T.textMuted,
-                  fontFamily: 'inherit', transition: 'all 0.15s',
-                }}>{p.replace('_', ' ')}</button>
+                  fontFamily: 'inherit', transition: 'all 0.15s' }}>{p.replace('_', ' ')}</button>
               ))}
             </div>
           </div>
@@ -243,7 +238,7 @@ function NewPurchaseModal({ onClose }: { onClose: () => void }) {
                   {/* Ingredient */}
                   <div style={{ position: 'relative' }}>
                     <select value={row.ingredient} onChange={e => updateRow(i, 'ingredient', e.target.value)}
-                      style={{ ...INPUT, padding: '7px 28px 7px 10px', fontSize: 12, appearance: 'none' }}
+                      style={{ ...INPU padding: '7px 28px 7px 10px', fontSize: 12, appearance: 'none' }}
                       onFocus={focusBorder} onBlur={blurBorder}>
                       <option value="">Select…</option>
                       {MOCK_INGREDIENTS_LIST.map(ing => <option key={ing} value={ing}>{ing}</option>)}
@@ -252,12 +247,12 @@ function NewPurchaseModal({ onClose }: { onClose: () => void }) {
                   </div>
                   {/* Qty */}
                   <input type="number" value={row.qty} onChange={e => updateRow(i, 'qty', e.target.value)}
-                    placeholder="0" style={{ ...INPUT, padding: '7px 10px', fontSize: 12 }}
+                    placeholder="0" style={{ ...INPU padding: '7px 10px', fontSize: 12 }}
                     onFocus={focusBorder} onBlur={blurBorder}/>
                   {/* Unit */}
                   <div style={{ position: 'relative' }}>
                     <select value={row.unit} onChange={e => updateRow(i, 'unit', e.target.value)}
-                      style={{ ...INPUT, padding: '7px 4px', fontSize: 11, appearance: 'none', textAlign: 'center' }}>
+                      style={{ ...INPU padding: '7px 4px', fontSize: 11, appearance: 'none', textAlign: 'center' }}>
                       {UNITS.map(u => <option key={u} value={u}>{u}</option>)}
                     </select>
                   </div>
@@ -265,12 +260,12 @@ function NewPurchaseModal({ onClose }: { onClose: () => void }) {
                   <div style={{ position: 'relative' }}>
                     <span style={{ position: 'absolute', left: 9, top: '50%', transform: 'translateY(-50%)', color: T.textMuted, fontSize: 12 }}>₹</span>
                     <input type="number" value={row.unitPrice} onChange={e => updateRow(i, 'unitPrice', e.target.value)}
-                      placeholder="0" style={{ ...INPUT, padding: '7px 8px 7px 22px', fontSize: 12 }}
+                      placeholder="0" style={{ ...INPU padding: '7px 8px 7px 22px', fontSize: 12 }}
                       onFocus={focusBorder} onBlur={blurBorder}/>
                   </div>
                   {/* Tax */}
                   <input type="number" value={row.tax} onChange={e => updateRow(i, 'tax', e.target.value)}
-                    placeholder="0" style={{ ...INPUT, padding: '7px 10px', fontSize: 12 }}
+                    placeholder="0" style={{ ...INPU padding: '7px 10px', fontSize: 12 }}
                     onFocus={focusBorder} onBlur={blurBorder}/>
                   {/* Total */}
                   <div style={{ color: row.total > 0 ? T.green : T.textSubtle, fontWeight: 700, fontSize: 12, textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>
@@ -297,7 +292,7 @@ function NewPurchaseModal({ onClose }: { onClose: () => void }) {
             <label style={LABEL}>Notes</label>
             <textarea value={form.notes} onChange={e => setF('notes', e.target.value)}
               placeholder="Any additional notes…" rows={2}
-              style={{ ...INPUT, resize: 'vertical', lineHeight: 1.6 } as React.CSSProperties}/>
+              style={{ ...INPU resize: 'vertical', lineHeight: 1.6 } as React.CSSProperties}/>
           </div>
         </div>
 
@@ -311,8 +306,7 @@ function NewPurchaseModal({ onClose }: { onClose: () => void }) {
             background: done ? T.green : `linear-gradient(135deg, #2E8B57, #1A5C38)`,
             color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer',
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-            boxShadow: '0 4px 16px rgba(46,139,87,0.3)', transition: 'all 0.2s',
-          }}>
+            boxShadow: '0 4px 16px rgba(46,139,87,0.3)', transition: 'all 0.2s' }}>
             {done
               ? <><Check size={15}/> Purchase Recorded!</>
               : <><Check size={15}/> Record Purchase{grandTotal > 0 ? ` · ${fmtINRFull(grandTotal)}` : ''}</>
@@ -326,6 +320,7 @@ function NewPurchaseModal({ onClose }: { onClose: () => void }) {
 
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function PurchasesPage() {
+  const T = useT()
   const [showNew, setShowNew] = useState(false)
   const [viewPurchase, setViewPurchase] = useState<typeof PURCHASES[0] | null>(null)
 
@@ -372,8 +367,7 @@ export default function PurchasesPage() {
                   padding: '6px 14px', borderRadius: 8,
                   border: `1px solid ${T.border}`, background: T.surfaceEl,
                   color: T.textSecondary, fontSize: 12, fontWeight: 600,
-                  cursor: 'pointer', fontFamily: 'inherit', transition: 'all 0.15s',
-                }}
+                  cursor: 'pointer', fontFamily: 'inherit', transition: 'all 0.15s' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = T.green; (e.currentTarget as HTMLElement).style.color = T.green }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = T.border; (e.currentTarget as HTMLElement).style.color = T.textSecondary }}>
                 <Eye size={13}/> View

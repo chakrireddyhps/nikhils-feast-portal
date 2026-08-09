@@ -2,7 +2,8 @@
 export const dynamic = 'force-dynamic'
 
 import React, { useState } from 'react'
-import { T } from '@/lib/mockData'
+import { useTheme } from '@/lib/themeContext'
+import { T as _DARK_T } from '@/lib/mockData'
 import { PageHeader } from '@/components/ui'
 import {
   Globe, ShoppingBag, Package, Users, Lock, ShieldAlert,
@@ -32,9 +33,11 @@ const SECTION_HEADER: React.CSSProperties = {
 }
 
 function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
+  const T = useT()
   e.target.style.borderColor = T.burgundy
 }
 function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
+  const T = useT()
   e.target.style.borderColor = T.border
 }
 
@@ -69,6 +72,7 @@ function Toggle({ on, onChange }: { on: boolean; onChange: (v: boolean) => void 
 
 // ─── RESTAURANT PROFILE ───────────────────────────────────────────────────────
 function RestaurantProfile() {
+  const T = useT()
   const [form, setForm] = useState({
     name: "Nikhil's Feast", tagline: 'A Feast To Be Remembered',
     email: 'nikhil@nikhilsfeast.com', phone: '+91 98765 43210',
@@ -156,6 +160,7 @@ function RestaurantProfile() {
 
 // ─── ORDER SETTINGS ───────────────────────────────────────────────────────────
 function OrderSettings() {
+  const T = useT()
   const [form, setForm] = useState({
     prefix: 'ORD', nextNumber: '2848', defaultTax: '5',
     autoAccept: false, requireTable: false, allowCash: true,
@@ -265,6 +270,7 @@ function OrderSettings() {
 
 // ─── INVENTORY SETTINGS ───────────────────────────────────────────────────────
 function InventorySettings() {
+  const T = useT()
   const [form, setForm] = useState({
     defaultUnit: 'KG', lowStockThreshold: '20',
     criticalStockThreshold: '10', autoDeductOnOrder: true,
@@ -338,6 +344,7 @@ const MOCK_USERS = [
 const ROLE_COLORS: Record<string, string> = { Owner: T.gold, Manager: T.blue, Admin: '#A855F7', Staff: T.green }
 
 function UserManagement() {
+  const T = useT()
   const [showInvite, setShowInvite] = useState(false)
   const [inviteEmail, setInviteEmail] = useState('')
   const [inviteRole, setInviteRole] = useState('Staff')
@@ -468,6 +475,7 @@ function UserManagement() {
 
 // ─── SECURITY ─────────────────────────────────────────────────────────────────
 function Security() {
+  const T = useT()
   const [showPw, setShowPw] = useState({ curr: false, new: false, conf: false })
   const [pw, setPw] = useState({ curr: '', new: '', conf: '' })
   const [pwDone, setPwDone] = useState(false)
@@ -601,6 +609,7 @@ const LOG_TYPE_COLORS: Record<string, string> = {
 }
 
 function AuditLogs() {
+  const T = useT()
   const [filter, setFilter] = useState('all')
   const types = ['all', 'menu', 'order', 'wastage', 'purchase', 'inventory', 'expense', 'recipe', 'user']
   const filtered = filter === 'all' ? AUDIT_LOGS : AUDIT_LOGS.filter(l => l.type === filter)
@@ -674,6 +683,8 @@ const SETTINGS_SECTIONS = [
 ]
 
 export default function SettingsPage() {
+  const T = useT()
+  const T = useT()
   const [active, setActive] = useState<string | null>(null)
 
   const current = SETTINGS_SECTIONS.find(s => s.key === active)

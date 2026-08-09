@@ -1,8 +1,9 @@
 'use client'
 export const dynamic = 'force-dynamic'
 import { Card, PageHeader } from '@/components/ui'
-import { T } from '@/lib/mockData'
-import { TrendingUp, ShoppingBag, Package, ShoppingCart, Trash2, Wallet, ReceiptText, UtensilsCrossed, FlaskConical, Layers, Download } from 'lucide-react'
+import { useTheme } from '@/lib/themeContext'
+import { T as _DARK_T } from '@/lib/mockData'
+import { TrendingUp, ShoppingBag, Package, ShoppingCartrash2, Wallet, ReceiptText, UtensilsCrossed, FlaskConical, Layers, Download } from 'lucide-react'
 
 const REPORTS = [
   { title: 'Sales Report',              desc: 'Daily, weekly, monthly sales breakdown by item and category', icon: TrendingUp,      color: '#C9A84C' },
@@ -18,6 +19,7 @@ const REPORTS = [
 ]
 
 export default function ReportsPage() {
+  const T = useT()
   return (
     <div>
       <PageHeader title="Reports" subtitle="Download and analyze your business data"/>
@@ -25,8 +27,7 @@ export default function ReportsPage() {
         {REPORTS.map(r => (
           <div key={r.title} style={{
             background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16,
-            padding: 22, cursor: 'pointer', transition: 'all 0.15s',
-          }}
+            padding: 22, cursor: 'pointer', transition: 'all 0.15s' }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = T.borderEl; (e.currentTarget as HTMLElement).style.background = T.surfaceEl }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = T.border;   (e.currentTarget as HTMLElement).style.background = T.surface }}>
             <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 12 }}>

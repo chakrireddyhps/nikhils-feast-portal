@@ -3,7 +3,8 @@ export const dynamic = 'force-dynamic'
 
 import React, { useState, useRef, useEffect } from 'react'
 import { Card, Btn, SearchBar, PageHeader } from '@/components/ui'
-import { T, MENU_ITEMS, CATEGORIES } from '@/lib/mockData'
+import { useTheme } from '@/lib/themeContext'
+import { T as _DARK_T, MENU_ITEMS, CATEGORIES } from '@/lib/mockData'
 import {
   Plus, Star, Flame, MoreHorizontal, X, Check, ChevronDown,
   Leaf, Zap, Edit, BookOpen, Copy, ToggleLeft, Trash2, AlertTriangle,
@@ -35,9 +36,11 @@ const LABEL: React.CSSProperties = {
   textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7,
 }
 function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
+  const T = useT()
   e.target.style.borderColor = T.burgundy
 }
 function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
+  const T = useT()
   e.target.style.borderColor = T.border
 }
 
@@ -64,6 +67,7 @@ function ItemForm({ initial, onSave, onClose, title, subtitle, saveLabel }: {
   const [done, setDone] = useState(false)
 
   function set(key: string, val: string | boolean) {
+  const T = useT()
     setForm(prev => ({ ...prev, [key]: val }))
   }
 
@@ -72,6 +76,7 @@ function ItemForm({ initial, onSave, onClose, title, subtitle, saveLabel }: {
     : null
 
   function handleSave() {
+  const T = useT()
     if (!form.name || !form.price) return
     setDone(true)
     setTimeout(onSave, 900)
@@ -325,6 +330,7 @@ function ContextMenu({ item, onEdit, onDelete, onClose }: {
   const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
     function handleClick(e: MouseEvent) {
+  const T = useT()
       if (ref.current && !ref.current.contains(e.target as Node)) onClose()
     }
     document.addEventListener('mousedown', handleClick)
@@ -369,6 +375,7 @@ function ContextMenu({ item, onEdit, onDelete, onClose }: {
 
 // ─── MENU ITEM CARD ───────────────────────────────────────────────────────────
 function MenuItemCard({ item }: { item: MenuItem }) {
+  const T = useT()
   const [showMenu, setShowMenu] = useState(false)
   const [showEdit, setShowEdit] = useState(false)
   const [showDelete, setShowDelete] = useState(false)
@@ -481,6 +488,8 @@ function MenuItemCard({ item }: { item: MenuItem }) {
 
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function MenuPage() {
+  const T = useT()
+  const T = useT()
   const [activeCategory, setActiveCategory] = useState('All')
   const [showAddCategory, setShowAddCategory] = useState(false)
   const [showAddItem, setShowAddItem] = useState(false)

@@ -2,13 +2,15 @@
 export const dynamic = 'force-dynamic'
 import { useState } from 'react'
 import { Card, Btn, PageHeader, ChartTip } from '@/components/ui'
-import { T, REVENUE_TREND, WASTAGE, EXPENSES, fmtINRFull } from '@/lib/mockData'
+import { useTheme } from '@/lib/themeContext'
+import { T as _DARK_ REVENUE_TREND, WASTAGE, EXPENSES, fmtINRFull } from '@/lib/mockData'
 import { Download } from 'lucide-react'
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
+import { BarChart, Bar, XAxis, YAxis, CartesianGridooltip, ResponsiveContainer } from 'recharts'
 
 const PERIODS = ['Today', 'This Week', 'This Month', 'Last Month', 'This Quarter', 'This Year', 'Custom']
 
 export default function PnLPage() {
+  const T = useT()
   const [period, setPeriod] = useState('This Month')
 
   const revenue     = REVENUE_TREND.reduce((s, d) => s + d.revenue, 0)
@@ -56,8 +58,7 @@ export default function PnLPage() {
             padding: '7px 16px', borderRadius: 20, fontSize: 12, fontWeight: 700, cursor: 'pointer',
             border: `1px solid ${period === p ? T.gold : T.border}`,
             background: period === p ? `${T.gold}20` : 'transparent',
-            color: period === p ? T.gold : T.textMuted, transition: 'all 0.15s', fontFamily: 'inherit',
-          }}>{p}</button>
+            color: period === p ? T.gold : T.textMuted, transition: 'all 0.15s', fontFamily: 'inherit' }}>{p}</button>
         ))}
       </div>
 

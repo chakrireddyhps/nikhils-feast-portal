@@ -3,7 +3,8 @@ export const dynamic = 'force-dynamic'
 
 import React, { useState } from 'react'
 import { MetricCard, Card, StatusBadge, DataTable, Btn, SearchBar, PageHeader } from '@/components/ui'
-import { T, INGREDIENTS, fmtINRFull } from '@/lib/mockData'
+import { useTheme } from '@/lib/themeContext'
+import { T as _DARK_ INGREDIENTS, fmtINRFull } from '@/lib/mockData'
 import { Package, AlertTriangle, XCircle, Warehouse, Plus, Filter, X, Check, ChevronDown } from 'lucide-react'
 
 const MODAL_OVERLAY: React.CSSProperties = {
@@ -11,19 +12,16 @@ const MODAL_OVERLAY: React.CSSProperties = {
   background: 'rgba(0,0,0,0.8)',
   display: 'flex', alignItems: 'flex-start',
   justifyContent: 'center',
-  paddingTop: 8, paddingLeft: 16, paddingRight: 16, paddingBottom: 16,
-}
+  paddingTop: 8, paddingLeft: 16, paddingRight: 16, paddingBottom: 16 }
 
 const INPUT: React.CSSProperties = {
   width: '100%', padding: '10px 13px', background: T.surfaceEl,
   border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
-  color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit',
-}
+  color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit' }
 
 const LABEL: React.CSSProperties = {
   display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted,
-  textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7,
-}
+  textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 }
 
 function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) {
   e.target.style.borderColor = T.burgundy
@@ -40,8 +38,7 @@ function AddIngredientModal({ onClose }: { onClose: () => void }) {
   const [form, setForm] = useState({
     name: '', sku: '', category: 'Protein', unit: 'KG',
     minStock: '', maxStock: '', reorderLevel: '', avgCost: '',
-    supplier: '',
-  })
+    supplier: '' })
   const [done, setDone] = useState(false)
 
   function set(k: string, v: string) { setForm(p => ({ ...p, [k]: v })) }
@@ -56,8 +53,7 @@ function AddIngredientModal({ onClose }: { onClose: () => void }) {
         borderRadius: 20, width: '100%', maxWidth: 680,
         boxShadow: '0 32px 80px rgba(0,0,0,0.6)',
         overflow: 'hidden', maxHeight: 'calc(100vh - 24px)',
-        display: 'flex', flexDirection: 'column',
-      }}>
+        display: 'flex', flexDirection: 'column' }}>
         <div style={{ height: 3, background: `linear-gradient(90deg, ${T.burgundy}, ${T.gold}, ${T.burgundy})`, flexShrink: 0 }}/>
 
         {/* Header */}
@@ -96,7 +92,7 @@ function AddIngredientModal({ onClose }: { onClose: () => void }) {
               <label style={LABEL}>Category</label>
               <div style={{ position: 'relative' }}>
                 <select value={form.category} onChange={e => set('category', e.target.value)}
-                  style={{ ...INPUT, appearance: 'none', paddingRight: 36, cursor: 'pointer' }}
+                  style={{ ...INPU appearance: 'none', paddingRight: 36, cursor: 'pointer' }}
                   onFocus={focusBorder} onBlur={blurBorder}>
                   {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
                 </select>
@@ -107,7 +103,7 @@ function AddIngredientModal({ onClose }: { onClose: () => void }) {
               <label style={LABEL}>Unit of Measurement</label>
               <div style={{ position: 'relative' }}>
                 <select value={form.unit} onChange={e => set('unit', e.target.value)}
-                  style={{ ...INPUT, appearance: 'none', paddingRight: 36, cursor: 'pointer' }}
+                  style={{ ...INPU appearance: 'none', paddingRight: 36, cursor: 'pointer' }}
                   onFocus={focusBorder} onBlur={blurBorder}>
                   {UNITS.map(u => <option key={u} value={u}>{u}</option>)}
                 </select>
@@ -129,7 +125,7 @@ function AddIngredientModal({ onClose }: { onClose: () => void }) {
                   <label style={LABEL}>{label}</label>
                   <input type="number" value={form[key as keyof typeof form]} onChange={e => set(key, e.target.value)}
                     placeholder={placeholder}
-                    style={{ ...INPUT, background: T.bg }}
+                    style={{ ...INPU background: T.bg }}
                     onFocus={focusBorder} onBlur={blurBorder}/>
                   <p style={{ color: T.textSubtle, fontSize: 10, marginTop: 4, fontWeight: 500 }}>{hint}</p>
                 </div>
@@ -145,7 +141,7 @@ function AddIngredientModal({ onClose }: { onClose: () => void }) {
                 <span style={{ position: 'absolute', left: 13, top: '50%', transform: 'translateY(-50%)', color: T.textMuted, fontSize: 13, fontWeight: 600 }}>₹</span>
                 <input type="number" value={form.avgCost} onChange={e => set('avgCost', e.target.value)}
                   placeholder="0.00"
-                  style={{ ...INPUT, paddingLeft: 28 }}
+                  style={{ ...INPU paddingLeft: 28 }}
                   onFocus={focusBorder} onBlur={blurBorder}/>
               </div>
             </div>
@@ -182,8 +178,7 @@ function AddIngredientModal({ onClose }: { onClose: () => void }) {
             background: done ? T.green : `linear-gradient(135deg, ${T.burgundy}, #7A1828)`,
             color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer',
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-            boxShadow: '0 4px 16px rgba(155,35,53,0.3)', transition: 'all 0.2s',
-          }}>
+            boxShadow: '0 4px 16px rgba(155,35,53,0.3)', transition: 'all 0.2s' }}>
             {done ? <><Check size={15}/> Ingredient Added!</> : <><Plus size={15}/> Add Ingredient</>}
           </button>
         </div>
@@ -230,8 +225,7 @@ function AddPurchaseModal({ onClose }: { onClose: () => void }) {
         borderRadius: 20, width: '100%', maxWidth: 780,
         boxShadow: '0 32px 80px rgba(0,0,0,0.6)',
         overflow: 'hidden', maxHeight: 'calc(100vh - 24px)',
-        display: 'flex', flexDirection: 'column',
-      }}>
+        display: 'flex', flexDirection: 'column' }}>
         <div style={{ height: 3, background: `linear-gradient(90deg, ${T.green}, #2E8B57, ${T.green})`, flexShrink: 0 }}/>
 
         {/* Header */}
@@ -265,7 +259,7 @@ function AddPurchaseModal({ onClose }: { onClose: () => void }) {
             <div>
               <label style={LABEL}>Purchase Date</label>
               <input type="date" value={form.date} onChange={e => setF('date', e.target.value)}
-                style={{ ...INPUT, colorScheme: 'dark' }}
+                style={{ ...INPU colorScheme: 'dark' }}
                 onFocus={focusBorder} onBlur={blurBorder}/>
             </div>
           </div>
@@ -277,8 +271,7 @@ function AddPurchaseModal({ onClose }: { onClose: () => void }) {
               <button onClick={addRow} style={{
                 display: 'flex', alignItems: 'center', gap: 5, padding: '5px 12px', borderRadius: 8,
                 border: `1px solid ${T.border}`, background: T.surfaceEl, color: T.textSecondary,
-                fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit',
-              }}>
+                fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>
                 <Plus size={13}/> Add Row
               </button>
             </div>
@@ -294,15 +287,15 @@ function AddPurchaseModal({ onClose }: { onClose: () => void }) {
               <div key={i} style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 80px 1fr 70px 80px 32px', gap: 8, padding: '8px 10px', borderBottom: `1px solid ${T.border}`, background: i % 2 === 0 ? 'transparent' : `${T.surfaceEl}50`, alignItems: 'center' }}>
                 <input value={item.ingredient} onChange={e => updateItem(i, 'ingredient', e.target.value)}
                   placeholder="Ingredient name"
-                  style={{ ...INPUT, padding: '7px 10px', fontSize: 12 }}
+                  style={{ ...INPU padding: '7px 10px', fontSize: 12 }}
                   onFocus={focusBorder} onBlur={blurBorder}/>
                 <input type="number" value={item.qty} onChange={e => updateItem(i, 'qty', e.target.value)}
                   placeholder="0"
-                  style={{ ...INPUT, padding: '7px 10px', fontSize: 12 }}
+                  style={{ ...INPU padding: '7px 10px', fontSize: 12 }}
                   onFocus={focusBorder} onBlur={blurBorder}/>
                 <div style={{ position: 'relative' }}>
                   <select value={item.unit} onChange={e => updateItem(i, 'unit', e.target.value)}
-                    style={{ ...INPUT, padding: '7px 8px', fontSize: 11, appearance: 'none', paddingRight: 20 }}>
+                    style={{ ...INPU padding: '7px 8px', fontSize: 11, appearance: 'none', paddingRight: 20 }}>
                     {UNITS.map(u => <option key={u} value={u}>{u}</option>)}
                   </select>
                 </div>
@@ -310,12 +303,12 @@ function AddPurchaseModal({ onClose }: { onClose: () => void }) {
                   <span style={{ position: 'absolute', left: 8, top: '50%', transform: 'translateY(-50%)', color: T.textMuted, fontSize: 12 }}>₹</span>
                   <input type="number" value={item.unitPrice} onChange={e => updateItem(i, 'unitPrice', e.target.value)}
                     placeholder="0"
-                    style={{ ...INPUT, padding: '7px 8px 7px 20px', fontSize: 12 }}
+                    style={{ ...INPU padding: '7px 8px 7px 20px', fontSize: 12 }}
                     onFocus={focusBorder} onBlur={blurBorder}/>
                 </div>
                 <input type="number" value={item.tax} onChange={e => updateItem(i, 'tax', e.target.value)}
                   placeholder="0"
-                  style={{ ...INPUT, padding: '7px 10px', fontSize: 12 }}
+                  style={{ ...INPU padding: '7px 10px', fontSize: 12 }}
                   onFocus={focusBorder} onBlur={blurBorder}/>
                 <div style={{ color: item.total > 0 ? T.green : T.textMuted, fontWeight: 700, fontSize: 12, textAlign: 'right' }}>
                   {item.total > 0 ? fmtINRFull(item.total) : '—'}
@@ -338,7 +331,7 @@ function AddPurchaseModal({ onClose }: { onClose: () => void }) {
             <label style={LABEL}>Notes</label>
             <textarea value={form.notes} onChange={e => setF('notes', e.target.value)}
               placeholder="Any additional notes about this purchase…" rows={2}
-              style={{ ...INPUT, resize: 'vertical', lineHeight: 1.6 }}/>
+              style={{ ...INPU resize: 'vertical', lineHeight: 1.6 }}/>
           </div>
         </div>
 
@@ -352,8 +345,7 @@ function AddPurchaseModal({ onClose }: { onClose: () => void }) {
             background: done ? T.green : `linear-gradient(135deg, #2E8B57, #1A5C38)`,
             color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer',
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-            boxShadow: '0 4px 16px rgba(46,139,87,0.3)', transition: 'all 0.2s',
-          }}>
+            boxShadow: '0 4px 16px rgba(46,139,87,0.3)', transition: 'all 0.2s' }}>
             {done ? <><Check size={15}/> Purchase Recorded!</> : <><Check size={15}/> Record Purchase · {grandTotal > 0 ? fmtINRFull(grandTotal) : '₹0'}</>}
           </button>
         </div>
@@ -364,6 +356,7 @@ function AddPurchaseModal({ onClose }: { onClose: () => void }) {
 
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function IngredientsPage() {
+  const T = useT()
   const [showAddIngredient, setShowAddIngredient] = useState(false)
   const [showAddPurchase, setShowAddPurchase] = useState(false)
 

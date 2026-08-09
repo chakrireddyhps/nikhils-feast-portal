@@ -3,28 +3,26 @@ export const dynamic = 'force-dynamic'
 
 import React, { useState } from 'react'
 import { MetricCard, Card, DataTable, Btn, SearchBar, PageHeader, ChartTip } from '@/components/ui'
-import { T, EXPENSES, fmtINRFull } from '@/lib/mockData'
+import { useTheme } from '@/lib/themeContext'
+import { T as _DARK_ EXPENSES, fmtINRFull } from '@/lib/mockData'
 import { Wallet, RefreshCw, Zap, Layers, Plus, Download, Edit, X, Check, ChevronDown, RefreshCcw } from 'lucide-react'
-import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts'
+import { PieChart, Pie, Cellooltip, ResponsiveContainer } from 'recharts'
 
 const MODAL_OVERLAY: React.CSSProperties = {
   position: 'fixed', inset: 0, zIndex: 999,
   background: 'rgba(0,0,0,0.8)',
   display: 'flex', alignItems: 'flex-start',
   justifyContent: 'center',
-  paddingTop: 8, paddingLeft: 16, paddingRight: 16, paddingBottom: 16,
-}
+  paddingTop: 8, paddingLeft: 16, paddingRight: 16, paddingBottom: 16 }
 
 const INPUT: React.CSSProperties = {
   width: '100%', padding: '10px 13px', background: T.surfaceEl,
   border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
-  color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit',
-}
+  color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit' }
 
 const LABEL: React.CSSProperties = {
   display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted,
-  textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7,
-}
+  textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 }
 
 function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
   e.target.style.borderColor = T.burgundy
@@ -45,8 +43,7 @@ const CATEGORY_COLORS: Record<string, string> = {
   Salaries: '#5B9BD5', Rent: '#C0272D', Electricity: '#A855F7',
   Gas: '#F97316', Internet: '#06B6D4', Marketing: '#4CAF7D',
   Packaging: '#F5A623', Delivery: '#EC4899', Maintenance: '#8B5CF6',
-  Equipment: '#C9A84C', Software: '#10B981', Other: '#6B7280',
-}
+  Equipment: '#C9A84C', Software: '#10B981', Other: '#6B7280' }
 
 type Expense = typeof EXPENSES[0]
 
@@ -61,8 +58,7 @@ function ExpenseModal({ initial, onClose }: { initial?: Expense | null; onClose:
     payment:       initial?.payment       ?? 'CASH',
     recurring:     initial?.recurring     ?? false,
     recurringFreq: 'MONTHLY',
-    notes:         '',
-  })
+    notes:         '' })
   const [done, setDone] = useState(false)
 
   function set(k: string, v: string | boolean) { setForm(p => ({ ...p, [k]: v })) }
@@ -74,8 +70,7 @@ function ExpenseModal({ initial, onClose }: { initial?: Expense | null; onClose:
         borderRadius: 20, width: '100%', maxWidth: 560,
         boxShadow: '0 32px 80px rgba(0,0,0,0.6)',
         overflow: 'hidden', maxHeight: 'calc(100vh - 24px)',
-        display: 'flex', flexDirection: 'column',
-      }}>
+        display: 'flex', flexDirection: 'column' }}>
         <div style={{ height: 3, background: `linear-gradient(90deg, ${T.burgundy}, ${T.gold}, ${T.burgundy})`, flexShrink: 0 }}/>
 
         {/* Header */}
@@ -106,7 +101,7 @@ function ExpenseModal({ initial, onClose }: { initial?: Expense | null; onClose:
               <label style={LABEL}>Category *</label>
               <div style={{ position: 'relative' }}>
                 <select value={form.category} onChange={e => set('category', e.target.value)}
-                  style={{ ...INPUT, appearance: 'none', paddingRight: 36, cursor: 'pointer' }}
+                  style={{ ...INPU appearance: 'none', paddingRight: 36, cursor: 'pointer' }}
                   onFocus={focusBorder} onBlur={blurBorder}>
                   {EXPENSE_CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
                 </select>
@@ -124,7 +119,7 @@ function ExpenseModal({ initial, onClose }: { initial?: Expense | null; onClose:
                 <span style={{ position: 'absolute', left: 13, top: '50%', transform: 'translateY(-50%)', color: T.textMuted, fontSize: 14, fontWeight: 700 }}>₹</span>
                 <input type="number" value={form.amount} onChange={e => set('amount', e.target.value)}
                   placeholder="0"
-                  style={{ ...INPUT, paddingLeft: 28, fontSize: 16, fontWeight: 800, color: form.amount ? T.textPrimary : T.textMuted }}
+                  style={{ ...INPU paddingLeft: 28, fontSize: 16, fontWeight: 800, color: form.amount ? T.textPrimary : T.textMuted }}
                   onFocus={focusBorder} onBlur={blurBorder}/>
               </div>
               {form.amount && (
@@ -140,13 +135,13 @@ function ExpenseModal({ initial, onClose }: { initial?: Expense | null; onClose:
             <div>
               <label style={LABEL}>Date *</label>
               <input type="date" value={form.date} onChange={e => set('date', e.target.value)}
-                style={{ ...INPUT, colorScheme: 'dark' }} onFocus={focusBorder} onBlur={blurBorder}/>
+                style={{ ...INPU colorScheme: 'dark' }} onFocus={focusBorder} onBlur={blurBorder}/>
             </div>
             <div>
               <label style={LABEL}>Payment Method</label>
               <div style={{ position: 'relative' }}>
                 <select value={form.payment} onChange={e => set('payment', e.target.value)}
-                  style={{ ...INPUT, appearance: 'none', paddingRight: 36, cursor: 'pointer' }}
+                  style={{ ...INPU appearance: 'none', paddingRight: 36, cursor: 'pointer' }}
                   onFocus={focusBorder} onBlur={blurBorder}>
                   {PAYMENT_METHODS.map(p => <option key={p} value={p}>{p.replace('_', ' ')}</option>)}
                 </select>
@@ -170,13 +165,11 @@ function ExpenseModal({ initial, onClose }: { initial?: Expense | null; onClose:
               {/* Toggle switch */}
               <button onClick={() => set('recurring', !form.recurring)} style={{
                 width: 44, height: 24, borderRadius: 12, border: 'none', cursor: 'pointer', position: 'relative',
-                background: form.recurring ? T.blue : T.border, transition: 'background 0.2s',
-              }}>
+                background: form.recurring ? T.blue : T.border, transition: 'background 0.2s' }}>
                 <span style={{
                   position: 'absolute', top: 3, left: form.recurring ? 22 : 3,
                   width: 18, height: 18, borderRadius: '50%', background: '#fff',
-                  transition: 'left 0.2s', boxShadow: '0 1px 4px rgba(0,0,0,0.3)',
-                }}/>
+                  transition: 'left 0.2s', boxShadow: '0 1px 4px rgba(0,0,0,0.3)' }}/>
               </button>
             </div>
 
@@ -187,8 +180,7 @@ function ExpenseModal({ initial, onClose }: { initial?: Expense | null; onClose:
                     padding: '6px 14px', borderRadius: 20, fontSize: 11, fontWeight: 700,
                     cursor: 'pointer', border: `1px solid ${form.recurringFreq === f ? T.blue : T.border}`,
                     background: form.recurringFreq === f ? `${T.blue}18` : 'transparent',
-                    color: form.recurringFreq === f ? T.blue : T.textMuted, fontFamily: 'inherit',
-                  }}>{f.charAt(0) + f.slice(1).toLowerCase()}</button>
+                    color: form.recurringFreq === f ? T.blue : T.textMuted, fontFamily: 'inherit' }}>{f.charAt(0) + f.slice(1).toLowerCase()}</button>
                 ))}
               </div>
             )}
@@ -199,7 +191,7 @@ function ExpenseModal({ initial, onClose }: { initial?: Expense | null; onClose:
             <label style={LABEL}>Notes</label>
             <textarea value={form.notes} onChange={e => set('notes', e.target.value)}
               placeholder="Any additional details about this expense…" rows={2}
-              style={{ ...INPUT, resize: 'vertical', lineHeight: 1.6 } as React.CSSProperties}
+              style={{ ...INPU resize: 'vertical', lineHeight: 1.6 } as React.CSSProperties}
               onFocus={focusBorder} onBlur={blurBorder}/>
           </div>
         </div>
@@ -214,8 +206,7 @@ function ExpenseModal({ initial, onClose }: { initial?: Expense | null; onClose:
             background: done ? T.green : `linear-gradient(135deg, ${T.burgundy}, #7A1828)`,
             color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer',
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-            boxShadow: '0 4px 16px rgba(155,35,53,0.3)', transition: 'all 0.2s',
-          }}>
+            boxShadow: '0 4px 16px rgba(155,35,53,0.3)', transition: 'all 0.2s' }}>
             {done
               ? <><Check size={15}/> {isEdit ? 'Changes Saved!' : 'Expense Added!'}</>
               : <><Plus size={15}/> {isEdit ? 'Save Changes' : `Add Expense${form.amount ? ` · ${fmtINRFull(Number(form.amount))}` : ''}`}</>
@@ -229,6 +220,7 @@ function ExpenseModal({ initial, onClose }: { initial?: Expense | null; onClose:
 
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function ExpensesPage() {
+  const T = useT()
   const [showModal, setShowModal] = useState(false)
   const [editExpense, setEditExpense] = useState<Expense | null>(null)
 
@@ -296,8 +288,7 @@ export default function ExpensesPage() {
                   background: v ? `${T.blue}15` : T.surfaceEl,
                   color: v ? T.blue : T.textMuted,
                   border: `1px solid ${v ? T.blue + '30' : T.border}`,
-                  display: 'inline-flex', alignItems: 'center', gap: 4,
-                }}>
+                  display: 'inline-flex', alignItems: 'center', gap: 4 }}>
                   {v ? <><RefreshCw size={10}/> Recurring</> : 'One-time'}
                 </span>
               )},

@@ -1,12 +1,14 @@
 'use client'
 export const dynamic = 'force-dynamic'
 import { MetricCard, Card, StatusBadge, OrderTypeBadge, ChartTip, DataTable, Btn } from '@/components/ui'
-import { T, REVENUE_TREND, CATEGORY_SALES, TOP_ITEMS, ORDERS, INGREDIENTS, WASTAGE, EXPENSES, fmtINR, fmtINRFull } from '@/lib/mockData'
-import { AreaChart, Area, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
-import { DollarSign, ShoppingBag, TrendingUp, Scale, Trash2, ReceiptText, AlertTriangle, Eye } from 'lucide-react'
+import { useTheme } from '@/lib/themeContext'
+import { T as _DARK_ REVENUE_TREND, CATEGORY_SALESOP_ITEMS, ORDERS, INGREDIENTS, WASTAGE, EXPENSES, fmtINR, fmtINRFull } from '@/lib/mockData'
+import { AreaChart, Area, PieChart, Pie, Cell, XAxis, YAxis, CartesianGridooltip, ResponsiveContainer } from 'recharts'
+import { DollarSign, ShoppingBagrendingUp, Scalerash2, ReceiptText, AlertTriangle, Eye } from 'lucide-react'
 import Link from 'next/link'
 
 export default function DashboardPage() {
+  const T = useT()
   const today = REVENUE_TREND[6]
   const prev  = REVENUE_TREND[5]
   const wastageTotal = WASTAGE.reduce((s, w) => s + w.total, 0)
@@ -42,7 +44,7 @@ export default function DashboardPage() {
               <p style={{ color: T.textMuted, fontSize: 12, marginTop: 2 }}>Last 7 days</p>
             </div>
             <div style={{ display: 'flex', gap: 14 }}>
-              {[['Revenue', T.gold], ['Profit', T.green], ['COGS', T.red]].map(([l, c]) => (
+              {[['Revenue'.gold], ['Profit'.green], ['COGS'.red]].map(([l, c]) => (
                 <div key={l} style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: T.textMuted }}>
                   <div style={{ width: 10, height: 3, borderRadius: 2, background: c }}/>
                   {l}
@@ -53,7 +55,7 @@ export default function DashboardPage() {
           <ResponsiveContainer width="100%" height={210}>
             <AreaChart data={REVENUE_TREND} margin={{ left: -20, right: 0, top: 4 }}>
               <defs>
-                {[['rev', T.gold], ['prof', T.green], ['cogs', T.red]].map(([id, c]) => (
+                {[['rev'.gold], ['prof'.green], ['cogs'.red]].map(([id, c]) => (
                   <linearGradient key={id} id={`g${id}`} x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor={c as string} stopOpacity={0.25}/>
                     <stop offset="100%" stopColor={c as string} stopOpacity={0}/>

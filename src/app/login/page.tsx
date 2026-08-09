@@ -1,9 +1,11 @@
 'use client'
+import { useT } from '@/lib/themeContext'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Eye, EyeOff, Loader2, AlertCircle } from 'lucide-react'
 
 export default function LoginPage() {
+  const T = useT()
   const router = useRouter()
   const [email, setEmail]       = useState('')
   const [password, setPassword] = useState('')
@@ -23,7 +25,7 @@ export default function LoginPage() {
       minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
       background: 'radial-gradient(ellipse at 30% 20%, #3D0808 0%, #1A0A08 40%, #0F0B0A 100%)',
       padding: 20, position: 'relative', overflow: 'hidden',
-      fontFamily: "'Inter', system-ui, sans-serif",
+      fontFamily: "'Poppins', system-ui, sans-serif",
     }}>
       {/* Decorative orbs */}
       <div style={{ position: 'absolute', top: -100, right: -100, width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(155,35,53,0.15) 0%, transparent 70%)', pointerEvents: 'none' }}/>
@@ -39,7 +41,7 @@ export default function LoginPage() {
             alignItems: 'center', justifyContent: 'center', fontSize: 36, marginBottom: 16,
             boxShadow: '0 8px 32px rgba(155,35,53,0.35)',
           }}>🍗</div>
-          <h1 style={{ color: '#F5EFE6', fontWeight: 900, fontSize: 22, margin: 0, letterSpacing: '-0.03em', lineHeight: 1.2 }}>
+          <h1 style={{ color: T.textPrimary, fontWeight: 900, fontSize: 22, margin: 0, letterSpacing: '-0.03em', lineHeight: 1.2 }}>
             NIKHIL&apos;S FEAST
           </h1>
           <p style={{ color: '#C9A84C', fontSize: 12, fontWeight: 600, margin: '6px 0 0', letterSpacing: '0.08em' }}>
@@ -57,10 +59,10 @@ export default function LoginPage() {
 
           <div style={{ padding: '28px 28px 24px' }}>
             <div style={{ marginBottom: 24 }}>
-              <h2 style={{ color: '#F5EFE6', fontWeight: 800, fontSize: 20, margin: '0 0 6px', letterSpacing: '-0.03em' }}>
+              <h2 style={{ color: T.textPrimary, fontWeight: 800, fontSize: 20, margin: '0 0 6px', letterSpacing: '-0.03em' }}>
                 Welcome back
               </h2>
-              <p style={{ color: '#7A6A63', fontSize: 13, margin: 0, fontWeight: 500, letterSpacing: '0.01em' }}>
+              <p style={{ color: T.textMuted, fontSize: 13, margin: 0, fontWeight: 500, letterSpacing: '0.01em' }}>
                 Sign in to manage your restaurant
               </p>
             </div>
@@ -74,20 +76,20 @@ export default function LoginPage() {
 
             <form onSubmit={handleLogin}>
               <div style={{ marginBottom: 16 }}>
-                <label style={{ display: 'block', fontSize: 10, fontWeight: 700, color: '#7A6A63', textTransform: 'uppercase', letterSpacing: '0.14em', marginBottom: 8 }}>
+                <label style={{ display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.14em', marginBottom: 8 }}>
                   Email Address
                 </label>
                 <input
                   type="email" value={email} onChange={e => setEmail(e.target.value)}
                   placeholder="nikhil@nikhilsfeast.com" required
-                  style={{ width: '100%', padding: '11px 14px', background: '#251A17', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 10, fontSize: 13, color: '#F5EFE6', outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit', letterSpacing: '0.01em' }}
+                  style={{ width: '100%', padding: '11px 14px', background: T.surfaceEl, border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13, color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit', letterSpacing: '0.01em' }}
                   onFocus={e => (e.target as HTMLInputElement).style.borderColor = '#9B2335'}
                   onBlur={e => (e.target as HTMLInputElement).style.borderColor = 'rgba(255,255,255,0.08)'}
                 />
               </div>
 
               <div style={{ marginBottom: 24 }}>
-                <label style={{ display: 'block', fontSize: 10, fontWeight: 700, color: '#7A6A63', textTransform: 'uppercase', letterSpacing: '0.14em', marginBottom: 8 }}>
+                <label style={{ display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.14em', marginBottom: 8 }}>
                   Password
                 </label>
                 <div style={{ position: 'relative' }}>
@@ -95,12 +97,12 @@ export default function LoginPage() {
                     type={showPw ? 'text' : 'password'} value={password}
                     onChange={e => setPassword(e.target.value)}
                     placeholder="••••••••" required
-                    style={{ width: '100%', padding: '11px 40px 11px 14px', background: '#251A17', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 10, fontSize: 13, color: '#F5EFE6', outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit' }}
+                    style={{ width: '100%', padding: '11px 40px 11px 14px', background: T.surfaceEl, border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13, color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit' }}
                     onFocus={e => (e.target as HTMLInputElement).style.borderColor = '#9B2335'}
                     onBlur={e => (e.target as HTMLInputElement).style.borderColor = 'rgba(255,255,255,0.08)'}
                   />
                   <button type="button" onClick={() => setShowPw(!showPw)}
-                    style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: '#7A6A63', padding: 0, display: 'flex' }}>
+                    style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: T.textMuted, padding: 0, display: 'flex' }}>
                     {showPw ? <EyeOff style={{ width: 16, height: 16 }}/> : <Eye style={{ width: 16, height: 16 }}/>}
                   </button>
                 </div>
@@ -120,7 +122,7 @@ export default function LoginPage() {
             </form>
 
             <div style={{ textAlign: 'center', paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-              <p style={{ fontSize: 11, color: '#4A3E3A', fontWeight: 500 }}>
+              <p style={{ fontSize: 11, color: T.textSubtle, fontWeight: 500 }}>
                 © 2024 Nikhil&apos;s Feast · Restaurant Management Portal
               </p>
             </div>

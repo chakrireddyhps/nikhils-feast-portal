@@ -3,15 +3,15 @@ export const dynamic = 'force-dynamic'
 
 import { useState } from 'react'
 import { MetricCard, Card, StatusBadge, OrderTypeBadge, DataTable, Btn, SearchBar, PageHeader } from '@/components/ui'
-import { T, ORDERS, MENU_ITEMS, CATEGORIES, fmtINRFull, fmtINR } from '@/lib/mockData'
-import { ShoppingBag, DollarSign, TrendingUp, Filter, Download, Plus, X, Minus, Check } from 'lucide-react'
+import { useTheme } from '@/lib/themeContext'
+import { T as _DARK_ ORDERS, MENU_ITEMS, CATEGORIES, fmtINRFull, fmtINR } from '@/lib/mockData'
+import { ShoppingBag, DollarSignrendingUp, Filter, Download, Plus, X, Minus, Check } from 'lucide-react'
 
 const STATUSES = ['ALL', 'COMPLETED', 'PREPARING', 'READY', 'CANCELLED']
 const CATEGORY_ICONS: Record<string, string> = {
   Chicken: '🍗', Prawns: '🦐', 'Apollo Fish': '🐟', Veg: '🥗',
   Burgers: '🍔', Rolls: '🌯', Waffles: '🧇', 'Fried Momos': '🥟',
-  Desserts: '🍫', 'Special Offers': '⚡',
-}
+  Desserts: '🍫', 'Special Offers': '⚡' }
 
 type CartItem = { id: number; name: string; price: number; qty: number; category: string }
 type OrderType = 'DINE_IN' | 'TAKEAWAY' | 'DELIVERY'
@@ -79,8 +79,7 @@ function NewOrderModal({ onClose }: { onClose: () => void }) {
         height: 'calc(100vh - 68px)', maxHeight: 'none',
         background: T.bg, borderRadius: 20, overflow: 'hidden',
         boxShadow: '0 32px 80px rgba(0,0,0,0.7)',
-        border: `1px solid ${T.border}`,
-      }}>
+        border: `1px solid ${T.border}` }}>
 
         {/* ── LEFT: Menu browser ── */}
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0, borderRight: `1px solid ${T.border}` }}>
@@ -103,8 +102,7 @@ function NewOrderModal({ onClose }: { onClose: () => void }) {
                 padding: '6px 16px', borderRadius: 20, fontSize: 12, fontWeight: 700,
                 cursor: 'pointer', border: 'none', fontFamily: 'inherit', transition: 'all 0.15s',
                 background: orderType === t ? T.burgundy : T.surfaceEl,
-                color: orderType === t ? '#fff' : T.textMuted,
-              }}>{t.replace('_', ' ')}</button>
+                color: orderType === t ? '#fff' : T.textMuted }}>{t.replace('_', ' ')}</button>
             ))}
           </div>
 
@@ -117,8 +115,7 @@ function NewOrderModal({ onClose }: { onClose: () => void }) {
                 border: `1px solid ${activeCategory === cat.name ? T.burgundy : T.border}`,
                 background: activeCategory === cat.name ? `${T.burgundy}22` : 'transparent',
                 color: activeCategory === cat.name ? T.textPrimary : T.textMuted,
-                flexShrink: 0,
-              }}>{CATEGORY_ICONS[cat.name]} {cat.name}</button>
+                flexShrink: 0 }}>{CATEGORY_ICONS[cat.name]} {cat.name}</button>
             ))}
           </div>
 
@@ -132,8 +129,7 @@ function NewOrderModal({ onClose }: { onClose: () => void }) {
                   border: `1.5px solid ${inCart ? T.burgundy : T.border}`,
                   borderRadius: 12, padding: '14px 12px 12px',
                   cursor: 'pointer', textAlign: 'left', transition: 'all 0.15s',
-                  fontFamily: 'inherit', position: 'relative',
-                }}
+                  fontFamily: 'inherit', position: 'relative' }}
                 onMouseEnter={e => { if (!inCart) (e.currentTarget as HTMLElement).style.borderColor = T.borderEl }}
                 onMouseLeave={e => { if (!inCart) (e.currentTarget as HTMLElement).style.borderColor = T.border }}>
                   {inCart && (
@@ -216,8 +212,7 @@ function NewOrderModal({ onClose }: { onClose: () => void }) {
                   cursor: 'pointer', fontFamily: 'inherit', transition: 'all 0.15s',
                   border: `1px solid ${payment === p ? T.gold : T.border}`,
                   background: payment === p ? `${T.gold}18` : 'transparent',
-                  color: payment === p ? T.gold : T.textMuted,
-                }}>{p}</button>
+                  color: payment === p ? T.gold : T.textMuted }}>{p}</button>
               ))}
             </div>
 
@@ -231,8 +226,7 @@ function NewOrderModal({ onClose }: { onClose: () => void }) {
               fontSize: 14, fontWeight: 700, cursor: cart.length === 0 ? 'not-allowed' : 'pointer',
               fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
               boxShadow: cart.length > 0 ? `0 4px 16px rgba(155,35,53,0.3)` : 'none',
-              transition: 'all 0.15s',
-            }}>
+              transition: 'all 0.15s' }}>
               <Check size={15}/>
               {cart.length === 0 ? 'Add items to order' : `Complete · ${fmtINRFull(total)}`}
             </button>
@@ -244,6 +238,7 @@ function NewOrderModal({ onClose }: { onClose: () => void }) {
 }
 
 export default function OrdersPage() {
+  const T = useT()
   const [activeStatus, setActiveStatus] = useState('ALL')
   const [showNewOrder, setShowNewOrder] = useState(false)
 
@@ -271,8 +266,7 @@ export default function OrdersPage() {
             padding: '7px 16px', borderRadius: 20, fontSize: 12, fontWeight: 700,
             cursor: 'pointer', border: 'none', fontFamily: 'inherit',
             background: activeStatus === s ? T.burgundy : T.surfaceEl,
-            color: activeStatus === s ? '#fff' : T.textMuted,
-          }}>
+            color: activeStatus === s ? '#fff' : T.textMuted }}>
             {s === 'ALL' ? 'All' : s.charAt(0) + s.slice(1).toLowerCase()}
             {' '}<span style={{ opacity: 0.7, fontSize: 10 }}>{s === 'ALL' ? ORDERS.length : ORDERS.filter(o => o.status === s).length}</span>
           </button>

@@ -28,10 +28,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const theme = isDark ? DARK : LIGHT
 
-  // Apply CSS vars on body for global overrides
   useEffect(() => {
     document.body.style.background = theme.bg
     document.body.style.color = theme.textPrimary
+    document.body.style.transition = 'background 0.25s, color 0.25s'
   }, [theme])
 
   return (
@@ -42,3 +42,5 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 }
 
 export function useTheme() { return useContext(Ctx) }
+// Shorthand: const T = useT()
+export function useT() { return useContext(Ctx).theme }

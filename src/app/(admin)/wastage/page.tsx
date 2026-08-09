@@ -3,28 +3,26 @@ export const dynamic = 'force-dynamic'
 
 import React, { useState } from 'react'
 import { MetricCard, Card, DataTable, Btn, PageHeader, ChartTip } from '@/components/ui'
-import { T, WASTAGE, fmtINRFull } from '@/lib/mockData'
-import { Trash2, BarChart3, TrendingDown, ReceiptText, AlertTriangle, Plus, Filter, X, Check, ChevronDown } from 'lucide-react'
-import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts'
+import { useTheme } from '@/lib/themeContext'
+import { T as _DARK_ WASTAGE, fmtINRFull } from '@/lib/mockData'
+import { Trash2, BarChart3rendingDown, ReceiptText, AlertTriangle, Plus, Filter, X, Check, ChevronDown } from 'lucide-react'
+import { PieChart, Pie, Cellooltip, ResponsiveContainer } from 'recharts'
 
 const MODAL_OVERLAY: React.CSSProperties = {
   position: 'fixed', inset: 0, zIndex: 999,
   background: 'rgba(0,0,0,0.8)',
   display: 'flex', alignItems: 'flex-start',
   justifyContent: 'center',
-  paddingTop: 8, paddingLeft: 16, paddingRight: 16, paddingBottom: 16,
-}
+  paddingTop: 8, paddingLeft: 16, paddingRight: 16, paddingBottom: 16 }
 
 const INPUT: React.CSSProperties = {
   width: '100%', padding: '10px 13px', background: T.surfaceEl,
   border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
-  color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit',
-}
+  color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit' }
 
 const LABEL: React.CSSProperties = {
   display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted,
-  textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7,
-}
+  textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 }
 
 function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
   e.target.style.borderColor = T.red
@@ -44,8 +42,7 @@ const INGREDIENTS_LIST = [
 const REASON_COLORS: Record<string, string> = {
   Expired: T.red, Spillage: T.amber, Overproduction: T.burgundyLight,
   Burnt: T.blue, 'Preparation Waste': '#A855F7', 'Storage Issue': T.green,
-  Damaged: '#F97316', Other: T.textMuted,
-}
+  Damaged: '#F97316', Other: T.textMuted }
 
 // ─── RECORD WASTAGE MODAL ─────────────────────────────────────────────────────
 function RecordWastageModal({ onClose }: { onClose: () => void }) {
@@ -75,8 +72,7 @@ function RecordWastageModal({ onClose }: { onClose: () => void }) {
         borderRadius: 20, width: '100%', maxWidth: 760,
         boxShadow: '0 32px 80px rgba(0,0,0,0.6)',
         overflow: 'hidden', maxHeight: 'calc(100vh - 24px)',
-        display: 'flex', flexDirection: 'column',
-      }}>
+        display: 'flex', flexDirection: 'column' }}>
         <div style={{ height: 3, background: `linear-gradient(90deg, ${T.red}, #A83232, ${T.red})`, flexShrink: 0 }}/>
 
         {/* Header */}
@@ -98,7 +94,7 @@ function RecordWastageModal({ onClose }: { onClose: () => void }) {
             <div>
               <label style={LABEL}>Date *</label>
               <input type="date" value={form.date} onChange={e => setF('date', e.target.value)}
-                style={{ ...INPUT, colorScheme: 'dark' }} onFocus={focusBorder} onBlur={blurBorder}/>
+                style={{ ...INPU colorScheme: 'dark' }} onFocus={focusBorder} onBlur={blurBorder}/>
             </div>
             <div>
               <label style={LABEL}>Recorded By</label>
@@ -130,7 +126,7 @@ function RecordWastageModal({ onClose }: { onClose: () => void }) {
                   {/* Ingredient */}
                   <div style={{ position: 'relative' }}>
                     <select value={row.ingredient} onChange={e => updateRow(i, 'ingredient', e.target.value)}
-                      style={{ ...INPUT, padding: '7px 24px 7px 10px', fontSize: 12, appearance: 'none' }}
+                      style={{ ...INPU padding: '7px 24px 7px 10px', fontSize: 12, appearance: 'none' }}
                       onFocus={focusBorder} onBlur={blurBorder}>
                       <option value="">Select…</option>
                       {INGREDIENTS_LIST.map(ing => <option key={ing} value={ing}>{ing}</option>)}
@@ -139,12 +135,12 @@ function RecordWastageModal({ onClose }: { onClose: () => void }) {
                   </div>
                   {/* Qty */}
                   <input type="number" value={row.qty} onChange={e => updateRow(i, 'qty', e.target.value)}
-                    placeholder="0" style={{ ...INPUT, padding: '7px 8px', fontSize: 12 }}
+                    placeholder="0" style={{ ...INPU padding: '7px 8px', fontSize: 12 }}
                     onFocus={focusBorder} onBlur={blurBorder}/>
                   {/* Unit */}
                   <div style={{ position: 'relative' }}>
                     <select value={row.unit} onChange={e => updateRow(i, 'unit', e.target.value)}
-                      style={{ ...INPUT, padding: '7px 4px', fontSize: 11, appearance: 'none', textAlign: 'center' }}>
+                      style={{ ...INPU padding: '7px 4px', fontSize: 11, appearance: 'none', textAlign: 'center' }}>
                       {UNITS.map(u => <option key={u} value={u}>{u}</option>)}
                     </select>
                   </div>
@@ -152,13 +148,13 @@ function RecordWastageModal({ onClose }: { onClose: () => void }) {
                   <div style={{ position: 'relative' }}>
                     <span style={{ position: 'absolute', left: 9, top: '50%', transform: 'translateY(-50%)', color: T.textMuted, fontSize: 12 }}>₹</span>
                     <input type="number" value={row.cost} onChange={e => updateRow(i, 'cost', e.target.value)}
-                      placeholder="0" style={{ ...INPUT, padding: '7px 8px 7px 20px', fontSize: 12 }}
+                      placeholder="0" style={{ ...INPU padding: '7px 8px 7px 20px', fontSize: 12 }}
                       onFocus={focusBorder} onBlur={blurBorder}/>
                   </div>
                   {/* Reason */}
                   <div style={{ position: 'relative' }}>
                     <select value={row.reason} onChange={e => updateRow(i, 'reason', e.target.value)}
-                      style={{ ...INPUT, padding: '7px 24px 7px 10px', fontSize: 11, appearance: 'none',
+                      style={{ ...INPU padding: '7px 24px 7px 10px', fontSize: 11, appearance: 'none',
                         color: REASON_COLORS[row.reason] || T.textSecondary }}
                       onFocus={focusBorder} onBlur={blurBorder}>
                       {REASONS.map(r => <option key={r} value={r}>{r}</option>)}
@@ -192,7 +188,7 @@ function RecordWastageModal({ onClose }: { onClose: () => void }) {
             <label style={LABEL}>Notes</label>
             <textarea value={form.notes} onChange={e => setF('notes', e.target.value)}
               placeholder="Any additional context about this wastage…" rows={2}
-              style={{ ...INPUT, resize: 'vertical', lineHeight: 1.6 } as React.CSSProperties}
+              style={{ ...INPU resize: 'vertical', lineHeight: 1.6 } as React.CSSProperties}
               onFocus={focusBorder} onBlur={blurBorder}/>
           </div>
 
@@ -217,8 +213,7 @@ function RecordWastageModal({ onClose }: { onClose: () => void }) {
             background: done ? T.green : `linear-gradient(135deg, ${T.red}, #A83232)`,
             color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer',
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-            boxShadow: '0 4px 16px rgba(224,90,90,0.25)', transition: 'all 0.2s',
-          }}>
+            boxShadow: '0 4px 16px rgba(224,90,90,0.25)', transition: 'all 0.2s' }}>
             {done
               ? <><Check size={15}/> Wastage Recorded!</>
               : <><Trash2 size={15}/> Record Wastage{totalWastage > 0 ? ` · -${fmtINRFull(totalWastage)}` : ''}</>
@@ -232,6 +227,7 @@ function RecordWastageModal({ onClose }: { onClose: () => void }) {
 
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function WastagePage() {
+  const T = useT()
   const [showRecord, setShowRecord] = useState(false)
   const totalWastage = WASTAGE.reduce((s, w) => s + w.total, 0)
 
@@ -240,8 +236,7 @@ export default function WastagePage() {
     return acc
   }, {})
   const pieData = Object.entries(byReason).map(([name, value]) => ({
-    name, value, color: REASON_COLORS[name] || T.textMuted,
-  })).sort((a, b) => b.value - a.value)
+    name, value, color: REASON_COLORS[name] || T.textMuted })).sort((a, b) => b.value - a.value)
 
   return (
     <div>

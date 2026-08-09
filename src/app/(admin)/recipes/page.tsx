@@ -3,7 +3,8 @@ export const dynamic = 'force-dynamic'
 
 import React, { useState } from 'react'
 import { Card, Btn, SearchBar, PageHeader } from '@/components/ui'
-import { T, RECIPES, MENU_ITEMS } from '@/lib/mockData'
+import { useTheme } from '@/lib/themeContext'
+import { T as _DARK_T, RECIPES, MENU_ITEMS } from '@/lib/mockData'
 import { Plus, Edit, X, Check, ChevronDown, Trash2, BookOpen } from 'lucide-react'
 
 const MODAL_OVERLAY: React.CSSProperties = {
@@ -26,9 +27,11 @@ const LABEL: React.CSSProperties = {
 }
 
 function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) {
+  const T = useT()
   e.target.style.borderColor = T.burgundy
 }
 function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) {
+  const T = useT()
   e.target.style.borderColor = T.border
 }
 
@@ -63,6 +66,7 @@ function RecipeModal({ initial, menuItem, onClose }: {
   const [done, setDone] = useState(false)
 
   function updateRow(i: number, k: string, v: string) {
+  const T = useT()
     setRows(prev => prev.map((row, idx) => {
       if (idx !== i) return row
       const updated = { ...row, [k]: v }
@@ -255,6 +259,8 @@ function RecipeModal({ initial, menuItem, onClose }: {
 
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function RecipesPage() {
+  const T = useT()
+  const T = useT()
   const [selected, setSelected] = useState<Recipe>(RECIPES[0])
   const [showModal, setShowModal] = useState(false)
   const [editMode, setEditMode] = useState(false)
