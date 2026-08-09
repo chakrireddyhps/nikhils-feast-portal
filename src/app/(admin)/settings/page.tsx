@@ -12,26 +12,12 @@ import {
   MapPin, Camera } from 'lucide-react'
 
 // ─── SHARED STYLES ─────────────────────────────────────────────────────────────
-const INPUT: React.CSSProperties = {
-  width: '100%', padding: '10px 13px', background: T.surfaceEl,
-  border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
-  color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit' }
-const LABEL: React.CSSProperties = {
-  display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted,
-  textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 }
-const SECTION: React.CSSProperties = {
-  background: T.surface, border: `1px solid ${T.border}`,
-  borderRadius: 16, overflow: 'hidden', marginBottom: 20 }
-const SECTION_HEADER: React.CSSProperties = {
-  padding: '16px 22px', borderBottom: `1px solid ${T.border}`,
-  display: 'flex', alignItems: 'center', justifyContent: 'space-between' }
 
-function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
-  e.target.style.borderColor = T.burgundy
-}
-function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
-  e.target.style.borderColor = T.border
-}
+
+
+
+
+
 
 function SaveBtn({ label = 'Save Changes', done, onClick }: { label?: string; done: boolean; onClick: () => void }) {
   return (
@@ -62,6 +48,14 @@ function Toggle({ on, onChange }: { on: boolean; onChange: (v: boolean) => void 
 // ─── RESTAURANT PROFILE ───────────────────────────────────────────────────────
 function RestaurantProfile() {
   const T = useT()
+  const INPUT: React.CSSProperties = {
+    width: '100%', padding: '10px 13px', background: T.surfaceEl,
+    border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
+    color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit',
+  }
+    function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.burgundy }
+  function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
+
   const [form, setForm] = useState({
     name: "Nikhil's Feast", tagline: 'A Feast To Be Remembered',
     email: 'nikhil@nikhilsfeast.com', phone: '+91 98765 43210',
@@ -149,6 +143,14 @@ function RestaurantProfile() {
 // ─── ORDER SETTINGS ───────────────────────────────────────────────────────────
 function OrderSettings() {
   const T = useT()
+  const INPUT: React.CSSProperties = {
+    width: '100%', padding: '10px 13px', background: T.surfaceEl,
+    border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
+    color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit',
+  }
+    function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.burgundy }
+  function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
+
   const [form, setForm] = useState({
     prefix: 'ORD', nextNumber: '2848', defaultTax: '5',
     autoAccept: false, requireTable: false, allowCash: true,
@@ -258,6 +260,14 @@ function OrderSettings() {
 // ─── INVENTORY SETTINGS ───────────────────────────────────────────────────────
 function InventorySettings() {
   const T = useT()
+  const INPUT: React.CSSProperties = {
+    width: '100%', padding: '10px 13px', background: T.surfaceEl,
+    border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
+    color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit',
+  }
+    function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.burgundy }
+  function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
+
   const [form, setForm] = useState({
     defaultUnit: 'KG', lowStockThreshold: '20',
     criticalStockThreshold: '10', autoDeductOnOrder: true,
@@ -331,6 +341,14 @@ const ROLE_COLORS: Record<string, string> = { Owner: T.gold, Manager: T.blue, Ad
 
 function UserManagement() {
   const T = useT()
+  const INPUT: React.CSSProperties = {
+    width: '100%', padding: '10px 13px', background: T.surfaceEl,
+    border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
+    color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit',
+  }
+    function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.burgundy }
+  function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
+
   const [showInvite, setShowInvite] = useState(false)
   const [inviteEmail, setInviteEmail] = useState('')
   const [inviteRole, setInviteRole] = useState('Staff')
@@ -460,6 +478,14 @@ function UserManagement() {
 // ─── SECURITY ─────────────────────────────────────────────────────────────────
 function Security() {
   const T = useT()
+  const INPUT: React.CSSProperties = {
+    width: '100%', padding: '10px 13px', background: T.surfaceEl,
+    border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
+    color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit',
+  }
+    function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.burgundy }
+  function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
+
   const [showPw, setShowPw] = useState({ curr: false, new: false, conf: false })
   const [pw, setPw] = useState({ curr: '', new: '', conf: '' })
   const [pwDone, setPwDone] = useState(false)

@@ -16,14 +16,7 @@ const MODAL_OVERLAY: React.CSSProperties = {
 }
 
 
-const INPUT: React.CSSProperties = {
-  width: '100%', padding: '10px 13px', background: T.surfaceEl,
-  border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
-  color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit' }
 
-const LABEL: React.CSSProperties = {
-  display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted,
-  textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 }
 
 function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) {
   e.target.style.borderColor = T.burgundy
@@ -46,7 +39,16 @@ type RecipeRow = { ingredient: string; qty: string; unit: string; cost: string; 
 type Recipe = typeof RECIPES[0]
 
 // ─── ADD / EDIT RECIPE MODAL ──────────────────────────────────────────────────
-function RecipeModal({ initial, menuItem, onClose }: {
+function RecipeModal({
+  const T = useT()
+  const INPUT: React.CSSProperties = {
+    width: '100%', padding: '10px 13px', background: T.surfaceEl,
+    border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
+    color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit',
+  }
+    function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.burgundy }
+  function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
+ initial, menuItem, onClose }: {
   initial?: Recipe | null
   menuItem?: string
   onClose: () => void

@@ -17,14 +17,7 @@ const MODAL_OVERLAY: React.CSSProperties = {
 }
 
 
-const INPUT: React.CSSProperties = {
-  width: '100%', padding: '10px 13px', background: T.surfaceEl,
-  border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
-  color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit' }
 
-const LABEL: React.CSSProperties = {
-  display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted,
-  textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 }
 
 function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
   e.target.style.borderColor = T.burgundy
@@ -50,7 +43,16 @@ const CATEGORY_COLORS: Record<string, string> = {
 type Expense = typeof EXPENSES[0]
 
 // ─── ADD / EDIT EXPENSE MODAL ─────────────────────────────────────────────────
-function ExpenseModal({ initial, onClose }: { initial?: Expense | null; onClose: () => void }) {
+function ExpenseModal({
+  const T = useT()
+  const INPUT: React.CSSProperties = {
+    width: '100%', padding: '10px 13px', background: T.surfaceEl,
+    border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
+    color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit',
+  }
+    function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.burgundy }
+  function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
+ initial, onClose }: { initial?: Expense | null; onClose: () => void }) {
   const T = useT()
   const isEdit = !!initial
   const [form, setForm] = useState({

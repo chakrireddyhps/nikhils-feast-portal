@@ -16,14 +16,7 @@ const MODAL_OVERLAY: React.CSSProperties = {
 }
 
 
-const INPUT: React.CSSProperties = {
-  width: '100%', padding: '10px 13px', background: T.surfaceEl,
-  border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
-  color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit' }
 
-const LABEL: React.CSSProperties = {
-  display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted,
-  textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 }
 
 function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
   e.target.style.borderColor = T.green
@@ -42,7 +35,16 @@ const MOCK_INGREDIENTS_LIST = [
 ]
 
 // ─── VIEW PURCHASE MODAL ──────────────────────────────────────────────────────
-function ViewPurchaseModal({ purchase, onClose }: { purchase: typeof PURCHASES[0]; onClose: () => void }) {
+function ViewPurchaseModal({
+  const T = useT()
+  const INPUT: React.CSSProperties = {
+    width: '100%', padding: '10px 13px', background: T.surfaceEl,
+    border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
+    color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit',
+  }
+    function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.burgundy }
+  function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
+ purchase, onClose }: { purchase: typeof PURCHASES[0]; onClose: () => void }) {
   const T = useT()
   const mockItems = [
     { ingredient: 'Chicken (Whole)', qty: 10, unit: 'KG', unitPrice: 180, tax: 0, total: 1800 },
@@ -136,7 +138,16 @@ function ViewPurchaseModal({ purchase, onClose }: { purchase: typeof PURCHASES[0
 }
 
 // ─── NEW PURCHASE MODAL ───────────────────────────────────────────────────────
-function NewPurchaseModal({ onClose }: { onClose: () => void }) {
+function NewPurchaseModal({
+  const T = useT()
+  const INPUT: React.CSSProperties = {
+    width: '100%', padding: '10px 13px', background: T.surfaceEl,
+    border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
+    color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit',
+  }
+    function focusBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.burgundy }
+  function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
+ onClose }: { onClose: () => void }) {
   const T = useT()
   const [rows, setRows] = useState([{ ingredient: '', qty: '', unit: 'KG', unitPrice: '', tax: '0', total: 0 }])
   const [form, setForm] = useState({ supplier: '', invoiceNo: '', date: new Date().toISOString().split('T')[0], notes: '', paymentMethod: 'CASH' })
