@@ -348,7 +348,7 @@ const MOCK_USERS = [
   { id:3, name:'Priya Singh', email:'priya@nikhilsfeast.com',  role:'Staff',   status:'active',   lastLogin:'3 hours ago' },
   { id:4, name:'Rahul M',     email:'rahul@nikhilsfeast.com',  role:'Staff',   status:'inactive', lastLogin:'2 days ago'  },
 ]
-const ROLE_COLORS: Record<string, string> = { Owner: T.gold, Manager: T.blue, Admin: '#A855F7', Staff: T.green }
+const ROLE_COLORS: Record<string, string> = { Owner: '#C9A84C', Manager: '#5B9BD5', Admin: '#A855F7', Staff: '#4CAF7D' }
 
 function UserManagement() {
   const T = useT()
