@@ -78,7 +78,7 @@ export function Card({ children, style = {} }: { children: React.ReactNode; styl
 export function PageHeader({ title, subtitle, action }: { title: string; subtitle?: string; action?: React.ReactNode }) {
   const { theme: T } = useTheme()
   return (
-    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 28, gap: 16, flexWrap: 'wrap' }}>
+    <div className="page-header-row" style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 28, gap: 16, flexWrap: 'wrap' }}>
       <div>
         <h1 style={{ fontSize: 22, fontWeight: 800, color: T.textPrimary, margin: 0, letterSpacing: '-0.03em', lineHeight: 1.2 }}>{title}</h1>
         {subtitle && <p style={{ fontSize: 13, color: T.textMuted, marginTop: 5, fontWeight: 500 }}>{subtitle}</p>}
@@ -133,8 +133,8 @@ export function DataTable<R extends Record<string, unknown>>({ columns, data, on
 }) {
   const { theme: T } = useTheme()
   return (
-    <div style={{ overflowX: 'auto' }}>
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+    <div className="table-scroll-wrap" style={{ overflowX: 'auto' }}>
+      <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 480 }}>
         <thead>
           <tr style={{ borderBottom: `1px solid ${T.border}` }}>
             {columns.map(col => (

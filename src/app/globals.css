@@ -23,14 +23,13 @@
     font-family: 'Poppins', system-ui, sans-serif;
   }
 
-  /* Light mode overrides via data attribute */
   body[data-theme='light'] {
     background-color: #F4F1EE;
     color: #1A1210;
   }
 }
 
-/* Scrollbar */
+/* ─── Scrollbar ─────────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(128,128,128,0.2); border-radius: 4px; }
@@ -38,8 +37,158 @@
 .scrollbar-none::-webkit-scrollbar { display: none; }
 .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
 
+/* ─── Animation ─────────────────────────────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .animate-fade-up { animation: fadeUp 0.22s ease-out forwards; }
+
+/* ─── Sidebar overlay backdrop (mobile) ─────────────────────────────────────── */
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(3px);
+}
+.sidebar-backdrop.open { display: block; }
+
+/* ─── Responsive Layout ─────────────────────────────────────────────────────── */
+
+/* Tablet: 768px–1023px — sidebar collapses to icon-only by default */
+@media (max-width: 1023px) {
+  .admin-sidebar {
+    width: 68px !important;
+  }
+  .admin-sidebar .sidebar-label,
+  .admin-sidebar .sidebar-group-label,
+  .admin-sidebar .sidebar-brand-text,
+  .admin-sidebar .sidebar-user-text,
+  .admin-sidebar .sidebar-collapse-label {
+    display: none !important;
+  }
+  .admin-sidebar .sidebar-nav-link {
+    justify-content: center !important;
+    padding: 10px 14px !important;
+  }
+  .admin-sidebar .sidebar-brand-wrap {
+    padding: 22px 14px !important;
+  }
+  .admin-sidebar .sidebar-bottom {
+    padding: 14px 8px !important;
+  }
+  .admin-sidebar .sidebar-user-row {
+    justify-content: center !important;
+  }
+  .admin-topbar {
+    left: 68px !important;
+  }
+  .admin-main {
+    margin-left: 68px !important;
+  }
+  .topbar-date-label { display: none !important; }
+}
+
+/* Mobile: < 768px — sidebar is an overlay (hidden off-screen by default) */
+@media (max-width: 767px) {
+  .admin-sidebar {
+    width: 260px !important;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease, width 0.2s ease !important;
+    z-index: 200 !important;
+  }
+  .admin-sidebar.mobile-open {
+    transform: translateX(0) !important;
+  }
+  /* Restore full sidebar labels when open on mobile */
+  .admin-sidebar.mobile-open .sidebar-label,
+  .admin-sidebar.mobile-open .sidebar-group-label,
+  .admin-sidebar.mobile-open .sidebar-brand-text,
+  .admin-sidebar.mobile-open .sidebar-user-text,
+  .admin-sidebar.mobile-open .sidebar-collapse-label {
+    display: block !important;
+  }
+  .admin-sidebar.mobile-open .sidebar-brand-text p { display: block !important; }
+  .admin-sidebar.mobile-open .sidebar-nav-link {
+    justify-content: flex-start !important;
+    padding: 10px 12px !important;
+  }
+  .admin-sidebar.mobile-open .sidebar-brand-wrap {
+    padding: 22px 20px !important;
+  }
+  .admin-sidebar.mobile-open .sidebar-bottom {
+    padding: 14px 16px !important;
+  }
+  .admin-sidebar.mobile-open .sidebar-user-row {
+    justify-content: flex-start !important;
+  }
+  /* Topbar and main go full-width on mobile */
+  .admin-topbar {
+    left: 0 !important;
+  }
+  .admin-main {
+    margin-left: 0 !important;
+  }
+  /* Show hamburger on mobile */
+  .topbar-hamburger { display: flex !important; }
+  /* Hide date label on mobile to save space */
+  .topbar-date-label { display: none !important; }
+  /* Avatar: hide name text on mobile */
+  .topbar-avatar-text { display: none !important; }
+  /* Topbar padding tighter */
+  .admin-topbar { padding: 0 14px !important; gap: 10px !important; }
+  /* Page padding tighter */
+  .admin-page-content { padding: 16px 14px !important; }
+}
+
+/* ─── Grid responsiveness for page content ─────────────────────────────────── */
+
+/* Two-column 2fr/1fr → single column on tablet/mobile */
+@media (max-width: 900px) {
+  .grid-2-1 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* KPI cards: fewer columns on small screens */
+@media (max-width: 600px) {
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Tables: horizontal scroll on mobile */
+.table-scroll-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* PageHeader: stack on mobile */
+@media (max-width: 600px) {
+  .page-header-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+  .page-header-row h1 {
+    font-size: 18px !important;
+  }
+}
+
+/* SearchBar + filter row: wrap on mobile */
+@media (max-width: 600px) {
+  .toolbar-row {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+  .toolbar-row > * {
+    flex-shrink: 0;
+  }
+}
+
+/* Topbar chevron on avatar pill: hide on very small screens */
+@media (max-width: 400px) {
+  .topbar-avatar-chevron { display: none !important; }
+}
