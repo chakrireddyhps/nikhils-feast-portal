@@ -7,7 +7,6 @@
 @layer base {
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-
   body {
     background-color: #0F0B0A;
     color: #F5EFE6;
@@ -18,18 +17,16 @@
     line-height: 1.5;
     transition: background-color 0.25s, color 0.25s;
   }
-
   input, textarea, select, button {
     font-family: 'Poppins', system-ui, sans-serif;
   }
-
   body[data-theme='light'] {
     background-color: #F4F1EE;
     color: #1A1210;
   }
 }
 
-/* ─── Scrollbar ─────────────────────────────────────────────────────────────── */
+/* ─── Scrollbar ──────────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(128,128,128,0.2); border-radius: 4px; }
@@ -37,61 +34,44 @@
 .scrollbar-none::-webkit-scrollbar { display: none; }
 .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* ─── Animation ─────────────────────────────────────────────────────────────── */
+/* ─── Animation ──────────────────────────────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .animate-fade-up { animation: fadeUp 0.22s ease-out forwards; }
 
-/* ─── Sidebar overlay backdrop (mobile) ─────────────────────────────────────── */
+/* ─── Sidebar backdrop (mobile) ─────────────────────────────────────────────── */
 .sidebar-backdrop {
   display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 99;
+  position: fixed; inset: 0; z-index: 99;
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(3px);
 }
 .sidebar-backdrop.open { display: block; }
 
-/* ─── Responsive Layout ─────────────────────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════════════════════════
+   LAYOUT RESPONSIVENESS
+════════════════════════════════════════════════════════════════════════════════ */
 
-/* Tablet: 768px–1023px — sidebar collapses to icon-only by default */
+/* Tablet 768–1023px: sidebar icon-only */
 @media (max-width: 1023px) {
-  .admin-sidebar {
-    width: 68px !important;
-  }
+  .admin-sidebar { width: 68px !important; }
   .admin-sidebar .sidebar-label,
   .admin-sidebar .sidebar-group-label,
   .admin-sidebar .sidebar-brand-text,
   .admin-sidebar .sidebar-user-text,
-  .admin-sidebar .sidebar-collapse-label {
-    display: none !important;
-  }
-  .admin-sidebar .sidebar-nav-link {
-    justify-content: center !important;
-    padding: 10px 14px !important;
-  }
-  .admin-sidebar .sidebar-brand-wrap {
-    padding: 22px 14px !important;
-  }
-  .admin-sidebar .sidebar-bottom {
-    padding: 14px 8px !important;
-  }
-  .admin-sidebar .sidebar-user-row {
-    justify-content: center !important;
-  }
-  .admin-topbar {
-    left: 68px !important;
-  }
-  .admin-main {
-    margin-left: 68px !important;
-  }
+  .admin-sidebar .sidebar-collapse-label { display: none !important; }
+  .admin-sidebar .sidebar-nav-link { justify-content: center !important; padding: 10px 14px !important; }
+  .admin-sidebar .sidebar-brand-wrap { padding: 22px 14px !important; }
+  .admin-sidebar .sidebar-bottom { padding: 14px 8px !important; }
+  .admin-sidebar .sidebar-user-row { justify-content: center !important; }
+  .admin-topbar { left: 68px !important; }
+  .admin-main  { margin-left: 68px !important; }
   .topbar-date-label { display: none !important; }
 }
 
-/* Mobile: < 768px — sidebar is an overlay (hidden off-screen by default) */
+/* Mobile <768px: sidebar overlay */
 @media (max-width: 767px) {
   .admin-sidebar {
     width: 260px !important;
@@ -99,176 +79,102 @@
     transition: transform 0.25s ease, width 0.2s ease !important;
     z-index: 200 !important;
   }
-  .admin-sidebar.mobile-open {
-    transform: translateX(0) !important;
-  }
-  /* Restore full sidebar labels when open on mobile */
+  .admin-sidebar.mobile-open { transform: translateX(0) !important; }
   .admin-sidebar.mobile-open .sidebar-label,
   .admin-sidebar.mobile-open .sidebar-group-label,
   .admin-sidebar.mobile-open .sidebar-brand-text,
   .admin-sidebar.mobile-open .sidebar-user-text,
-  .admin-sidebar.mobile-open .sidebar-collapse-label {
-    display: block !important;
-  }
+  .admin-sidebar.mobile-open .sidebar-collapse-label { display: block !important; }
   .admin-sidebar.mobile-open .sidebar-brand-text p { display: block !important; }
-  .admin-sidebar.mobile-open .sidebar-nav-link {
-    justify-content: flex-start !important;
-    padding: 10px 12px !important;
-  }
-  .admin-sidebar.mobile-open .sidebar-brand-wrap {
-    padding: 22px 20px !important;
-  }
-  .admin-sidebar.mobile-open .sidebar-bottom {
-    padding: 14px 16px !important;
-  }
-  .admin-sidebar.mobile-open .sidebar-user-row {
-    justify-content: flex-start !important;
-  }
-  /* Topbar and main go full-width on mobile */
-  .admin-topbar {
-    left: 0 !important;
-  }
-  .admin-main {
-    margin-left: 0 !important;
-  }
-  /* Show hamburger on mobile */
+  .admin-sidebar.mobile-open .sidebar-nav-link { justify-content: flex-start !important; padding: 10px 12px !important; }
+  .admin-sidebar.mobile-open .sidebar-brand-wrap { padding: 22px 20px !important; }
+  .admin-sidebar.mobile-open .sidebar-bottom { padding: 14px 16px !important; }
+  .admin-sidebar.mobile-open .sidebar-user-row { justify-content: flex-start !important; }
+
+  .admin-topbar { left: 0 !important; padding: 0 14px !important; gap: 10px !important; }
+  .admin-main  { margin-left: 0 !important; }
   .topbar-hamburger { display: flex !important; }
-  /* Hide date label on mobile to save space */
   .topbar-date-label { display: none !important; }
-  /* Avatar: hide name text on mobile */
   .topbar-avatar-text { display: none !important; }
-  /* Topbar padding tighter */
-  .admin-topbar { padding: 0 14px !important; gap: 10px !important; }
-  /* Page padding tighter */
   .admin-page-content { padding: 16px 14px !important; }
 }
 
-/* ─── Grid responsiveness for page content ─────────────────────────────────── */
-
-/* Two-column 2fr/1fr → single column on tablet/mobile */
-@media (max-width: 900px) {
-  .grid-2-1 {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-/* KPI cards: fewer columns on small screens */
-@media (max-width: 600px) {
-  .kpi-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-}
-
-/* Tables: horizontal scroll on mobile */
-.table-scroll-wrap {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* PageHeader: stack on mobile */
-@media (max-width: 600px) {
-  .page-header-row {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 12px !important;
-  }
-  .page-header-row h1 {
-    font-size: 18px !important;
-  }
-}
-
-/* SearchBar + filter row: wrap on mobile */
-@media (max-width: 600px) {
-  .toolbar-row {
-    flex-wrap: wrap !important;
-    gap: 8px !important;
-  }
-  .toolbar-row > * {
-    flex-shrink: 0;
-  }
-}
-
-/* Topbar chevron on avatar pill: hide on very small screens */
 @media (max-width: 400px) {
   .topbar-avatar-chevron { display: none !important; }
 }
 
-/* ─── Page-level responsive grid overrides ──────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════════════════════════
+   DATA TABLE — always horizontally scrollable, respects card rounding
+════════════════════════════════════════════════════════════════════════════════ */
+.table-scroll-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  /* Ensure scroll container itself doesn't overflow its card */
+  width: 100%;
+}
+.table-scroll-wrap table {
+  /* Enough to show all columns without crushing but fits most tablets */
+  min-width: 480px;
+}
+/* On very small phones, compress further */
+@media (max-width: 400px) {
+  .table-scroll-wrap table { min-width: 360px; }
+  .table-scroll-wrap td, .table-scroll-wrap th { padding: 10px 10px !important; font-size: 11px !important; }
+}
 
-/* 4-col KPI grids → 2-col on mobile */
+/* ════════════════════════════════════════════════════════════════════════════════
+   PAGE HEADER
+════════════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 600px) {
+  .page-header-row { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
+  .page-header-row h1 { font-size: 18px !important; }
+}
+
+/* ════════════════════════════════════════════════════════════════════════════════
+   KPI GRIDS
+════════════════════════════════════════════════════════════════════════════════ */
 @media (max-width: 767px) {
-  .grid-4-kpi  { grid-template-columns: repeat(2, 1fr) !important; }
-  .grid-5-kpi  { grid-template-columns: repeat(2, 1fr) !important; }
-  .grid-2-col  { grid-template-columns: 1fr !important; }
-  .grid-3-col  { grid-template-columns: 1fr !important; }
+  .grid-4-kpi   { grid-template-columns: repeat(2, 1fr) !important; }
+  .grid-5-kpi   { grid-template-columns: repeat(2, 1fr) !important; }
   .grid-settings { grid-template-columns: 1fr !important; }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
-  .grid-5-kpi  { grid-template-columns: repeat(3, 1fr) !important; }
-  .grid-4-kpi  { grid-template-columns: repeat(2, 1fr) !important; }
+  .grid-5-kpi { grid-template-columns: repeat(3, 1fr) !important; }
+  .grid-4-kpi { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
-/* Two-col chart rows (2fr 1fr) stack on tablet/mobile */
+/* ════════════════════════════════════════════════════════════════════════════════
+   TWO-COLUMN CHART / CONTENT ROWS  (2fr 1fr  or  1fr 1fr)
+════════════════════════════════════════════════════════════════════════════════ */
 @media (max-width: 900px) {
   .grid-chart-row { grid-template-columns: 1fr !important; }
-}
-
-/* Recipes sidebar + detail stack */
-@media (max-width: 900px) {
-  .grid-recipes { grid-template-columns: 1fr !important; }
-  .grid-recipes > div:first-child { max-height: 260px; overflow-y: auto; }
-}
-
-/* PnL hero cards → 2-col then 1-col */
-@media (max-width: 900px) {
-  .grid-pnl-hero { grid-template-columns: repeat(3, 1fr) !important; }
+  .grid-recipes   { grid-template-columns: 1fr !important; }
+  .grid-pnl-hero  { grid-template-columns: repeat(3, 1fr) !important; }
 }
 @media (max-width: 600px) {
-  .grid-pnl-hero { grid-template-columns: repeat(2, 1fr) !important; }
-}
-
-/* Settings 1fr 1fr → 1 col */
-@media (max-width: 600px) {
-  .settings-2col { grid-template-columns: 1fr !important; }
-  .settings-3col { grid-template-columns: 1fr !important; }
+  .grid-pnl-hero  { grid-template-columns: repeat(2, 1fr) !important; }
+  .pnl-2col       { grid-template-columns: 1fr !important; }
+  .settings-2col  { grid-template-columns: 1fr !important; }
+  .settings-3col  { grid-template-columns: 1fr !important; }
   .settings-span3 { grid-column: span 1 !important; }
-  .pnl-2col      { grid-template-columns: 1fr !important; }
+  .recipe-detail-kpis { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
-/* Order/filter toolbar: wrap + shrink buttons on mobile */
-@media (max-width: 600px) {
-  .filter-toolbar { flex-wrap: wrap !important; }
-  .filter-toolbar .ml-auto { margin-left: 0 !important; width: 100%; }
-}
-
-/* New Order modal: single column on mobile */
-@media (max-width: 767px) {
-  .new-order-modal {
-    flex-direction: column !important;
-    height: auto !important;
-    max-height: calc(100vh - 24px) !important;
-    overflow-y: auto !important;
-  }
-  .new-order-cart {
-    width: 100% !important;
-    border-top: 1px solid rgba(255,255,255,0.07) !important;
-    border-right: none !important;
-    max-height: 320px;
-  }
-  .new-order-menu { border-right: none !important; min-height: 300px; }
-}
-
-/* ─── SearchBar: fluid on mobile ────────────────────────────────────────────── */
-.searchbar-wrap { width: 220px; }
+/* ════════════════════════════════════════════════════════════════════════════════
+   SEARCHBAR — fluid
+════════════════════════════════════════════════════════════════════════════════ */
+.searchbar-wrap { width: 220px; flex-shrink: 0; }
+.searchbar-wrap input { width: 100%; }
 @media (max-width: 767px) {
   .searchbar-wrap { width: 100%; min-width: 0; }
-  .searchbar-wrap input { max-width: 100% !important; }
 }
 
-/* ─── Card toolbar (title + searchbar + buttons) ────────────────────────────── */
-/* Used in expenses, ingredients, purchases, wastage card headers */
+/* ════════════════════════════════════════════════════════════════════════════════
+   CARD TOOLBAR  (card header containing title + search + buttons)
+   — used in Expenses, Wastage card headers
+════════════════════════════════════════════════════════════════════════════════ */
 .card-toolbar {
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
@@ -282,14 +188,17 @@
   flex-shrink: 0;
 }
 @media (max-width: 600px) {
-  .card-toolbar { flex-direction: column; align-items: flex-start; }
+  .card-toolbar      { flex-direction: column !important; align-items: flex-start !important; }
   .card-toolbar-actions { width: 100%; }
-  .card-toolbar-actions .searchbar-wrap { flex: 1; }
+  .card-toolbar-actions .searchbar-wrap { flex: 1; width: 100%; }
 }
 
-/* ─── Page-level filter/action toolbar ──────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════════════════════════
+   PAGE TOOLBAR  (standalone filter bar above a card)
+   — used in Ingredients, Purchases
+════════════════════════════════════════════════════════════════════════════════ */
 .page-toolbar {
-  display: flex;
+  display: flex !important;
   align-items: center;
   gap: 8px;
   margin-bottom: 14px;
@@ -304,66 +213,51 @@
 @media (max-width: 600px) {
   .page-toolbar { gap: 6px; }
   .page-toolbar .toolbar-right { margin-left: 0; width: 100%; }
-  .page-toolbar .searchbar-wrap { flex: 1; }
+  .page-toolbar .searchbar-wrap { flex: 1; width: 100%; }
 }
 
-/* ─── Status filter pills row (orders page) ─────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════════════════════════
+   STATUS FILTER ROW  (Orders page pills + search)
+════════════════════════════════════════════════════════════════════════════════ */
 .status-filter-row {
-  display: flex;
+  display: flex !important;
   align-items: center;
   gap: 8px;
   margin-bottom: 14px;
   flex-wrap: wrap;
 }
+.status-filter-row .toolbar-right {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
 @media (max-width: 600px) {
-  .status-filter-row .toolbar-right {
-    width: 100%;
-    margin-left: 0;
-    flex-wrap: wrap;
-  }
-  .status-filter-row .searchbar-wrap { flex: 1; min-width: 120px; }
+  .status-filter-row .toolbar-right { margin-left: 0; width: 100%; }
+  .status-filter-row .searchbar-wrap { flex: 1; width: 100%; }
 }
 
-/* ─── MetricCard value: scale down on tiny screens ──────────────────────────── */
-@media (max-width: 400px) {
-  /* Handled by 2-col grid, value truncates gracefully */
-  .grid-4-kpi > div > div:nth-child(2) { font-size: 20px !important; }
-}
-
-/* ─── Expenses/Wastage: card header with inline SearchBar ───────────────────── */
-@media (max-width: 600px) {
-  .card-header-with-search {
+/* ════════════════════════════════════════════════════════════════════════════════
+   NEW ORDER MODAL — stacks on mobile
+════════════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+  .new-order-modal {
     flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 10px !important;
-    padding: 14px 16px !important;
+    height: auto !important;
+    max-height: calc(100vh - 24px) !important;
+    overflow-y: auto !important;
   }
-  .card-header-with-search .searchbar-wrap { width: 100%; }
-  .card-header-with-search .searchbar-wrap input { max-width: 100% !important; }
-}
-
-/* ─── Table: ensure Card wrapper clips properly ─────────────────────────────── */
-.card-table-wrap {
-  border-radius: 16px;
-  overflow: hidden; /* clips table corners */
-}
-.card-table-wrap .table-scroll-wrap {
-  border-radius: 0; /* inner scroll area doesn't need radius */
-}
-
-/* ─── Recipes detail view: ingredient table on mobile ───────────────────────── */
-@media (max-width: 600px) {
-  .recipe-detail-kpis {
-    grid-template-columns: repeat(2, 1fr) !important;
+  .new-order-cart {
+    width: 100% !important;
+    border-top: 1px solid rgba(255,255,255,0.07) !important;
+    border-right: none !important;
+    max-height: 320px;
   }
 }
 
-/* ─── PnL period tabs: smaller text on mobile ───────────────────────────────── */
+/* ════════════════════════════════════════════════════════════════════════════════
+   PERIOD TABS  (PnL)
+════════════════════════════════════════════════════════════════════════════════ */
 @media (max-width: 400px) {
   .period-tabs button { padding: 5px 10px !important; font-size: 11px !important; }
-}
-
-/* ─── Orders status tabs: compact on mobile ─────────────────────────────────── */
-@media (max-width: 500px) {
-  .status-pill { padding: 5px 10px !important; font-size: 11px !important; }
 }

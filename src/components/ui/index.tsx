@@ -69,7 +69,7 @@ export function OrderTypeBadge({ type }: { type: string }) {
 export function Card({ children, style = {} }: { children: React.ReactNode; style?: React.CSSProperties }) {
   const { theme: T } = useTheme()
   return (
-    <div style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16, boxShadow: T.cardShadow, transition: 'background 0.25s, border-color 0.25s', ...style }}>
+    <div style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16, boxShadow: T.cardShadow, transition: 'background 0.25s, border-color 0.25s', overflow: 'hidden', ...style }}>
       {children}
     </div>
   )
@@ -135,8 +135,8 @@ export function DataTable<R extends Record<string, unknown>>({ columns, data, on
 }) {
   const { theme: T } = useTheme()
   return (
-    <div className="table-scroll-wrap" style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}>
-      <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 520 }}>
+    <div className="table-scroll-wrap">
+      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>
           <tr style={{ borderBottom: `1px solid ${T.border}` }}>
             {columns.map(col => (
