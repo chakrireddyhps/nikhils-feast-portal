@@ -20,6 +20,7 @@ import {
 
 
 function SaveBtn({ label = 'Save Changes', done, onClick }: { label?: string; done: boolean; onClick: () => void }) {
+  const T = useT()
   return (
     <button onClick={onClick} style={{
       padding: '10px 22px', borderRadius: 10, border: 'none', fontFamily: 'inherit',
@@ -33,6 +34,7 @@ function SaveBtn({ label = 'Save Changes', done, onClick }: { label?: string; do
 }
 
 function Toggle({ on, onChange }: { on: boolean; onChange: (v: boolean) => void }) {
+  const T = useT()
   return (
     <button onClick={() => onChange(!on)} style={{
       width: 44, height: 24, borderRadius: 12, border: 'none', cursor: 'pointer',
