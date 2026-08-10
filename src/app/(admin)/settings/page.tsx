@@ -630,8 +630,8 @@ const AUDIT_LOGS = [
 ]
 
 const LOG_TYPE_COLORS: Record<string, string> = {
-  menu: T.gold, order: T.green, wastage: T.red, purchase: T.blue,
-  inventory: T.amber, expense: '#A855F7', recipe: '#06B6D4', user: '#EC4899' }
+  menu: '#C9A84C', order: '#4CAF7D', wastage: '#E05A5A', purchase: '#5B9BD5',
+  inventory: '#F5A623', expense: '#A855F7', recipe: '#06B6D4', user: '#EC4899' }
 
 function AuditLogs() {
   const T = useT()
