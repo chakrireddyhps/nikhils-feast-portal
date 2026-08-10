@@ -24,7 +24,7 @@ export default function DashboardPage() {
       </div>
 
       {/* KPI Cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(185px, 1fr))', gap: 14, marginBottom: 24 }}>
+      <div className="grid-4-kpi" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(185px, 1fr))', gap: 14, marginBottom: 24 }}>
         <MetricCard label="Today's Revenue" value={fmtINR(today.revenue)} icon={DollarSign} color={T.gold} trend={((today.revenue-prev.revenue)/prev.revenue)*100}/>
         <MetricCard label="Orders Today" value={today.orders} icon={ShoppingBag} color={T.blue} trend={((today.orders-prev.orders)/prev.orders)*100}/>
         <MetricCard label="Avg Order Value" value={fmtINR(today.revenue/today.orders)} icon={TrendingUp} color="#A855F7" trend={3.5}/>
@@ -36,7 +36,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Charts Row */}
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 16, marginBottom: 16 }}>
+      <div className="grid-chart-row" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 16, marginBottom: 16 }}>
         <Card style={{ padding: 22 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 20 }}>
             <div>
@@ -96,7 +96,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Row 2 */}
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 16, marginBottom: 16 }}>
+      <div className="grid-chart-row" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 16, marginBottom: 16 }}>
         {/* Top Items */}
         <Card style={{ padding: 20 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>

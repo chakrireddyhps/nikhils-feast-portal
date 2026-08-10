@@ -159,7 +159,7 @@ export default function PurchasesPage() {
       {showNew&&<NewPurchaseModal onClose={()=>setShowNew(false)}/>}
       {viewPurchase&&<ViewPurchaseModal purchase={viewPurchase} onClose={()=>setViewPurchase(null)}/>}
       <PageHeader title="Stock Purchases" subtitle="Record and track your ingredient purchases" action={<Btn icon={Plus} onClick={()=>setShowNew(true)}>New Purchase</Btn>}/>
-      <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:12, marginBottom:20 }}>
+      <div className='grid-4-kpi' style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:12, marginBottom:20 }}>
         <MetricCard label="This Month Purchases" value="₹23,240" icon={ShoppingCart} color={T.gold}/>
         <MetricCard label="Purchase Orders" value={5} icon={ReceiptText} color={T.blue}/>
         <MetricCard label="Suppliers" value={4} icon={Users} color="#A855F7"/>

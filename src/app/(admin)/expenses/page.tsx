@@ -147,13 +147,13 @@ export default function ExpensesPage() {
     <div>
       {(showModal||editExpense)&&<ExpenseModal initial={editExpense} onClose={()=>{ setShowModal(false); setEditExpense(null) }}/>}
       <PageHeader title="Expenses" subtitle="Track your operating expenses" action={<Btn icon={Plus} onClick={()=>setShowModal(true)}>Add Expense</Btn>}/>
-      <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:12, marginBottom:20 }}>
+      <div className='grid-4-kpi' style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:12, marginBottom:20 }}>
         <MetricCard label="This Month" value={fmtINRFull(totalExp)} icon={Wallet} color={T.gold}/>
         <MetricCard label="Recurring" value={fmtINRFull(recurExp)} icon={RefreshCw} color={T.blue}/>
         <MetricCard label="One-Time" value={fmtINRFull(oneTime)} icon={Zap} color={T.amber}/>
         <MetricCard label="Categories" value={Object.keys(byCategory).length} icon={Layers} color={T.textPrimary}/>
       </div>
-      <div style={{ display:'grid', gridTemplateColumns:'2fr 1fr', gap:16 }}>
+      <div className='grid-chart-row' style={{ display:'grid', gridTemplateColumns:'2fr 1fr', gap:16 }}>
         <Card>
           <div style={{ padding:'18px 22px', borderBottom:`1px solid ${T.border}`, display:'flex', justifyContent:'space-between', alignItems:'center', gap:10 }}>
             <h3 style={{ color:T.textPrimary, fontWeight:700, margin:0, fontSize:15 }}>Expense Records</h3>

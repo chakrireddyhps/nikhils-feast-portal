@@ -131,7 +131,7 @@ export default function RecipesPage() {
     <div>
       {(showModal||editMode)&&<RecipeModal initial={editMode?selected:null} onClose={()=>{ setShowModal(false); setEditMode(false) }}/>}
       <PageHeader title="Recipes / Bill of Materials" subtitle="Define ingredient costs for every menu item" action={<Btn icon={Plus} onClick={()=>setShowModal(true)}>Add Recipe</Btn>}/>
-      <div style={{ display:'grid', gridTemplateColumns:'280px 1fr', gap:16 }}>
+      <div className="grid-recipes" style={{ display:'grid', gridTemplateColumns:'280px 1fr', gap:16 }}>
         <div style={{ display:'flex', flexDirection:'column', gap:12 }}>
           <div style={{ background:T.surface, border:`1px solid ${T.border}`, borderRadius:16, overflow:'hidden' }}>
             <div style={{ padding:'12px 14px', borderBottom:`1px solid ${T.border}` }}><SearchBar placeholder="Search recipes…"/></div>

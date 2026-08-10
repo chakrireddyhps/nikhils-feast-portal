@@ -108,7 +108,7 @@ export default function WastagePage() {
     <div>
       {showRecord&&<RecordWastageModal onClose={()=>setShowRecord(false)}/>}
       <PageHeader title="Wastage Management" subtitle="Track and reduce food wastage" action={<Btn icon={Plus} onClick={()=>setShowRecord(true)}>Record Wastage</Btn>}/>
-      <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:12, marginBottom:20 }}>
+      <div className='grid-4-kpi' style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:12, marginBottom:20 }}>
         <MetricCard label="Today's Wastage" value={fmtINRFull(408)} icon={Trash2} color={T.red} trend={6.3}/>
         <MetricCard label="This Week" value={fmtINRFull(totalWastage)} icon={BarChart3} color={T.amber}/>
         <MetricCard label="Wastage %" value="4.4%" icon={TrendingDown} color={T.textPrimary}/>
@@ -118,7 +118,7 @@ export default function WastagePage() {
         <AlertTriangle size={16} color="#E05A5A"/>
         <span style={{ color:T.textSecondary, fontSize:13, fontWeight:600 }}>Highest wastage this week: <strong style={{ color:T.textPrimary }}>Chicken (Whole)</strong> — ₹360 lost due to overproduction</span>
       </div>
-      <div style={{ display:'grid', gridTemplateColumns:'2fr 1fr', gap:16 }}>
+      <div className='grid-chart-row' style={{ display:'grid', gridTemplateColumns:'2fr 1fr', gap:16 }}>
         <Card>
           <div style={{ padding:'18px 22px', borderBottom:bdr, display:'flex', justifyContent:'space-between', alignItems:'center' }}>
             <h3 style={{ color:T.textPrimary, fontWeight:700, margin:0, fontSize:15 }}>Wastage Records</h3>

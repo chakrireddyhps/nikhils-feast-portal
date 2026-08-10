@@ -75,7 +75,7 @@ function NewOrderModal({ onClose }: { onClose: () => void }) {
     // Full screen overlay
     <div style={{ position: 'fixed', inset: 0, zIndex: 999, background: 'rgba(0,0,0,0.8)', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: 8, paddingLeft: 16, paddingRight: 16, paddingBottom: 16 }}>
       {/* Modal box — fixed height, two-column layout */}
-      <div style={{
+      <div className="new-order-modal" style={{
         display: 'flex', width: '100%', maxWidth: 1160,
         height: 'calc(100vh - 68px)', maxHeight: 'none',
         background: T.bg, borderRadius: 20, overflow: 'hidden',
@@ -148,7 +148,7 @@ function NewOrderModal({ onClose }: { onClose: () => void }) {
         </div>
 
         {/* ── RIGHT: Cart ── */}
-        <div style={{ width: 300, flexShrink: 0, display: 'flex', flexDirection: 'column', background: T.surface }}>
+        <div className="new-order-cart" style={{ width: 300, flexShrink: 0, display: 'flex', flexDirection: 'column', background: T.surface }}>
 
           {/* Cart header */}
           <div style={{ padding: '16px 20px', borderBottom: `1px solid ${T.border}`, flexShrink: 0 }}>
@@ -261,7 +261,7 @@ export default function OrdersPage() {
       <PageHeader title="Orders" subtitle={`${ORDERS.length} orders today`}
         action={<Btn icon={Plus} onClick={() => setShowNewOrder(true)}>New Order</Btn>}/>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 12, marginBottom: 20 }}>
+      <div className="grid-4-kpi" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 12, marginBottom: 20 }}>
         <MetricCard label="Total Revenue"    value={fmtINRFull(revenue)} icon={DollarSign}  color={T.gold}/>
         <MetricCard label="Gross Profit"     value={fmtINRFull(profit)}  icon={TrendingUp}  color={T.green}/>
         <MetricCard label="Completed Orders" value={ORDERS.filter(o => o.status === 'COMPLETED').length} icon={ShoppingBag} color={T.blue}/>

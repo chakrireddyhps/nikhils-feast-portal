@@ -63,7 +63,7 @@ export default function PnLPage() {
       </div>
 
       {/* Hero KPIs */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 14, marginBottom: 24 }}>
+      <div className="grid-pnl-hero" style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 14, marginBottom: 24 }}>
         {[
           { label: 'Revenue',      value: fmtINRFull(revenue),     color: T.gold,  sub: 'Gross sales' },
           { label: 'COGS',         value: fmtINRFull(cogs+wastage), color: T.red,  sub: 'Ingredient + wastage' },
@@ -79,7 +79,7 @@ export default function PnLPage() {
         ))}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+      <div className="pnl-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
         {/* P&L Statement */}
         <Card style={{ padding: 22 }}>
           <h3 style={{ color: T.textPrimary, fontWeight: 700, margin: '0 0 20px', fontSize: 14 }}>P&L Statement — {period}</h3>

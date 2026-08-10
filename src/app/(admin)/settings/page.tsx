@@ -100,7 +100,7 @@ function RestaurantProfile() {
         <div style={SECTION_HEADER}>
           <h4 style={{ color: T.textPrimary, fontWeight: 700, fontSize: 14, margin: 0 }}>Basic Information</h4>
         </div>
-        <div style={{ padding: 22, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+        <div className='settings-2col' style={{ padding: 22, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
           {[
             { key: 'name',    label: 'Restaurant Name *', placeholder: "Nikhil's Feast" },
             { key: 'tagline', label: 'Tagline',            placeholder: 'A Feast To Be Remembered' },
@@ -121,8 +121,8 @@ function RestaurantProfile() {
         <div style={SECTION_HEADER}>
           <h4 style={{ color: T.textPrimary, fontWeight: 700, fontSize: 14, margin: 0 }}>Address</h4>
         </div>
-        <div style={{ padding: 22, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
-          <div style={{ gridColumn: 'span 3' }}>
+        <div className='settings-3col' style={{ padding: 22, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
+          <div className='settings-span3' style={{ gridColumn: 'span 3' }}>
             <label style={LABEL}>Street Address</label>
             <input value={form.address} onChange={e => set('address', e.target.value)}
               placeholder="Street address" style={INPUT} onFocus={focusBorder} onBlur={blurBorder}/>
@@ -176,7 +176,7 @@ function OrderSettings() {
         <div style={SECTION_HEADER}>
           <h4 style={{ color: T.textPrimary, fontWeight: 700, fontSize: 14, margin: 0 }}>Order Numbering</h4>
         </div>
-        <div style={{ padding: 22, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
+        <div className='settings-3col' style={{ padding: 22, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
           <div>
             <label style={LABEL}>Order Prefix</label>
             <input value={form.prefix} onChange={e => set('prefix', e.target.value)} style={INPUT} onFocus={focusBorder} onBlur={blurBorder}/>
@@ -294,7 +294,7 @@ function InventorySettings() {
         <div style={SECTION_HEADER}>
           <h4 style={{ color: T.textPrimary, fontWeight: 700, fontSize: 14, margin: 0 }}>Default Settings</h4>
         </div>
-        <div style={{ padding: 22, display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 16 }}>
+        <div className='settings-3col' style={{ padding: 22, display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 16 }}>
           <div>
             <label style={LABEL}>Default Unit</label>
             <select value={form.defaultUnit} onChange={e => set('defaultUnit', e.target.value)}
@@ -748,7 +748,7 @@ export default function SettingsPage() {
     <div>
       <PageHeader title="Settings" subtitle="Manage your restaurant configuration"/>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+      <div className="grid-settings" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
         {SETTINGS_SECTIONS.map(s => (
           <button key={s.key} onClick={() => setActive(s.key)} style={{
             display: 'flex', alignItems: 'center', gap: 16, padding: '20px 22px',

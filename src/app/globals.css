@@ -192,3 +192,68 @@
 @media (max-width: 400px) {
   .topbar-avatar-chevron { display: none !important; }
 }
+
+/* ─── Page-level responsive grid overrides ──────────────────────────────────── */
+
+/* 4-col KPI grids → 2-col on mobile */
+@media (max-width: 767px) {
+  .grid-4-kpi  { grid-template-columns: repeat(2, 1fr) !important; }
+  .grid-5-kpi  { grid-template-columns: repeat(2, 1fr) !important; }
+  .grid-2-col  { grid-template-columns: 1fr !important; }
+  .grid-3-col  { grid-template-columns: 1fr !important; }
+  .grid-settings { grid-template-columns: 1fr !important; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .grid-5-kpi  { grid-template-columns: repeat(3, 1fr) !important; }
+  .grid-4-kpi  { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* Two-col chart rows (2fr 1fr) stack on tablet/mobile */
+@media (max-width: 900px) {
+  .grid-chart-row { grid-template-columns: 1fr !important; }
+}
+
+/* Recipes sidebar + detail stack */
+@media (max-width: 900px) {
+  .grid-recipes { grid-template-columns: 1fr !important; }
+  .grid-recipes > div:first-child { max-height: 260px; overflow-y: auto; }
+}
+
+/* PnL hero cards → 2-col then 1-col */
+@media (max-width: 900px) {
+  .grid-pnl-hero { grid-template-columns: repeat(3, 1fr) !important; }
+}
+@media (max-width: 600px) {
+  .grid-pnl-hero { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* Settings 1fr 1fr → 1 col */
+@media (max-width: 600px) {
+  .settings-2col { grid-template-columns: 1fr !important; }
+  .settings-3col { grid-template-columns: 1fr !important; }
+  .settings-span3 { grid-column: span 1 !important; }
+  .pnl-2col      { grid-template-columns: 1fr !important; }
+}
+
+/* Order/filter toolbar: wrap + shrink buttons on mobile */
+@media (max-width: 600px) {
+  .filter-toolbar { flex-wrap: wrap !important; }
+  .filter-toolbar .ml-auto { margin-left: 0 !important; width: 100%; }
+}
+
+/* New Order modal: single column on mobile */
+@media (max-width: 767px) {
+  .new-order-modal {
+    flex-direction: column !important;
+    height: auto !important;
+    max-height: calc(100vh - 24px) !important;
+    overflow-y: auto !important;
+  }
+  .new-order-cart {
+    width: 100% !important;
+    border-top: 1px solid rgba(255,255,255,0.07) !important;
+    border-right: none !important;
+    max-height: 320px;
+  }
+  .new-order-menu { border-right: none !important; min-height: 300px; }
+}

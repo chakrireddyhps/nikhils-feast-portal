@@ -82,7 +82,7 @@ export default function IngredientsPage() {
     <div>
       {showAddIngredient&&<AddIngredientModal onClose={()=>setShowAddIngredient(false)}/>}
       <PageHeader title="Ingredients & Stock" subtitle="Manage your inventory and ingredient costs" action={<Btn icon={Plus} onClick={()=>setShowAddIngredient(true)}>Add Ingredient</Btn>}/>
-      <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:12, marginBottom:20 }}>
+      <div className='grid-4-kpi' style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:12, marginBottom:20 }}>
         <MetricCard label="Total Inventory Value" value={fmtINRFull(totalValue)} icon={Warehouse} color={T.gold}/>
         <MetricCard label="Total Ingredients" value={INGREDIENTS.length} icon={Package} color={T.blue}/>
         <MetricCard label="Low / Critical Stock" value={lowCount} icon={AlertTriangle} color={T.amber}/>
