@@ -143,7 +143,9 @@ export function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
         {/* Brand */}
         <div style={{ padding: collapsed ? '22px 14px' : '22px 20px', borderBottom: `1px solid ${S.border}`, flexShrink: 0 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 11 }}>
-            <div style={{ width: 40, height: 40, borderRadius: 11, flexShrink: 0, background: `linear-gradient(135deg, ${S.burgundy} 0%, #6B1020 100%)`, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 14px rgba(155,35,53,0.4)', fontSize: 20 }}>🍗</div>
+            <div style={{ width: 40, height: 40, borderRadius: 11, flexShrink: 0, background: 'linear-gradient(135deg, #1A0A08 0%, #0D0101 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 14px rgba(155,35,53,0.4)', overflow: 'hidden', padding: 3 }}>
+              <img src="/logo.png" alt="Nikhil's Feast" style={{ width: '100%', height: '100%', objectFit: 'contain', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))' }}/>
+            </div>
             {!collapsed && (
               <div style={{ overflow: 'hidden' }}>
                 <p style={{ color: '#F5EFE6', fontWeight: 800, fontSize: 14, letterSpacing: '-0.01em', margin: 0, whiteSpace: 'nowrap', lineHeight: 1.3 }}>NIKHIL&apos;S FEAST</p>

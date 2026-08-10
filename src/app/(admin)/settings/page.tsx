@@ -78,7 +78,9 @@ function RestaurantProfile() {
         </div>
         <div style={{ padding: 22, display: 'flex', alignItems: 'center', gap: 20 }}>
           <div style={{ position: 'relative' }}>
-            <div style={{ width: 80, height: 80, borderRadius: 20, background: `linear-gradient(135deg, ${T.burgundy}, #6B1020)`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 38 }}>🍗</div>
+            <div style={{ width: 80, height: 80, borderRadius: 20, background: 'linear-gradient(135deg, #1A0A08 0%, #0D0101 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 20px rgba(155,35,53,0.4), 0 0 0 1px rgba(201,168,76,0.15)', padding: 6 }}>
+              <img src="/logo.png" alt="Nikhil's Feast Logo" style={{ width: '100%', height: '100%', objectFit: 'contain', filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.5))' }}/>
+            </div>
             <button style={{ position: 'absolute', bottom: -4, right: -4, width: 28, height: 28, borderRadius: '50%', background: T.burgundy, border: `2px solid ${T.bg}`, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
               <Camera size={13} color="#fff"/>
             </button>

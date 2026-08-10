@@ -35,10 +35,13 @@ export default function LoginPage() {
         {/* Brand */}
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
           <div style={{
-            display: 'inline-flex', width: 72, height: 72, borderRadius: 20,
-            background: 'linear-gradient(135deg, #9B2335 0%, #6B1020 100%)',
-            alignItems: 'center', justifyContent: 'center', fontSize: 36, marginBottom: 16,
-            boxShadow: '0 8px 32px rgba(155,35,53,0.35)' }}>🍗</div>
+            display: 'inline-flex', width: 88, height: 88, borderRadius: 24,
+            background: 'linear-gradient(135deg, #1A0A08 0%, #0D0101 100%)',
+            alignItems: 'center', justifyContent: 'center', marginBottom: 16,
+            boxShadow: '0 8px 40px rgba(155,35,53,0.45), 0 0 0 1px rgba(201,168,76,0.15)',
+            padding: 8 }}>
+            <img src="/logo.png" alt="Nikhil's Feast" style={{ width: '100%', height: '100%', objectFit: 'contain', filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.5))' }}/>
+          </div>
           <h1 style={{ color: T.textPrimary, fontWeight: 900, fontSize: 22, margin: 0, letterSpacing: '-0.03em', lineHeight: 1.2 }}>
             NIKHIL&apos;S FEAST
           </h1>

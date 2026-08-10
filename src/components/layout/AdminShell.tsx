@@ -170,11 +170,13 @@ export function AdminShell({ children, pathname }: { children: React.ReactNode; 
               {/* Avatar circle */}
               <div style={{
                 width: 28, height: 28, borderRadius: 8, flexShrink: 0,
-                background: 'linear-gradient(135deg, #9B2335 0%, #6B1020 100%)',
+                background: 'linear-gradient(135deg, #1A0A08 0%, #0D0101 100%)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: 12, fontWeight: 800, color: '#fff',
                 boxShadow: '0 2px 8px rgba(155,35,53,0.4)',
-              }}>N</div>
+                overflow: 'hidden', padding: 2,
+              }}>
+                <img src="/logo.png" alt="logo" style={{ width: '100%', height: '100%', objectFit: 'contain', filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.6))' }}/>
+              </div>
               <div style={{ textAlign: 'left', lineHeight: 1.2 }}>
                 <p style={{ color: T.textPrimary, fontSize: 12, fontWeight: 700, margin: 0 }}>Nikhil</p>
                 <p style={{ color: T.gold, fontSize: 10, fontWeight: 600, margin: 0 }}>Owner</p>
@@ -206,11 +208,13 @@ export function AdminShell({ children, pathname }: { children: React.ReactNode; 
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                     <div style={{
                       width: 38, height: 38, borderRadius: 11,
-                      background: 'linear-gradient(135deg, #9B2335 0%, #6B1020 100%)',
+                      background: 'linear-gradient(135deg, #1A0A08 0%, #0D0101 100%)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: 15, fontWeight: 800, color: '#fff',
                       boxShadow: '0 3px 10px rgba(155,35,53,0.4)',
-                    }}>N</div>
+                      overflow: 'hidden', padding: 3,
+                    }}>
+                      <img src="/logo.png" alt="logo" style={{ width: '100%', height: '100%', objectFit: 'contain', filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.6))' }}/>
+                    </div>
                     <div>
                       <p style={{ color: T.textPrimary, fontSize: 13, fontWeight: 700, margin: 0 }}>Nikhil</p>
                       <p style={{ color: T.textMuted, fontSize: 11, margin: 0 }}>nikhil@nikhilsfeast.com</p>
