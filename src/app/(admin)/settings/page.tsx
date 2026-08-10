@@ -705,8 +705,8 @@ const SETTINGS_SECTIONS = [
   { key: 'orders',    icon: ShoppingBag,  label: 'Order Settings',      desc: 'Numbering, tax, payment methods',          color: '#5B9BD5' },
   { key: 'inventory', icon: Package,      label: 'Inventory Settings',  desc: 'Default units, reorder thresholds',        color: '#F5A623' },
   { key: 'users',     icon: Users,        label: 'User Management',     desc: 'Manage team access, roles, permissions',   color: '#A855F7' },
-  { key: 'security',  icon: Lock,         label: 'Security',            desc: 'Password, 2FA, session management',        color: T.green },
-  { key: 'audit',     icon: ShieldAlert,  label: 'Audit Logs',          desc: 'Track who changed what and when',          color: T.burgundyLight },
+  { key: 'security',  icon: Lock,         label: 'Security',            desc: 'Password, 2FA, session management',        color: #4CAF7D },
+  { key: 'audit',     icon: ShieldAlert,  label: 'Audit Logs',          desc: 'Track who changed what and when',          color: #9B2335Light },
 ]
 
 export default function SettingsPage() {
