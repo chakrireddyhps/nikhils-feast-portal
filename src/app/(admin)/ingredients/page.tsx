@@ -88,10 +88,10 @@ export default function IngredientsPage() {
         <MetricCard label="Low / Critical Stock" value={lowCount} icon={AlertTriangle} color={T.amber}/>
         <MetricCard label="Out of Stock" value={outCount} icon={XCircle} color={T.red}/>
       </div>
-      <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:14 }}>
+      <div className='page-toolbar' style={{ display:'flex', alignItems:'center', gap:8, marginBottom:14 }}>
         <SearchBar placeholder="Search ingredients…"/>
         <Btn variant="ghost" icon={Filter}>Filter</Btn>
-        <div style={{ marginLeft:'auto' }}><Btn icon={Plus}>Add Purchase</Btn></div>
+        <div className='toolbar-right'><Btn icon={Plus}>Add Purchase</Btn></div>
       </div>
       <Card>
         <DataTable

@@ -97,7 +97,7 @@ export function Btn({ children, variant = 'primary', onClick, icon: Icon, small 
     display: 'inline-flex', alignItems: 'center', gap: 7, borderRadius: 10,
     fontWeight: 700, cursor: 'pointer', border: 'none', transition: 'all 0.15s',
     fontSize: small ? 12 : 13, padding: small ? '7px 14px' : '10px 18px',
-    fontFamily: 'inherit', ...style,
+    fontFamily: 'inherit', flexShrink: 0, ...style,
   }
   const variants: Record<string, React.CSSProperties> = {
     primary: { background: `linear-gradient(135deg, ${T.burgundy} 0%, #7A1828 100%)`, color: '#fff', boxShadow: `0 4px 16px ${T.burgundyGlow}` },
@@ -113,15 +113,17 @@ export function Btn({ children, variant = 'primary', onClick, icon: Icon, small 
   )
 }
 
+// Responsive: full-width on mobile, fixed 200px on desktop
 export function SearchBar({ placeholder = 'Search…' }: { placeholder?: string }) {
   const { theme: T } = useTheme()
   return (
-    <div style={{ position: 'relative', flexShrink: 0 }}>
+    <div className="searchbar-wrap" style={{ position: 'relative', flexShrink: 0 }}>
       <Search size={14} color={T.textMuted} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }}/>
       <input placeholder={placeholder} style={{
         background: T.surfaceEl, border: `1px solid ${T.border}`, borderRadius: 10,
         padding: '9px 12px 9px 34px', fontSize: 13, color: T.textPrimary,
-        outline: 'none', width: 220, fontFamily: 'inherit', transition: 'background 0.25s',
+        outline: 'none', width: '100%', minWidth: 140, maxWidth: 220,
+        fontFamily: 'inherit', transition: 'background 0.25s',
       }}/>
     </div>
   )
@@ -133,8 +135,8 @@ export function DataTable<R extends Record<string, unknown>>({ columns, data, on
 }) {
   const { theme: T } = useTheme()
   return (
-    <div className="table-scroll-wrap" style={{ overflowX: 'auto' }}>
-      <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 480 }}>
+    <div className="table-scroll-wrap" style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}>
+      <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 520 }}>
         <thead>
           <tr style={{ borderBottom: `1px solid ${T.border}` }}>
             {columns.map(col => (

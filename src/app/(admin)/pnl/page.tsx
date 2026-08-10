@@ -52,7 +52,7 @@ export default function PnLPage() {
       />
 
       {/* Period tabs */}
-      <div style={{ display: 'flex', gap: 6, marginBottom: 24, flexWrap: 'wrap' }}>
+      <div className='period-tabs' style={{ display: 'flex', gap: 6, marginBottom: 24, flexWrap: 'wrap' }}>
         {PERIODS.map(p => (
           <button key={p} onClick={() => setPeriod(p)} style={{
             padding: '7px 16px', borderRadius: 20, fontSize: 12, fontWeight: 700, cursor: 'pointer',

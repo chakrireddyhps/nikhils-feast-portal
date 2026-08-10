@@ -120,7 +120,7 @@ export default function WastagePage() {
       </div>
       <div className='grid-chart-row' style={{ display:'grid', gridTemplateColumns:'2fr 1fr', gap:16 }}>
         <Card>
-          <div style={{ padding:'18px 22px', borderBottom:bdr, display:'flex', justifyContent:'space-between', alignItems:'center' }}>
+          <div className='card-toolbar card-header-with-search' style={{ padding:'18px 22px', borderBottom:bdr, display:'flex', justifyContent:'space-between', alignItems:'center' }}>
             <h3 style={{ color:T.textPrimary, fontWeight:700, margin:0, fontSize:15 }}>Wastage Records</h3>
             <Btn variant="ghost" icon={Filter} small>Filter</Btn>
           </div>

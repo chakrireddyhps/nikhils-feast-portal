@@ -268,7 +268,7 @@ export default function OrdersPage() {
         <MetricCard label="Avg Order Value"  value={fmtINR(revenue / Math.max(1, filtered.length))} icon={TrendingUp} color={T.textPrimary}/>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14, flexWrap: 'wrap' }}>
+      <div className='status-filter-row' style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14, flexWrap: 'wrap' }}>
         {STATUSES.map(s => (
           <button key={s} onClick={() => setActiveStatus(s)} style={{
             padding: '7px 16px', borderRadius: 20, fontSize: 12, fontWeight: 700,
@@ -279,7 +279,7 @@ export default function OrdersPage() {
             {' '}<span style={{ opacity: 0.7, fontSize: 10 }}>{s === 'ALL' ? ORDERS.length : ORDERS.filter(o => o.status === s).length}</span>
           </button>
         ))}
-        <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
+        <div className='toolbar-right' style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
           <SearchBar placeholder="Search orders…"/>
           <Btn variant="ghost" icon={Filter}>Filter</Btn>
           <Btn variant="ghost" icon={Download}>Export</Btn>

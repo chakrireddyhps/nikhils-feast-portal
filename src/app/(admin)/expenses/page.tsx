@@ -155,9 +155,9 @@ export default function ExpensesPage() {
       </div>
       <div className='grid-chart-row' style={{ display:'grid', gridTemplateColumns:'2fr 1fr', gap:16 }}>
         <Card>
-          <div style={{ padding:'18px 22px', borderBottom:`1px solid ${T.border}`, display:'flex', justifyContent:'space-between', alignItems:'center', gap:10 }}>
+          <div className='card-toolbar card-header-with-search' style={{ padding:'18px 22px', borderBottom:`1px solid ${T.border}`, display:'flex', justifyContent:'space-between', alignItems:'center', gap:10 }}>
             <h3 style={{ color:T.textPrimary, fontWeight:700, margin:0, fontSize:15 }}>Expense Records</h3>
-            <div style={{ display:'flex', gap:8 }}><SearchBar placeholder="Search expenses…"/><Btn variant="ghost" icon={Download} small>Export</Btn></div>
+            <div className='card-toolbar-actions'><SearchBar placeholder="Search expenses…"/><Btn variant="ghost" icon={Download} small>Export</Btn></div>
           </div>
           <DataTable
             columns={[

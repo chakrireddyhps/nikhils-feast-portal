@@ -165,9 +165,9 @@ export default function PurchasesPage() {
         <MetricCard label="Suppliers" value={4} icon={Users} color="#A855F7"/>
         <MetricCard label="Pending Orders" value={0} icon={Check} color={T.green}/>
       </div>
-      <div style={{ display:'flex', gap:8, marginBottom:14, alignItems:'center' }}>
+      <div className='page-toolbar' style={{ display:'flex', gap:8, marginBottom:14, alignItems:'center' }}>
         <SearchBar placeholder="Search purchases…"/><Btn variant="ghost" icon={Filter}>Filter</Btn>
-        <div style={{ marginLeft:'auto' }}><Btn variant="ghost" icon={Download}>Export</Btn></div>
+        <div className='toolbar-right'><Btn variant="ghost" icon={Download}>Export</Btn></div>
       </div>
       <Card>
         <DataTable
