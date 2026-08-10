@@ -78,7 +78,7 @@ export default function LoginPage() {
                 </label>
                 <input
                   type="email" value={email} onChange={e => setEmail(e.target.value)}
-                  placeholder="nikhil@nikhilsfeast.com" required
+                  placeholder="Enter your email address" required
                   style={{ width: '100%', padding: '11px 14px', background: T.surfaceEl, border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13, color: T.textPrimary, outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit', letterSpacing: '0.01em' }}
                   onFocus={e => (e.target as HTMLInputElement).style.borderColor = '#9B2335'}
                   onBlur={e => (e.target as HTMLInputElement).style.borderColor = 'rgba(255,255,255,0.08)'}
@@ -119,7 +119,7 @@ export default function LoginPage() {
 
             <div style={{ textAlign: 'center', paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
               <p style={{ fontSize: 11, color: T.textSubtle, fontWeight: 500 }}>
-                © 2024 Nikhil&apos;s Feast · Restaurant Management Portal
+                © 2026 Nikhil&apos;s Feast · Restaurant Management Portal
               </p>
             </div>
           </div>
