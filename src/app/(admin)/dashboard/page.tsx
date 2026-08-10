@@ -44,7 +44,7 @@ export default function DashboardPage() {
               <p style={{ color: T.textMuted, fontSize: 12, marginTop: 2 }}>Last 7 days</p>
             </div>
             <div style={{ display: 'flex', gap: 14 }}>
-              {[['Revenue'.gold], ['Profit'.green], ['COGS'.red]].map(([l, c]) => (
+              {[['Revenue', T.gold], ['Profit', T.green], ['COGS', T.red]].map(([l, c]) => (
                 <div key={l} style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: T.textMuted }}>
                   <div style={{ width: 10, height: 3, borderRadius: 2, background: c }}/>
                   {l}
