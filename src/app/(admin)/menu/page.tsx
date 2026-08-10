@@ -209,11 +209,7 @@ function AddCategoryModal({ onClose }: { onClose: () => void }) {
   const INPUT: React.CSSProperties = { width:'100%', padding:'10px 13px', background:T.surfaceEl, border:`1px solid ${T.border}`, borderRadius:10, fontSize:13, color:T.textPrimary, outline:'none', boxSizing:'border-box', fontFamily:'inherit' }
   const fb = (e: React.FocusEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => { e.target.style.borderColor = T.burgundy }
   const bb = (e: React.FocusEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => { e.target.style.borderColor = T.border }
- e.target.style.borderColor = T.burgundy }
-  function blurBorder(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) { e.target.style.borderColor = T.border }
- onClose }: { onClose: () => void }) {
-  const T = useT()
-  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
+
   const [name, setName] = useState('')
   const [icon, setIcon] = useState('🍽️')
   const [done, setDone] = useState(false)

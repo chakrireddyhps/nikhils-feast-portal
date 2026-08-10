@@ -35,7 +35,7 @@ const REASON_COLORS: Record<string, string> = {
 // ─── RECORD WASTAGE MODAL ─────────────────────────────────────────────────────
 function RecordWastageModal({ onClose }: { onClose: () => void }) {
   const T = useT()
-  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
+  const LABEL = { display: 'block' as const, fontSize: 10, fontWeight: 700 as const, color: T.textMuted, letterSpacing: '0.12em', marginBottom: 7 }
   const INPUT: React.CSSProperties = {
     width: '100%', padding: '10px 13px', background: T.surfaceEl,
     border: `1px solid ${T.border}`, borderRadius: 10, fontSize: 13,
@@ -47,9 +47,9 @@ function RecordWastageModal({ onClose }: { onClose: () => void }) {
   const [form, setForm] = useState({ date: new Date().toISOString().split('T')[0], notes: '', recordedBy: '' })
   const [done, setDone] = useState(false)
 
-  function setF(k: string, v: string) { setForm(p => ({ ...p, [k]: v })) }
+  const setF = (k: string, v: string) => { setForm(p => ({ ...p, [k]: v })) }
 
-  function updateRow(i: number, k: string, v: string) {
+  const updateRow = (i: number, k: string, v: string) => {
     setRows(prev => prev.map((row, idx) => {
       if (idx !== i) return row
       const updated = { ...row, [k]: v }
@@ -225,7 +225,7 @@ function RecordWastageModal({ onClose }: { onClose: () => void }) {
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function WastagePage() {
   const T = useT()
-  const LABEL = { display: 'block', fontSize: 10, fontWeight: 700, color: T.textMuted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 7 } as React.CSSProperties
+  const LABEL = { display: 'block' as const, fontSize: 10, fontWeight: 700 as const, color: T.textMuted, letterSpacing: '0.12em', marginBottom: 7 }
   const [showRecord, setShowRecord] = useState(false)
   const totalWastage = WASTAGE.reduce((s, w) => s + w.total, 0)
 
