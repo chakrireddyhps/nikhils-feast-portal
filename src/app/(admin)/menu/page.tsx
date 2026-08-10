@@ -93,14 +93,14 @@ function ItemForm({ initial, onSave, onClose, title, subtitle, saveLabel }: {
               <label style={LABEL}>Item Name *</label>
               <input value={form.name} onChange={e => set('name', e.target.value)}
                 placeholder="e.g. Crispy Chicken Burger" style={INPUT}
-                onFocus={focusBorder} onBlur={blurBorder}/>
+                onFocus={fb} onBlur={bb}/>
             </div>
             <div>
               <label style={LABEL}>Category *</label>
               <div style={{ position: 'relative' }}>
                 <select value={form.category} onChange={e => set('category', e.target.value)}
                   style={{ ...INPUT, appearance: 'none', paddingRight: 36, cursor: 'pointer' }}
-                  onFocus={focusBorder} onBlur={blurBorder}>
+                  onFocus={fb} onBlur={bb}>
                   {CATEGORIES.map(c => <option key={c.name} value={c.name}>{CATEGORY_ICONS[c.name]} {c.name}</option>)}
                 </select>
                 <ChevronDown size={14} color={T.textMuted} style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }}/>
@@ -113,12 +113,12 @@ function ItemForm({ initial, onSave, onClose, title, subtitle, saveLabel }: {
             <div>
               <label style={LABEL}>Selling Price (₹) *</label>
               <input type="number" value={form.price} onChange={e => set('price', e.target.value)}
-                placeholder="119" style={INPUT} onFocus={focusBorder} onBlur={blurBorder}/>
+                placeholder="119" style={INPUT} onFocus={fb} onBlur={bb}/>
             </div>
             <div>
               <label style={LABEL}>Food Cost (₹)</label>
               <input type="number" value={form.cost} onChange={e => set('cost', e.target.value)}
-                placeholder="42" style={INPUT} onFocus={focusBorder} onBlur={blurBorder}/>
+                placeholder="42" style={INPUT} onFocus={fb} onBlur={bb}/>
             </div>
             <div>
               <label style={LABEL}>Gross Margin</label>
@@ -149,7 +149,7 @@ function ItemForm({ initial, onSave, onClose, title, subtitle, saveLabel }: {
             <textarea value={form.description} onChange={e => set('description', e.target.value)}
               placeholder="Short description of the item…" rows={2}
               style={{ ...INPUT, resize: 'vertical', lineHeight: 1.6 }}
-              onFocus={focusBorder} onBlur={blurBorder}/>
+              onFocus={fb} onBlur={bb}/>
           </div>
 
           {/* Toggle badges */}
@@ -232,7 +232,7 @@ function AddCategoryModal({ onClose }: { onClose: () => void }) {
           <div style={{ marginBottom: 20 }}>
             <label style={LABEL}>Category Name *</label>
             <input value={name} onChange={e => setName(e.target.value)} placeholder="e.g. Rolls, Desserts"
-              style={INPUT} onFocus={focusBorder} onBlur={blurBorder}/>
+              style={INPUT} onFocus={fb} onBlur={bb}/>
           </div>
           <div style={{ marginBottom: 24 }}>
             <label style={LABEL}>Category Icon</label>
