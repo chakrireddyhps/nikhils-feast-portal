@@ -55,7 +55,7 @@ export default function DashboardPage() {
           <ResponsiveContainer width="100%" height={210}>
             <AreaChart data={REVENUE_TREND} margin={{ left: -20, right: 0, top: 4 }}>
               <defs>
-                {[['rev'.gold], ['prof'.green], ['cogs'.red]].map(([id, c]) => (
+                {[['rev', T.gold], ['prof', T.green], ['cogs', T.red]].map(([id, c]) => (
                   <linearGradient key={id} id={`g${id}`} x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor={c as string} stopOpacity={0.25}/>
                     <stop offset="100%" stopColor={c as string} stopOpacity={0}/>
